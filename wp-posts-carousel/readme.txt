@@ -1,16 +1,16 @@
 === WP Posts Carousel ===
-Contributors: teastudio.pl
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2SQA4FL25Y73W
-Tags: carousel, slider, posts carousel, posts slider, custom post type, wordpress carousel, wordpress posts slider, wordpress owl carousel, owl carousel
+Contributors: coolcatideas, teastudio.pl
+Tags: carousel, posts carousel, custom carousel, owl carousel
 Requires at least: 3.6
-Tested up to: 5.5.1
+Tested up to: 6.7.2
+Stable tag: 1.3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 WP Posts Carousel is a widget and a shortcode generator to displays posts or custom post types in Owl Carousel.
 == Description ==
 
-= This plugin is under development, unfortunately it takes a while, so sorry for missing updates. It is further developed... =
+= This plugin is under development, and we apologize for the lack of updates. The development is ongoing, and we are planning to release it in May 2025! 🚀 Stay tuned! =
 
 
 **WP Posts Carousel** allows to view the list of selected post types in a carousel. The plugin offers rich parameters of carousel display and post information, and provides better support for mobile devices. The plugin is equipped with a code generator (allows to insert the carousel into content) and a dedicated widget.
@@ -32,10 +32,8 @@ If you need other translation or you would like to create some, please visit [cr
 
 
 
-For more information, check out [PLUGIN HOMEPAGE](http://www.teastudio.pl/en/product/wp-posts-carousel/).
+For more information, check out [PLUGIN HOMEPAGE](http://www.teastudio.pl/product/wp-posts-carousel/).
 
-= DEMO =
-You can see the plugin in action on [DEMO PAGE](http://wordpress.teastudio.pl/category/product/wp-posts-carousel/)
 
 
 I will be grateful for opinions and reviews.
@@ -123,6 +121,9 @@ For more info visit [WordPress Function Reference/add filter](https://codex.word
 5. Example of usage
 
 == Changelog ==
+= 1.3.8 =
+* fixed security issues, thanks to Wordfence and Krzysztof Z.
+
 = 1.3.7 =
 * fixed problems with newest version of PHP and Wordpress (thanks to John Holt and Steckinsights)
 
