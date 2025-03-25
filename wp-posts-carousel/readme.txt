@@ -2,8 +2,8 @@
 Contributors: coolcatideas, teastudio.pl
 Tags: carousel, posts carousel, custom carousel, owl carousel
 Requires at least: 3.6
-Tested up to: 6.7.2
-Stable tag: 1.3.8
+Tested up to: 6.7
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,6 +121,9 @@ For more info visit [WordPress Function Reference/add filter](https://codex.word
 5. Example of usage
 
 == Changelog ==
+= 1.3.9 =
+* fixed security issues, thanks to Patchstack and Martino S. (r3verii)
+
 = 1.3.8 =
 * fixed security issues, thanks to Wordfence and Krzysztof Z.
 

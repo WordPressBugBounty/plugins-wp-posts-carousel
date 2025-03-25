@@ -250,6 +250,7 @@ class WpPostsCarouselGenerator
     while ($loop->have_posts()) {
       $loop->the_post();
 
+
       $post_url = apply_filters('wpc_item_permalink', get_permalink($post->ID), $post->ID);
       $title = '';
       $featured_image = '';
@@ -440,50 +441,50 @@ class WpPostsCarouselGenerator
     $mouse_wheel = null;
 
     if ($params['mouse_wheel'] == 'true') {
-      $mouse_wheel = 'wpPostsCarousel' . esc_html($params['id']) . '.on("mousewheel", ".owl-stage", function(e) {
+      $mouse_wheel = 'wpPostsCarousel' . esc_attr($params['id']) . '.on("mousewheel", ".owl-stage", function(e) {
                 if (e.deltaY > 0) {
-                    wpPostsCarousel' . esc_html($params['id']) . '.trigger("next.owl");
+                    wpPostsCarousel' . esc_attr($params['id']) . '.trigger("next.owl");
                 } else {
-                    wpPostsCarousel' . esc_html($params['id']) . '.trigger("prev.owl");
+                    wpPostsCarousel' . esc_attr($params['id']) . '.trigger("prev.owl");
                 }
                 e.preventDefault();
             });';
     }
 
     $out = '<script type="text/javascript">
-                    jQuery(window).load(function(e) {
-                        var wpPostsCarousel' . esc_html($params['id']) . ' = jQuery("#wp-posts-carousel-' . esc_html($params['id']) . '");
-                        wpPostsCarousel' . esc_html($params['id']) . '.owlCarousel({
-                            loop: ' . (esc_html($params['post_count']) > 1 ? esc_html($params['loop']) : 'false') . ',
-                            nav: ' . esc_html($params['nav']) . ',
-                            navSpeed: ' . esc_html($params['nav_speed']) . ',
-                            dots: ' . esc_html($params['dots']) . ',
-                            dotsSpeed: ' . esc_html($params['dots_speed']) . ',
-                            lazyLoad: ' . esc_html($params['lazy_load']) . ',
-                            autoplay: ' . esc_html($params['auto_play']) . ',
-                            autoplayHoverPause: ' . esc_html($params['stop_on_hover']) . ',
-                            autoplayTimeout: ' . esc_html($params['auto_play_timeout']) . ',
-                            autoplaySpeed:  ' . esc_html($params['auto_play_speed']) . ',
-                            margin: ' . esc_html($params['margin']) . ',
-                            stagePadding: 0,
-                            freeDrag: false,
-                            mouseDrag: ' . esc_html($params['mouse_drag']) . ',
-                            touchDrag: ' . esc_html($params['touch_drag']) . ',
-                            slideBy: ' . esc_html($params['slide_by']) . ',
-                            fallbackEasing: "' . esc_html($params['easing']) . '",
-                            responsiveClass: true,
-                            navText: [ "' . __('previous', 'wp-posts-carousel') . '", "' . __('next', 'wp-posts-carousel') . '" ],
-                            responsive:{
-                                0:{items: ' . (esc_html($params['items_to_show_mobiles']) != '' ? intval($params['items_to_show_mobiles']) : 1) . '},
-                                600:{items: ' . (esc_html($params['items_to_show_tablets']) != '' ? intval($params['items_to_show_tablets']) : (ceil(esc_html($params['items_to_show']) / 2))) . '},
-                                1000:{items: ' . intval($params['items_to_show']) . '}
-                                ' . WP_Posts_Carousel_Utils::parseBreakpoints($params['custom_breakpoints']) . '
-                            },
-                            autoHeight: ' . esc_html($params['auto_height']) . '
-                        });
-                        ' . $mouse_wheel . '
-                    });
-                </script>';
+              jQuery(window).load(function(e) {
+                  var wpPostsCarousel' . esc_attr($params['id']) . ' = jQuery("#wp-posts-carousel-' . esc_attr($params['id']) . '");
+                  wpPostsCarousel' . esc_attr($params['id']) . '.owlCarousel({
+                      loop: ' . (intval($params['post_count']) > 1 ? intval($params['loop']) : 'false') . ',
+                      nav: ' . (filter_var($params['nav'], FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false') . ',
+                      navSpeed: ' . intval($params['nav_speed']) . ',
+                      dots: ' . (filter_var($params['dots'], FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false') . ',
+                      dotsSpeed: ' . intval($params['dots_speed']) . ',
+                      lazyLoad: ' . (filter_var($params['lazy_load'], FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false') . ',
+                      autoplay: ' . (filter_var($params['auto_play'], FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false') . ',
+                      autoplayHoverPause: ' . (filter_var($params['stop_on_hover'], FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false') . ',
+                      autoplayTimeout: ' . intval($params['auto_play_timeout']) . ',
+                      autoplaySpeed:  ' . intval($params['auto_play_speed']) . ',
+                      margin: ' . intval($params['margin']) . ',
+                      stagePadding: 0,
+                      freeDrag: false,
+                      mouseDrag: ' . (filter_var($params['mouse_drag'], FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false') . ',
+                      touchDrag: ' . (filter_var($params['touch_drag'], FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false') . ',
+                      slideBy: ' . intval($params['slide_by']) . ',
+                      fallbackEasing: "' . esc_js($params['easing']) . '",
+                      responsiveClass: true,
+                      navText: [ "' . esc_js(__('previous', 'wp-posts-carousel')) . '", "' . esc_js(__('next', 'wp-posts-carousel')) . '" ],
+                      responsive:{
+                          0:{items: ' . (intval($params['items_to_show_mobiles']) ?: 1) . '},
+                          600:{items: ' . (intval($params['items_to_show_tablets']) ?: ceil(intval($params['items_to_show']) / 2)) . '},
+                          1000:{items: ' . intval($params['items_to_show']) . '}
+                          ' . WP_Posts_Carousel_Utils::parseBreakpoints($params['custom_breakpoints']) . '
+                      },
+                      autoHeight: ' . (filter_var($params['auto_height'], FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false') . '
+                  });
+                  ' . $mouse_wheel . '
+              });
+          </script>';
 
     return $out;
   }
