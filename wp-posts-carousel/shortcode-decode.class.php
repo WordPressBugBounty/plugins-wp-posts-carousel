@@ -7,14 +7,18 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
+if (! defined('ABSPATH')) {
+  exit; // Exit if accessed directly
 }
 
-class WpPostsCarouselShortcodeDecode {
-    public static function initialize($atts, $content = null, $code = "") {
-        return WpPostsCarouselGenerator::generate($atts);
-    }
+class WpPostsCarouselShortcodeDecode
+{
+  public static function initialize($atts, $content = null, $code = "")
+  {
+    $allowed_atts = WpPostsCarouselGenerator::getDefaults();
+    $atts = array_intersect($atts, $allowed_atts);
+
+    return WpPostsCarouselGenerator::generate($atts);
+  }
 }
 add_shortcode("wp_posts_carousel", array('WpPostsCarouselShortcodeDecode', "initialize"));
-?>
