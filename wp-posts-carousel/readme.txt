@@ -121,6 +121,9 @@ For more info visit [WordPress Function Reference/add filter](https://codex.word
 5. Example of usage
 
 == Changelog ==
+= 1.3.11 =
+* fixed security issues, thanks to Marc F.
+
 = 1.3.10 =
 * fixed security issues, thanks to Patchstack and Muhammad Y.
 

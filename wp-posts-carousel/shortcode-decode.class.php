@@ -16,7 +16,7 @@ class WpPostsCarouselShortcodeDecode
   public static function initialize($atts, $content = null, $code = "")
   {
     $allowed_atts = WpPostsCarouselGenerator::getDefaults();
-    $atts = array_intersect($atts, $allowed_atts);
+    $atts = wp_parse_args($atts, $allowed_atts);
 
     return WpPostsCarouselGenerator::generate($atts);
   }

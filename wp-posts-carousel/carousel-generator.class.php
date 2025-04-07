@@ -369,7 +369,7 @@ class WpPostsCarouselGenerator
       /*
              * list products
             */
-      $out .= '<div class="wp-posts-carousel-slide slides-' . $params['items_to_show'] . '">';
+      $out .= '<div class="wp-posts-carousel-slide slides-' . intval($params['items_to_show']) . '">';
       $out .= '<div class="wp-posts-carousel-container">';
       do_action('wpc_before_item_content', $params);
 
