@@ -451,6 +451,11 @@ class WpPostsCarouselGenerator
             });';
     }
 
+    $custom_breakpoints = '';
+    if (array_key_exists('custom_breakpoints', $params)) {
+      $custom_breakpoints = preg_replace('/[^0-9,:]/', '', $params['custom_breakpoints']);
+    }
+
     $out = '<script type="text/javascript">
               jQuery(window).load(function(e) {
                   var wpPostsCarousel' . esc_attr($params['id']) . ' = jQuery("#wp-posts-carousel-' . esc_attr($params['id']) . '");
@@ -478,7 +483,7 @@ class WpPostsCarouselGenerator
                           0:{items: ' . (intval($params['items_to_show_mobiles']) ?: 1) . '},
                           600:{items: ' . (intval($params['items_to_show_tablets']) ?: ceil(intval($params['items_to_show']) / 2)) . '},
                           1000:{items: ' . intval($params['items_to_show']) . '}
-                          ' . WP_Posts_Carousel_Utils::parseBreakpoints($params['custom_breakpoints']) . '
+                          ' . WP_Posts_Carousel_Utils::parseBreakpoints($custom_breakpoints) . '
                       },
                       autoHeight: ' . (filter_var($params['auto_height'], FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false') . '
                   });
