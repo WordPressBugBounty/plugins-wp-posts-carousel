@@ -1,0 +1,3274 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wp Posts Carousel 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/orgs/cool-cat-ideas/repositories\n"
+"POT-Creation-Date: 2026-08-19T18:27:04+00:00\n"
+"PO-Revision-Date: 2020-06-16 17:13+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3.1\n"
+"X-Domain: wp-posts-carousel\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: _;_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. Plugin Name of the plugin
+#: wp-posts-carousel.php assets/js/admin-v2.js:2 src/admin-v2/App.jsx:229
+msgid "WP Posts Carousel All In One"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: wp-posts-carousel.php
+msgid "https://coolcatideas.com/products/wp-posts-carousel-all-in-one"
+msgstr ""
+
+#. Description of the plugin
+#: wp-posts-carousel.php
+msgid ""
+"Build reusable carousels for posts, pages and custom post types. Products "
+"can appear as linked content cards; live WooCommerce prices, ratings and "
+"buying actions are included with Pro."
+msgstr ""
+
+#. Author of the plugin
+#: wp-posts-carousel.php
+msgid "Cool Cat Ideas"
+msgstr ""
+
+#. Author URI of the plugin
+#: wp-posts-carousel.php
+msgid "https://coolcatideas.com/"
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:140
+#: includes/admin/class-admin-plugins-page.php:148
+#: includes/admin/class-admin-plugins-page.php:397
+#: includes/admin/class-admin-plugins-page.php:444
+msgid "Open WP Posts Carousel"
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:174
+msgid "Activate Pro license"
+msgstr ""
+
+#. translators: %s: plugin names
+#: includes/admin/class-admin-plugins-page.php:223
+#: includes/admin/class-admin-plugins-page.php:291
+msgid "Requires: %s."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:234
+msgid "The add-on is active."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:242
+msgid "The add-on is inactive."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:243
+msgid "Activate it to use this integration in carousel queries."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:255
+msgid "WP Posts Carousel All In One Pro is installed but inactive."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:256
+msgid ""
+"Activate the Pro plugin, then enter the license key in the carousel "
+"dashboard."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:257
+#: includes/admin/class-admin-plugins-page.php:304
+msgid "Open license panel"
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:265
+msgid "Pro is running in read-only mode."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:266
+msgid "Pro license is active."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:268
+msgid ""
+"Frontend carousels remain available, but Pro editing is locked until the "
+"license server responds again."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:269
+msgid "All bundled Pro modules are available on this site."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:276
+msgid "The Pro plugin is active, but the license is missing."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:277
+msgid ""
+"Enter a license key to unlock Pro templates, integrations and editor "
+"controls."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:278
+#: includes/admin/class-admin-plugins-page.php:315
+#: includes/admin/class-admin-plugins-page.php:409 assets/js/844.ae8a4e4c.js:1
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:359
+#: src/admin-v2/components/LicensePanel.jsx:267
+msgid "Activate license"
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:302
+msgid "Requires WP Posts Carousel All In One Pro."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:303
+msgid ""
+"This add-on is installed, but Pro features remain locked until WP Posts "
+"Carousel All In One Pro is active."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:313
+msgid "This add-on requires a Pro license."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:322
+msgid "The license is ready. Activate the add-on."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:323
+msgid ""
+"Your license includes this add-on. Activate it to make it available in the "
+"carousel editor."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:330
+msgid "The add-on is ready to use."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:342
+msgid "License valid for this site."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:376
+msgid "A required plugin is missing."
+msgstr ""
+
+#. translators: 1: add-on name, 2: plugin names
+#: includes/admin/class-admin-plugins-page.php:379
+msgid "%1$s requires an active plugin: %2$s."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:390
+msgid "Pro add-ons are installed."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:391
+msgid ""
+"Activate WP Posts Carousel All In One Pro, then activate the license in the "
+"carousel dashboard."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:394
+msgid "Activate WP Posts Carousel All In One Pro"
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:407
+msgid "The WP Posts Carousel All In One Pro license is inactive."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:408
+msgid ""
+"Installed Pro templates and integrations remain locked until a license is "
+"activated for this site."
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:422 assets/js/admin-v2.js:2
+#: src/admin-v2/components/DashboardSidebar.jsx:153
+msgid "Inactive"
+msgstr ""
+
+#: includes/admin/class-admin-plugins-page.php:453
+msgid "Activate plugin"
+msgstr ""
+
+#. translators: %s: plugin name
+#: includes/admin/class-admin-plugins-page.php:522
+msgid "Activate %s"
+msgstr ""
+
+#. translators: %s: plugin name
+#: includes/admin/class-admin-plugins-page.php:533
+msgid "Install %s"
+msgstr ""
+
+#: includes/admin/class-admin.php:99 includes/class-api.php:795
+#: assets/js/180.a1787afb.js:1 assets/js/844.ae8a4e4c.js:1
+#: src/admin-v2/components/LicensePanel.jsx:144
+#: src/admin-v2/components/TemplatePicker.jsx:374
+#: src/admin-v2/components/TemplatePicker.jsx:425
+msgid "Free"
+msgstr ""
+
+#: includes/admin/class-admin.php:125
+msgid "Duplicate"
+msgstr ""
+
+#: includes/admin/class-admin.php:127
+msgid ""
+"I agree to send this rating and review to Cool Cat Ideas for moderation and "
+"possible publication on the product page. The review will not be published "
+"automatically."
+msgstr ""
+"Zgadzam się na przesłanie tej oceny i opinii do Cool Cat Ideas w celu "
+"moderacji i ewentualnej publikacji na stronie produktu. Opinia nie zostanie "
+"opublikowana automatycznie."
+
+#: includes/admin/views/html-carousels-page.php:76
+msgid "Loading dashboard..."
+msgstr ""
+
+#: includes/class-api.php:439 includes/class-carousel-repository.php:112
+#: includes/class-carousel-repository.php:158
+msgid "Carousel not found"
+msgstr ""
+
+#: includes/class-api.php:475
+msgid "Carousel preview not found"
+msgstr ""
+
+#: includes/class-api.php:508
+msgid "Unsaved carousel preview"
+msgstr ""
+
+#: includes/class-api.php:522
+msgid "Carousel preview is not available for this configuration."
+msgstr ""
+
+#: includes/class-api.php:637
+msgid "Please select a rating before saving feedback."
+msgstr ""
+
+#: includes/class-api.php:651
+msgid "Please accept the required consent before sending your review."
+msgstr ""
+
+#: includes/class-api.php:731 includes/class-api.php:746
+msgid "Feedback could not be sent. Please try again."
+msgstr ""
+
+#: includes/class-api.php:751
+msgid "The feedback service returned an invalid response."
+msgstr ""
+
+#: includes/class-api.php:1023
+msgid "Showing the last cached marketplace feed while store data refreshes."
+msgstr ""
+
+#: includes/class-api.php:1063
+msgid "Marketplace feed returned HTTP %d."
+msgstr ""
+
+#: includes/class-api.php:1064
+msgid "Marketplace feed returned an invalid response."
+msgstr ""
+
+#: includes/class-api.php:1120
+msgid "Marketplace feed is temporarily unavailable."
+msgstr ""
+
+#: includes/class-api.php:1192 includes/class-api.php:1255
+msgid "Untitled carousel"
+msgstr ""
+
+#: includes/class-api.php:1230
+msgid "Failed get carousel"
+msgstr ""
+
+#: includes/class-blocks.php:86
+msgid "Select a carousel."
+msgstr ""
+
+#: includes/class-blocks.php:118
+msgid "Selected carousel is not available."
+msgstr ""
+
+#: includes/class-blocks.php:119
+msgid "The selected carousel definition could not be loaded."
+msgstr ""
+
+#: includes/class-blocks.php:130
+msgid "This carousel requires additional features."
+msgstr ""
+
+#: includes/class-blocks.php:166
+msgid "This carousel is empty."
+msgstr ""
+
+#: includes/class-blocks.php:167
+msgid "No slides were rendered. Check the carousel settings and posts."
+msgstr ""
+
+#: includes/class-blocks.php:185
+msgid "Open store"
+msgstr ""
+
+#: includes/class-blocks.php:210
+msgid "Missing premium feature."
+msgstr ""
+
+#: includes/class-blocks.php:214
+msgid "Missing required features: %s."
+msgstr ""
+
+#: includes/class-carousel-data.php:72 assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/SavedPreview.jsx:40
+#: src/admin-v2/components/SavedPreview.jsx:53
+msgid "Carousel preview"
+msgstr ""
+
+#: includes/class-carousel-data.php:302
+msgid ""
+"Requested carousel template is unavailable. Rendering with the default "
+"template."
+msgstr ""
+
+#: includes/class-carousel-repository.php:145
+msgid "Failed delete carousel"
+msgstr ""
+
+#: includes/class-carousel-repository.php:164
+msgid "Carousel params are invalid"
+msgstr ""
+
+#: includes/class-carousel-repository.php:171
+msgid "%s copy"
+msgstr ""
+
+#: includes/class-carousel-repository.php:210
+msgid "Failed save carousel params"
+msgstr ""
+
+#: includes/class-features.php:13
+msgid "Shortcode rendering"
+msgstr ""
+
+#: includes/class-features.php:14
+msgid "Render carousels with the wp_posts_carousel shortcode."
+msgstr ""
+
+#: includes/class-features.php:19 assets/js/297.8e6ddae6.js:2
+#: src/admin-v2/components/AnalyticsPanel.jsx:115
+msgid "PHP renderer"
+msgstr ""
+
+#: includes/class-features.php:20
+msgid "Server-rendered carousel markup and fallback output."
+msgstr ""
+
+#: includes/class-features.php:25
+msgid "Template registry"
+msgstr ""
+
+#: includes/class-features.php:26
+msgid ""
+"Manifest-based templates loaded from the plugin, theme, uploads, or add-ons."
+msgstr ""
+
+#: includes/class-features.php:31
+msgid "Query builder"
+msgstr ""
+
+#: includes/class-features.php:32
+msgid ""
+"Build carousel items from post types, taxonomies, and manual selections."
+msgstr ""
+
+#: includes/class-features.php:37
+msgid "Manual curation"
+msgstr ""
+
+#: includes/class-features.php:38
+msgid "Manually order selected posts in a carousel."
+msgstr ""
+
+#: includes/class-features.php:43
+msgid "Basic analytics"
+msgstr ""
+
+#: includes/class-features.php:44
+msgid "Show local carousel configuration insights without visitor tracking."
+msgstr ""
+
+#: includes/class-features.php:49
+msgid "React frontend renderer"
+msgstr ""
+
+#: includes/class-features.php:50
+msgid ""
+"Lazy-mounted React rendering and enhancements for public carousel output."
+msgstr ""
+
+#: includes/class-features.php:118
+msgid "Requires feature: %s"
+msgstr ""
+
+#: includes/class-features.php:121
+msgid "Requires an active WP Posts Carousel Pro license for this domain."
+msgstr ""
+
+#: includes/class-icons.php:24
+msgid "Font Awesome"
+msgstr ""
+
+#: includes/class-icons.php:48
+msgid "Tabler Icons"
+msgstr ""
+
+#: includes/class-icons.php:105
+msgid "Local plugin files"
+msgstr ""
+
+#: includes/class-icons.php:106
+msgid "Load the selected icon CSS from this plugin."
+msgstr ""
+
+#: includes/class-icons.php:110
+msgid "CDN"
+msgstr ""
+
+#: includes/class-icons.php:111
+msgid "Load the selected icon CSS from a public CDN."
+msgstr ""
+
+#: includes/class-icons.php:115
+msgid "Already loaded by theme or plugin"
+msgstr ""
+
+#: includes/class-icons.php:116
+msgid ""
+"Do not enqueue icon CSS. Use classes from assets already present on the page."
+msgstr ""
+
+#: includes/class-init.php:64 includes/class-init.php:66
+#: includes/class-init.php:73 blocks/carousel/index.js:34
+#: blocks/carousel/index.js:311
+msgid "WP Posts Carousel"
+msgstr ""
+
+#: includes/class-init.php:65 includes/class-init.php:67
+#: includes/class-widget.php:59 blocks/carousel/index.js:250
+#: blocks/carousel/index.js:327
+msgid "Carousel"
+msgstr ""
+
+#: includes/class-init.php:68
+msgid "Add Carousel"
+msgstr ""
+
+#: includes/class-init.php:69
+msgid "Add new Carousel"
+msgstr ""
+
+#: includes/class-init.php:70
+msgid "New Carousel"
+msgstr ""
+
+#: includes/class-init.php:71
+msgid "Edit Carousel"
+msgstr ""
+
+#: includes/class-init.php:72
+msgid "View "
+msgstr ""
+
+#: includes/class-init.php:74
+msgid "Search Carousels"
+msgstr ""
+
+#: includes/class-init.php:75
+msgid "Not found any Carousels"
+msgstr ""
+
+#: includes/class-init.php:76
+msgid "Not found in trash"
+msgstr ""
+
+#: includes/class-init.php:123
+msgid "Failed create table %s"
+msgstr ""
+
+#: includes/class-integration.php:84
+msgid ""
+"This integration '%s' is not compatible with the current version of this "
+"plugin"
+msgstr ""
+
+#: includes/class-slide-view-model.php:135
+#: includes/class-slide-view-model.php:969 assets/js/118.cafad926.js:1
+#: assets/js/180.a1787afb.js:1 src/shared/CarouselRenderer.jsx:12
+msgid "read more"
+msgstr ""
+
+#: includes/class-slide-view-model.php:968
+msgid "View product"
+msgstr ""
+
+#: includes/class-template.php:89
+msgid ""
+"This template '%s' is not compatible with the current version of this plugin"
+msgstr ""
+
+#: includes/class-templates.php:61
+msgid "Template name is not valid"
+msgstr ""
+
+#: includes/class-templates.php:70
+msgid "Could not find template: %s"
+msgstr ""
+
+#: includes/class-templates.php:77
+msgid "Template view file is missing: %s"
+msgstr ""
+
+#: includes/class-utils.php:46
+#: includes/frontend/class-carousel-generator.php:405
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:432
+msgid "All"
+msgstr ""
+
+#: includes/class-utils.php:226
+msgid "In"
+msgstr ""
+
+#: includes/class-utils.php:230
+msgid "Not in"
+msgstr ""
+
+#: includes/class-utils.php:242
+msgid "By id"
+msgstr ""
+
+#: includes/class-utils.php:246
+msgid "By title"
+msgstr ""
+
+#: includes/class-utils.php:250
+msgid "By date"
+msgstr ""
+
+#: includes/class-utils.php:254
+msgid "By modified date"
+msgstr ""
+
+#: includes/class-utils.php:258
+msgid "By posts order"
+msgstr ""
+
+#: includes/class-utils.php:270
+msgid "Ascending"
+msgstr ""
+
+#: includes/class-utils.php:274
+msgid "Descending"
+msgstr ""
+
+#: includes/class-utils.php:278
+msgid "Random"
+msgstr ""
+
+#: includes/class-utils.php:290 assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:658
+msgid "No"
+msgstr ""
+
+#: includes/class-utils.php:294
+msgid "Excerpt"
+msgstr ""
+
+#: includes/class-utils.php:298
+msgid "Full content"
+msgstr ""
+
+#: includes/class-utils.php:310 includes/class-utils.php:338
+msgid "Thumbnail"
+msgstr ""
+
+#: includes/class-utils.php:314 includes/class-utils.php:342
+msgid "Medium"
+msgstr ""
+
+#: includes/class-utils.php:318 includes/class-utils.php:350
+msgid "Large"
+msgstr ""
+
+#: includes/class-utils.php:322 includes/class-utils.php:354
+msgid "Full"
+msgstr ""
+
+#: includes/class-utils.php:334
+msgid "Use display setting"
+msgstr ""
+
+#: includes/class-utils.php:346
+msgid "Medium large"
+msgstr ""
+
+#: includes/class-utils.php:364
+msgid "Eyebrow / badge"
+msgstr ""
+
+#: includes/class-utils.php:365
+msgid "Kicker / secondary text"
+msgstr ""
+
+#: includes/class-utils.php:366
+msgid "Story step"
+msgstr ""
+
+#: includes/class-utils.php:367
+msgid "Video duration"
+msgstr ""
+
+#: includes/class-utils.php:368
+msgid "Accent color"
+msgstr ""
+
+#: includes/class-utils.php:369
+msgid "Price text fallback"
+msgstr ""
+
+#: includes/class-utils.php:370 assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CustomSlideForm.jsx:162
+msgid "Button label"
+msgstr ""
+
+#: includes/class-utils.php:371
+msgid "Custom URL"
+msgstr ""
+
+#: includes/class-utils.php:372
+msgid "Custom image URL"
+msgstr ""
+
+#: includes/class-utils.php:427 assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/TaxonomyFilters.jsx:176
+msgid "And"
+msgstr ""
+
+#: includes/class-utils.php:431 assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/TaxonomyFilters.jsx:175
+msgid "Or"
+msgstr ""
+
+#: includes/class-utils.php:467
+msgid "Show title"
+msgstr ""
+
+#: includes/class-utils.php:475 includes/class-utils.php:504
+msgid "chars"
+msgstr ""
+
+#: includes/class-utils.php:476
+msgid "Title character limit"
+msgstr ""
+
+#: includes/class-utils.php:482
+msgid "Show author"
+msgstr ""
+
+#: includes/class-utils.php:488
+msgid "Show created date"
+msgstr ""
+
+#: includes/class-utils.php:494
+msgid "Show description"
+msgstr ""
+
+#: includes/class-utils.php:505
+msgid "Description character limit"
+msgstr ""
+
+#: includes/class-utils.php:511
+msgid "Show categories"
+msgstr ""
+
+#: includes/class-utils.php:517
+msgid "Show tags"
+msgstr ""
+
+#: includes/class-utils.php:523
+msgid "Show more button"
+msgstr ""
+
+#: includes/class-utils.php:529
+msgid "Show featured image"
+msgstr ""
+
+#: includes/class-utils.php:535
+msgid "Image source"
+msgstr ""
+
+#: includes/class-utils.php:542
+msgid "Image width"
+msgstr ""
+
+#: includes/class-utils.php:562
+msgid "Image height"
+msgstr ""
+
+#: includes/class-utils.php:623
+msgid "PHP fallback"
+msgstr ""
+
+#: includes/class-utils.php:624
+msgid ""
+"Server-rendered carousel output. Best default for SEO and broad "
+"compatibility."
+msgstr ""
+
+#: includes/class-utils.php:630
+msgid "React enhancement"
+msgstr ""
+
+#: includes/class-utils.php:631
+msgid ""
+"Loads React only near the viewport and enhances the PHP-rendered carousel."
+msgstr ""
+
+#: includes/class-utils.php:650
+msgid "Slide by"
+msgstr ""
+
+#: includes/class-utils.php:651
+msgid "Number of slides going on one \"click\"."
+msgstr ""
+
+#: includes/class-utils.php:652 includes/class-utils.php:771
+#: assets/js/180.a1787afb.js:1 assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CarouselSettings.jsx:535
+#: src/admin-v2/components/CompatibilitySettings.jsx:530
+msgid "items"
+msgstr ""
+
+#: includes/class-utils.php:659
+msgid "Start position"
+msgstr ""
+
+#: includes/class-utils.php:660
+msgid "The initial index of the slide. Counting from 0"
+msgstr ""
+
+#: includes/class-utils.php:661
+msgid "item index"
+msgstr ""
+
+#: includes/class-utils.php:668
+msgid "RTL"
+msgstr ""
+
+#: includes/class-utils.php:675
+msgid "Inifnity loop"
+msgstr ""
+
+#: includes/class-utils.php:676
+msgid "Duplicate last and first items to get loop illusion."
+msgstr ""
+
+#: includes/class-utils.php:682
+msgid "Center item"
+msgstr ""
+
+#: includes/class-utils.php:683
+msgid "Center the active slide in the viewport."
+msgstr ""
+
+#: includes/class-utils.php:690
+msgid "Margin"
+msgstr ""
+
+#: includes/class-utils.php:691 includes/class-utils.php:700
+msgid "px"
+msgstr ""
+
+#: includes/class-utils.php:698
+msgid "Stage padding"
+msgstr ""
+
+#: includes/class-utils.php:699
+msgid "Padding left and right on stage (can see neighbours)."
+msgstr ""
+
+#: includes/class-utils.php:708
+msgid "Pause on mouse hover"
+msgstr ""
+
+#: includes/class-utils.php:715
+msgid "Auto play"
+msgstr ""
+
+#: includes/class-utils.php:722
+msgid "Autoplay interval timeout"
+msgstr ""
+
+#: includes/class-utils.php:723 includes/class-utils.php:738
+#: includes/class-utils.php:754
+msgid "ms"
+msgstr ""
+
+#: includes/class-utils.php:730
+msgid "Show \"next\" and \"prev\" buttons"
+msgstr ""
+
+#: includes/class-utils.php:737
+msgid "Navigation speed"
+msgstr ""
+
+#: includes/class-utils.php:746
+msgid "Show dots navigation"
+msgstr ""
+
+#: includes/class-utils.php:753
+msgid "Dots speed"
+msgstr ""
+
+#: includes/class-utils.php:762
+msgid "Delays loading of images"
+msgstr ""
+
+#: includes/class-utils.php:763
+msgid ""
+"Lazy load images. data-src and data-src-retina for highres. Also load images "
+"into background inline style if element is not <img>"
+msgstr ""
+
+#: includes/class-utils.php:769
+msgid "Lazy Load Eager"
+msgstr ""
+
+#: includes/class-utils.php:770
+msgid ""
+"Eagerly pre-loads images to the right (and left when loop is enabled) based "
+"on how many items you want to preload."
+msgstr ""
+
+#: includes/class-utils.php:779
+msgid "Mouse events"
+msgstr ""
+
+#: includes/class-utils.php:786
+msgid "Mousewheel scrolling"
+msgstr ""
+
+#: includes/class-utils.php:793
+msgid "Touch events"
+msgstr ""
+
+#: includes/class-utils.php:800
+msgid "Pull drag"
+msgstr ""
+
+#: includes/class-utils.php:801
+msgid "Stage pull to edge."
+msgstr ""
+
+#: includes/class-utils.php:808
+msgid "Free drag"
+msgstr ""
+
+#: includes/class-utils.php:809
+msgid "Item pull to edge."
+msgstr ""
+
+#: includes/class-utils.php:816 assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CarouselSettings.jsx:299
+msgid "Transition effect"
+msgstr ""
+
+#: includes/class-utils.php:817
+msgid "Choose how slides animate when the carousel moves."
+msgstr ""
+
+#: includes/class-utils.php:819 assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:232
+msgid "Slide"
+msgstr ""
+
+#: includes/class-utils.php:820
+msgid "Fade"
+msgstr ""
+
+#: includes/class-utils.php:827 assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CarouselSettings.jsx:322
+msgid "Easing"
+msgstr ""
+
+#: includes/class-utils.php:828
+msgid ""
+"Motion curve used by Owl Carousel when CSS transitions are not available."
+msgstr ""
+
+#: includes/class-utils.php:836
+msgid "Animation in class"
+msgstr ""
+
+#: includes/class-utils.php:837
+msgid "Class for CSS3 animation in."
+msgstr ""
+
+#: includes/class-utils.php:843
+msgid "Animation out class"
+msgstr ""
+
+#: includes/class-utils.php:844
+msgid "Class for CSS3 animation out."
+msgstr ""
+
+#: includes/class-utils.php:850
+msgid "Auto width"
+msgstr ""
+
+#: includes/class-utils.php:857
+msgid "Auto height"
+msgstr ""
+
+#: includes/class-utils.php:903
+msgid "Hint"
+msgstr ""
+
+#: includes/class-widget.php:27
+msgid "Show posts in Wp Posts Carousel"
+msgstr ""
+
+#: includes/frontend/class-carousel-generator.php:155
+#: includes/frontend/class-carousel-generator.php:810
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/SavedPreview.jsx:86
+msgid "previous"
+msgstr ""
+
+#: includes/frontend/class-carousel-generator.php:155
+#: includes/frontend/class-carousel-generator.php:811
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/SavedPreview.jsx:87
+msgid "next"
+msgstr ""
+
+#: includes/frontend/class-carousel-generator.php:447
+msgid "Carousel filters"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/297.8e6ddae6.js:2
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/CarouselSettings.jsx:419
+#: src/admin-v2/components/LicensePanel.jsx:144
+#: src/admin-v2/components/ProBadge.jsx:6
+#: src/admin-v2/components/TemplatePicker.jsx:160
+#: src/admin-v2/components/TemplatePicker.jsx:291
+#: src/admin-v2/components/TemplatePicker.jsx:372
+#: src/admin-v2/components/TemplatePicker.jsx:429
+msgid "Pro"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/media.js:9
+msgid "Select image"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/media.js:11
+msgid "Use image"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/validation/carouselSchema.js:19
+msgid "Slide width must be between 1 and 6 columns."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/validation/carouselSchema.js:30
+msgid "Image offset must be between -100% and 100%."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/validation/carouselSchema.js:38
+msgid "Carousel title is required."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/validation/carouselSchema.js:41
+msgid "Add at least one slide."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/validation/carouselSchema.js:75
+msgid "Carousel numeric values cannot be negative."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/validation/carouselSchema.js:76
+msgid "Slide by must be at least 1."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CarouselSettings.jsx:231
+#: src/admin-v2/components/CompatibilitySettings.jsx:244
+#: src/admin-v2/validation/carouselSchema.js:91
+msgid "Breakpoint width must be greater than 0."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/validation/carouselSchema.js:99
+msgid "Responsive items must be at least 1."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/validation/carouselSchema.js:113
+msgid "Choose a valid autoplay progress indicator."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:278
+msgid "Carousel engine"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:281
+msgid ""
+"Choose the JavaScript engine and interaction behavior used by this carousel."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:288
+msgid "Engine"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:310
+msgid ""
+"Swiper supports native transition effects. Fade, cube, flip, cards and "
+"creative use one visible slide."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:314
+msgid ""
+"Owl supports the standard slide transition and a fade transition using Owl "
+"animation classes."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:363
+msgid "Navigation icons"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:366
+msgid ""
+"Override arrow icons for this carousel. Leave fields empty to use the "
+"selected library defaults."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:373
+msgid "Icon library override"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:381
+msgid "Global setting"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:410
+msgid "Use icon names without the CSS prefix, for example:"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:417
+msgid "Autoplay progress indicator"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:423
+msgid ""
+"Show visitors how long remains before autoplay advances to the next slide."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:429
+msgid "Indicator style"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:446
+msgid ""
+"Activate a Pro license that includes autoplay progress indicators to use "
+"this option."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:454
+msgid "Enable Autoplay for the indicator to appear on the frontend."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:460
+msgid ""
+"Use spacing and speed values to match the carousel with the surrounding "
+"layout."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:494
+msgid "Responsive items"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:496
+msgid ""
+"Define how many slides are visible from each screen width. The largest "
+"matching breakpoint is used on the frontend."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:503
+msgid ""
+"These values override the global responsive preset only for this carousel."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CarouselSettings.jsx:514
+#: src/admin-v2/components/CompatibilitySettings.jsx:513
+msgid "Breakpoint"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CarouselSettings.jsx:523
+#: src/admin-v2/components/CompatibilitySettings.jsx:521
+msgid "Items"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:242
+msgid "Delete breakpoint?"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CarouselSettings.jsx:243
+msgid "This removes the responsive rule for"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CarouselSettings.jsx:244
+#: src/admin-v2/components/CompatibilitySettings.jsx:258
+msgid "Delete breakpoint"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CarouselSettings.jsx:245
+#: src/admin-v2/components/CompatibilitySettings.jsx:259
+msgid "Keep breakpoint"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CarouselSettings.jsx:543
+#: src/admin-v2/components/CarouselSettings.jsx:544
+#: src/admin-v2/components/CompatibilitySettings.jsx:538
+#: src/admin-v2/components/CompatibilitySettings.jsx:539
+msgid "Remove breakpoint"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CarouselSettings.jsx:553
+#: src/admin-v2/components/CompatibilitySettings.jsx:549
+msgid "New breakpoint"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CarouselSettings.jsx:573
+#: src/admin-v2/components/CompatibilitySettings.jsx:569
+msgid "Add breakpoint"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:126
+msgid "Arrangement helpers"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:128
+msgid ""
+"Optional helpers that reorder slides or apply visual presets. They do not "
+"change your query, only the selected slide order and layout values."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:135
+msgid "Optional shortcuts for mixed sources and visual story layouts."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:144
+msgid "Post type pattern"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:146
+msgid ""
+"Comma-separated post type pattern. Example: post,post,product repeats two "
+"posts followed by one product."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:110
+msgid "Composition rhythm applied."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:161
+msgid "Apply"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:167
+msgid "Featured rhythm"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:169
+msgid "Makes every few slides slightly wider to create a magazine-like rhythm."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:176
+msgid "Connected image strip"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:178
+msgid ""
+"Groups slides and shifts image crops so several slides can feel like "
+"connected parts of one image."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:185
+msgid "Reset layout"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CompositionTools.jsx:187
+msgid "Clears custom width, group and crop values for all selected slides."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:40
+#: src/admin-v2/components/CustomSlideForm.jsx:28
+msgid "Image"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:41
+#: src/admin-v2/components/CustomSlideForm.jsx:29
+msgid "Video"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:91
+#: src/admin-v2/components/VisualBuilder.jsx:520
+msgid "Slides"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:93
+msgid ""
+"Drag slides here to reorder the manual sequence. Click a slide to edit its "
+"layout settings."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:100
+msgid "Drag to reorder. Click a slide to edit width, group and image offset."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:124
+msgid "Edit slide settings"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:159
+#: src/admin-v2/components/CompositionPreview.jsx:160
+#: src/admin-v2/components/CompositionPreview.jsx:590
+#: src/admin-v2/components/VisualBuilder.jsx:263
+msgid "Remove slide"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:197
+msgid ""
+"Click any slide to open its settings. The modal keeps this workspace clean "
+"on smaller admin screens."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/193.c436ef5f.js:1
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/CompositionPreview.jsx:212
+#: src/admin-v2/components/CompositionPreview.jsx:239
+#: src/admin-v2/components/ReviewPrompt.jsx:15
+msgid "Close"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:263
+msgid "Position"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:271
+#: src/admin-v2/components/CompositionPreview.jsx:473
+msgid "Width"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:274
+#: src/admin-v2/components/CompositionPreview.jsx:494
+msgid "cols"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:279
+msgid "Source"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:283
+msgid "Video slide"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:285
+#: src/admin-v2/components/CustomSlideForm.jsx:86
+msgid "Custom slide"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:286
+msgid "Post"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:297
+msgid "Slide-level settings"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:300
+msgid ""
+"Changes here affect this single slide in the manual sequence. Use layout "
+"fields for featured items, connected image strips and precise image crops."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:310
+msgid "Content"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:311
+msgid "Edit the text and destination used by this custom slide."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:317
+#: src/admin-v2/components/CustomSlideForm.jsx:89
+msgid "Title"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:325
+#: src/admin-v2/components/CustomSlideForm.jsx:154
+msgid "Link URL"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:335
+#: src/admin-v2/components/CustomSlideForm.jsx:158
+msgid "Description"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:349
+msgid "Post content is read from WordPress"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:352
+msgid ""
+"Edit the source post to change title, excerpt or featured image. This modal "
+"controls only placement inside this carousel."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:362
+msgid "Media"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:363
+msgid ""
+"Choose whether this slide uses an image, a video embed or a direct video "
+"file."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:369
+#: src/admin-v2/components/CustomSlideForm.jsx:98
+msgid "Media type"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:385
+#: src/admin-v2/components/CustomSlideForm.jsx:108
+msgid "Video URL"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:386
+msgid "Supports YouTube, Vimeo and direct video files."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:411
+msgid "Poster / image URL"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:412
+#: src/admin-v2/components/CustomSlideForm.jsx:129
+msgid "Image URL"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:429
+#: src/admin-v2/components/CustomSlideForm.jsx:133
+msgid "Choose"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:436
+msgid "Poster URL override"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:437
+msgid "Leave empty when the server can fetch the thumbnail automatically."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:444
+#: src/admin-v2/components/CustomSlideForm.jsx:142
+msgid "Leave empty to use video thumbnail"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:463
+msgid "Layout in carousel"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:464
+msgid "Tune only how this item appears in the visual order."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:475
+msgid ""
+"How many layout columns this slide uses in Visual order. Use 1 for a normal "
+"slide and higher values for featured slides."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:501
+msgid "Group"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:503
+msgid ""
+"Optional label for slides that belong together, for example a connected "
+"image strip or a promotional sequence."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:513
+msgid "No group"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:522
+msgid "Offset X"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:524
+msgid ""
+"Moves the image crop left or right. Useful when multiple slides show "
+"different parts of one image."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:550
+msgid "Offset Y"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:552
+msgid ""
+"Moves the image crop up or down when the important part of the image is not "
+"centered."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:584
+msgid "Changes apply immediately"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1
+#: src/admin-v2/components/CompositionPreview.jsx:594
+msgid "Done"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CustomSlideForm.jsx:39
+msgid "Custom slide title is required."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CustomSlideForm.jsx:109
+msgid ""
+"Supports YouTube, Vimeo and direct MP4/WebM/Ogg files. If poster URL is "
+"empty, the server will try to use the video thumbnail."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CustomSlideForm.jsx:78
+#: src/admin-v2/components/VisualBuilder.jsx:314
+msgid "Media library is not available."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CustomSlideForm.jsx:139
+msgid "Poster URL"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CustomSlideForm.jsx:49
+msgid "Fix custom slide fields before adding."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/CustomSlideForm.jsx:167
+msgid "Add custom slide"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/DisplaySettings.jsx:143
+msgid "Unit"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/DisplaySettings.jsx:190
+msgid "Slide display"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/PostSearch.jsx:70
+msgid "Failed searching posts."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/PostSearch.jsx:94
+msgid "Manual slide post types"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/PostSearch.jsx:113
+msgid "Add specific post"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/PostSearch.jsx:116
+msgid "Type at least 2 characters..."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/PostSearch.jsx:125
+#: src/admin-v2/components/TaxonomyFilters.jsx:222
+msgid "Searching..."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/PostSearch.jsx:148
+msgid "Added"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/PostSearch.jsx:148
+msgid "Add"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/PostSearch.jsx:156
+msgid "No matching posts."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/SavedPreview.jsx:47
+#: src/admin-v2/components/SavedPreview.jsx:66
+msgid "Close preview"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/SavedPreview.jsx:56
+msgid "Saved carousel"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/SavedPreview.jsx:57
+#: src/admin-v2/components/VisualBuilder.jsx:729
+msgid "slides"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/SavedPreview.jsx:76
+msgid ""
+"Frontend preview is not available for this carousel configuration. Check "
+"template requirements, Pro license status or frontend asset settings."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/SavedPreview.jsx:95
+msgid "Preview is loading..."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TaxonomyFilters.jsx:150
+msgid "Failed fetching terms."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TaxonomyFilters.jsx:167
+msgid "Taxonomy filters"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TaxonomyFilters.jsx:170
+msgid "Relation"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TaxonomyFilters.jsx:181
+msgid "Taxonomy"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TaxonomyFilters.jsx:193
+msgid "Operator"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TaxonomyFilters.jsx:201
+msgid "Search terms"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TaxonomyFilters.jsx:223
+msgid "Find terms"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TaxonomyFilters.jsx:255
+#: src/admin-v2/components/TaxonomyFilters.jsx:256
+msgid "Remove filter"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:145
+msgid "Template"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:148
+msgid "Choose the visual layout used by this carousel."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:169
+msgid "Change"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:181
+#: src/admin-v2/components/TemplatePicker.jsx:213
+msgid "Close template picker"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:198
+msgid "Choose a template"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:204
+msgid "Preview installed layouts and confirm the template you want to use."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:233
+#: src/admin-v2/components/TemplatePicker.jsx:234
+msgid "Search templates"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:241
+msgid "Template type"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:275
+msgid "No matching templates"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:278
+msgid "Try another search phrase or template type."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:296
+msgid "This template requires an active Pro license for this domain."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/193.c436ef5f.js:1
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: assets/js/admin-v2.js:2 src/admin-v2/components/ConfirmDialog.jsx:17
+#: src/admin-v2/components/ConfirmDialog.jsx:30
+#: src/admin-v2/components/ConfirmDialog.jsx:52
+#: src/admin-v2/components/ConfirmLicenseDeactivateModal.jsx:40
+#: src/admin-v2/components/ReviewPrompt.jsx:24
+#: src/admin-v2/components/TemplatePicker.jsx:309
+msgid "Cancel"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/CatalogCards.jsx:6
+#: src/admin-v2/components/IntegrationsPanel.jsx:390
+#: src/admin-v2/components/TemplatePicker.jsx:329
+#: src/admin-v2/components/TemplatesPanel.jsx:358
+msgid "Requires Pro"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:331
+msgid "Current template"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:332
+msgid "Use template"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:366
+msgid "Selected"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:378
+msgid "Current"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:384
+msgid "Locked"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:408
+msgid "Preview of %s"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:409
+msgid "Template preview"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/TemplatePicker.jsx:420
+msgid "Unknown template"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:151
+msgid "Failed loading editor data."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/admin-v2.js:2 src/admin-v2/App.jsx:249
+#: src/admin-v2/components/VisualBuilder.jsx:430
+msgid "Carousel settings"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:431
+msgid "Choose how this carousel renders and behaves on the front end."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:434
+msgid "Content query"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:435
+msgid "Select post types, filters and ordering before loading slides."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:438
+msgid "Design settings"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:439
+msgid "Pick a template and decide which slide elements should be visible."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/297.8e6ddae6.js:2
+#: src/admin-v2/components/AnalyticsPanel.jsx:158
+#: src/admin-v2/components/VisualBuilder.jsx:442
+msgid "Manual slides"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:443
+msgid "Search posts or add custom slides for manual carousel composition."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:446
+msgid "Advanced publishing"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:447
+msgid ""
+"Tune frontend filters, performance, field mapping and compatible visual "
+"options."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:454
+msgid "Loading editor..."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:466
+msgid "Back to all carousels"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:356
+msgid "Fix carousel settings before saving."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:382
+msgid "Carousel was saved."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:397
+msgid "Failed saving carousel."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 assets/js/193.c436ef5f.js:1
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:389
+#: src/admin-v2/components/ReviewPrompt.jsx:26
+#: src/admin-v2/components/VisualBuilder.jsx:486
+msgid "Saving..."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:486
+msgid "Save"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:502
+msgid "Add carousel title"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:516
+msgid "Editor sections"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:517
+msgid "General"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:518
+msgid "Query"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:519
+msgid "Design"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:521
+msgid "Advanced"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:539
+msgid "Renderer"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:553
+msgid "Swiper uses the React renderer on the frontend."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:561
+msgid "Owl keeps the PHP carousel engine and React only adds enhancements."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:596
+msgid "Post types"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:612
+msgid "Posts limit"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:624
+msgid "Order by"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:632
+msgid "Order"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:331
+msgid "Query results loaded."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:337
+msgid "Failed fetching posts from query."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:643
+msgid "Load posts from query"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:718
+msgid "Visual slide order"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:721
+msgid ""
+"Drag slides to set the sequence. Click a slide to edit width, grouping and "
+"image offset in a clean modal."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:77
+msgid "Failed loading carousel preview."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:734
+msgid "Loading preview..."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:735
+msgid "Open preview"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:258
+msgid "Remove slide?"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:259
+msgid ""
+"This slide will be removed from the manual carousel order. The original post "
+"or media item will not be deleted."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:264
+msgid "Keep slide"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:767
+msgid ""
+"Load posts from the query or add manual slides to start arranging this "
+"carousel."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:862
+msgid "Frontend filters"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:865
+msgid ""
+"Expose selected taxonomies above the carousel. The filter reloads the page "
+"and works with Owl, Swiper and SEO-friendly server output."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:872
+msgid "Show filters on frontend"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:878
+msgid "Filter taxonomies"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:895
+msgid "All label"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:901
+msgid "URL prefix"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:907
+msgid "Terms per taxonomy"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:922
+msgid "Performance"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:925
+msgid ""
+"Control image loading behavior and the image size used by post-based slides."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:933
+msgid "Lazy load slide images"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:939
+msgid "Prioritize first image"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:942
+msgid "Image size override"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:954
+msgid "Custom field mapping"
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:957
+msgid ""
+"Map post meta or ACF field names into carousel fields without writing PHP "
+"filters."
+msgstr ""
+
+#: assets/js/180.a1787afb.js:1 src/admin-v2/components/VisualBuilder.jsx:965
+msgid "Meta key"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:7
+msgid "Quick feedback"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:8
+msgid "How is WP Posts Carousel working for you?"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:9
+msgid ""
+"If this plugin helps your site, a short review helps us keep improving it."
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:13
+msgid "Add review"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:14
+msgid "Rate on WordPress.org"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:16
+msgid "Share your WP Posts Carousel feedback"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:17
+msgid ""
+"Your review will be sent for moderation. It will not be published "
+"automatically."
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:18
+msgid "Rating"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:19
+msgid "Set rating"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:20
+msgid "Choose a rating from 1 to 5 stars."
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:21
+msgid "Short review"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:22
+msgid "What worked well? What should we improve?"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:23
+msgid "Required consent"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:25
+msgid "Save feedback"
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:27
+msgid "Thank you for your feedback."
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:28
+msgid "Failed saving your feedback."
+msgstr ""
+
+#: assets/js/193.c436ef5f.js:1 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/ReviewPrompt.jsx:29
+msgid "Please try again in a moment."
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:21
+#: src/admin-v2/components/AnalyticsPanel.jsx:28
+msgid "Unknown"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:80
+msgid "Failed loading analytics data."
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:124
+msgid "Default Template"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:134
+msgid "Loading analytics..."
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:145
+msgid "Carousels"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:147
+msgid "All saved carousel definitions"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:152
+msgid "Published"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 assets/js/456.fba86654.js:2
+#: src/admin-v2/components/AnalyticsPanel.jsx:154
+#: src/admin-v2/components/CarouselsList.jsx:109
+msgid "Drafts"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:160
+msgid "Average per carousel"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:165
+msgid "Engines"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:166
+msgid "Renderers"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 assets/js/admin-v2.js:2 src/admin-v2/App.jsx:238
+#: src/admin-v2/components/AnalyticsPanel.jsx:167
+msgid "Templates"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:193
+msgid "No data yet."
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:207
+msgid "Engagement analytics"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:209
+msgid ""
+"Runtime tracking, retention controls, CTR reports and audience breakdowns "
+"are delivered by WP Posts Carousel Pro."
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 assets/js/844.ae8a4e4c.js:1
+#: src/admin-v2/components/AnalyticsPanel.jsx:218
+#: src/admin-v2/components/LicensePanel.jsx:38
+msgid "View Pro features"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:225
+msgid "Impressions"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:226
+msgid "Clicks"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:227
+msgid "CTR trends"
+msgstr ""
+
+#: assets/js/297.8e6ddae6.js:2 src/admin-v2/components/AnalyticsPanel.jsx:246
+msgid "Available in Pro with optional frontend tracking."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/ShortcodeButton.jsx:12
+msgid "Copy shortcode"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/ShortcodeButton.jsx:13
+msgid "Click to copy shortcode"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:24
+msgid "Failed fetching carousels."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:96
+msgid "Total carousels"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:98
+msgid "All saved configurations"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:105
+msgid "Visible on your site"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:111
+msgid "Still being prepared"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:120
+msgid "Your carousels"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:121
+msgid "Create, edit and copy embed codes for every carousel."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:132
+msgid "Loading carousels..."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:142
+msgid "Shortcode"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:163
+msgid "(no title)"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:167
+msgid "Carousel actions"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:70
+msgid "Carousel was duplicated as draft."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:83
+msgid "Failed duplicating carousel."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:34
+msgid "Delete carousel?"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:35
+msgid "This action cannot be undone."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:37
+msgid "Keep carousel"
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:51
+msgid "Carousel was deleted."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:58
+msgid "Failed deleting carousel."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:197
+msgid "Shortcode copied."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:227
+msgid "No carousels yet."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:230
+msgid "Create your first carousel and its shortcode will appear here."
+msgstr ""
+
+#: assets/js/456.fba86654.js:2 src/admin-v2/components/CarouselsList.jsx:244
+msgid ""
+"That is all for now. Create your next carousel or copy a shortcode into any "
+"post, page or widget area."
+msgstr ""
+
+#: assets/js/672.a58a302b.js:2 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/MarketplaceStatus.jsx:21
+msgid "Trying again in the background without interrupting your work."
+msgstr ""
+
+#: assets/js/672.a58a302b.js:2 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/MarketplaceStatus.jsx:23
+msgid "The plugin will retry automatically. Installed items remain available."
+msgstr ""
+
+#: assets/js/672.a58a302b.js:2 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/MarketplaceStatus.jsx:34
+msgid "Store data is temporarily unavailable."
+msgstr ""
+
+#: assets/js/672.a58a302b.js:2 assets/js/686.4f603874.js:1
+#: assets/js/766.38776006.js:2 src/admin-v2/components/MarketplaceStatus.jsx:42
+msgid "Retry now"
+msgstr ""
+
+#: assets/js/672.a58a302b.js:2 src/admin-v2/components/NewsPanel.jsx:50
+msgid "News"
+msgstr ""
+
+#: assets/js/672.a58a302b.js:2 src/admin-v2/components/NewsPanel.jsx:61
+msgid "Loading updates..."
+msgstr ""
+
+#: assets/js/672.a58a302b.js:2 src/admin-v2/components/NewsPanel.jsx:68
+msgid "Product updates could not be loaded."
+msgstr ""
+
+#: assets/js/672.a58a302b.js:2 src/admin-v2/components/NewsPanel.jsx:69
+msgid ""
+"The plugin will retry automatically. No placeholder updates will be shown "
+"while the store is unavailable."
+msgstr ""
+
+#: assets/js/672.a58a302b.js:2 src/admin-v2/components/NewsPanel.jsx:105
+msgid "No product updates yet."
+msgstr ""
+
+#: assets/js/672.a58a302b.js:2 src/admin-v2/components/NewsPanel.jsx:108
+msgid "When your store publishes plugin news, it will appear here."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/CatalogCards.jsx:7
+#: src/admin-v2/components/IntegrationsPanel.jsx:123
+#: src/admin-v2/components/IntegrationsPanel.jsx:218
+#: src/admin-v2/components/LicensePanel.jsx:168
+#: src/admin-v2/components/TemplatesPanel.jsx:105
+#: src/admin-v2/components/TemplatesPanel.jsx:200
+msgid "Installed"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/CatalogCards.jsx:8
+#: src/admin-v2/components/IntegrationsPanel.jsx:370
+#: src/admin-v2/components/IntegrationsPanel.jsx:371
+#: src/admin-v2/components/IntegrationsPanel.jsx:391
+msgid "Available"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/CatalogCards.jsx:9
+msgid "View in store"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/CatalogCards.jsx:10
+msgid "Coming soon"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/CatalogCards.jsx:11
+msgid "Tags"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 src/admin-v2/components/IntegrationsPanel.jsx:44
+msgid "Failed loading integrations."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 src/admin-v2/components/IntegrationsPanel.jsx:82
+msgid "Core Pro product and license for premium carousel modules."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:108
+msgid "Integration store is temporarily unavailable."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:109
+msgid ""
+"The plugin will retry automatically. Last known store integrations remain "
+"visible when available."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:125
+#: src/admin-v2/components/IntegrationsPanel.jsx:220
+msgid "Installed product packages detected on this site"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/IntegrationsPanel.jsx:130
+#: src/admin-v2/components/IntegrationsPanel.jsx:225
+#: src/admin-v2/components/TemplatesPanel.jsx:112
+#: src/admin-v2/components/TemplatesPanel.jsx:207
+msgid "Store"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/IntegrationsPanel.jsx:134
+#: src/admin-v2/components/IntegrationsPanel.jsx:229
+#: src/admin-v2/components/TemplatesPanel.jsx:116
+#: src/admin-v2/components/TemplatesPanel.jsx:211
+msgid "Loaded from your store"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/IntegrationsPanel.jsx:135
+#: src/admin-v2/components/IntegrationsPanel.jsx:230
+#: src/admin-v2/components/TemplatesPanel.jsx:117
+#: src/admin-v2/components/TemplatesPanel.jsx:212
+msgid "Connect a store endpoint"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:143
+#: src/admin-v2/components/IntegrationsPanel.jsx:238
+msgid "Integration sections"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:146
+#: src/admin-v2/components/IntegrationsPanel.jsx:241
+msgid "Installed products"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:153
+#: src/admin-v2/components/IntegrationsPanel.jsx:248
+msgid "Products in store"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:165
+#: src/admin-v2/components/IntegrationsPanel.jsx:260
+msgid "Loading installed integrations..."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:166
+#: src/admin-v2/components/IntegrationsPanel.jsx:261
+msgid "Loading store integrations..."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:199
+#: src/admin-v2/components/IntegrationsPanel.jsx:294
+msgid "Unlock premium data sources and editor integrations for this domain."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:200
+#: src/admin-v2/components/IntegrationsPanel.jsx:295
+msgid ""
+"Keep the core plugin lean while Pro modules extend commerce and analytics "
+"workflows."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:316
+msgid "No integration add-ons detected."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:318
+msgid "No store integrations found."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:319
+msgid "Integration store is not connected yet."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:323
+msgid "No integrations are installed on this site yet."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:325
+msgid "Add integration products in your store and they will appear here."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:326
+msgid ""
+"The integration store is temporarily unavailable. Installed integrations "
+"remain ready to use."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:333
+msgid "Go to available integrations"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:355
+msgid "Adds capabilities to carousel configuration."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:359
+msgid ""
+"Installed, but requires an active WP Posts Carousel Pro license before "
+"premium options are enabled."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:369
+msgid "Requires Pro license"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/IntegrationsPanel.jsx:424
+#: src/admin-v2/components/TemplatesPanel.jsx:359
+msgid "Included in Pro"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:426
+msgid "Paid add-on"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1
+#: src/admin-v2/components/IntegrationsPanel.jsx:427
+msgid "Free add-on"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/ProUpgradeModal.jsx:15
+msgid "Pro feature"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/ProUpgradeModal.jsx:25
+msgid "View product page"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/ProUpgradeModal.jsx:26
+msgid "Activate license here"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/ProUpgradeModal.jsx:27
+msgid "Maybe later"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/ProUpgradeModal.jsx:28
+msgid "Available in Pro"
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/ProUpgradeModal.jsx:29
+msgid "Upgrade WP Posts Carousel to unlock this workflow in the builder."
+msgstr ""
+
+#: assets/js/686.4f603874.js:1 assets/js/766.38776006.js:2
+#: src/admin-v2/components/ProUpgradeModal.jsx:30
+msgid ""
+"Already have a license? Activate it here in the plugin settings to unlock "
+"Pro features on this domain."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:48
+msgid "Failed loading installed templates."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:90
+msgid "Template store is temporarily unavailable."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:91
+msgid ""
+"The plugin will retry automatically. Last known store templates remain "
+"visible when available."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:107
+#: src/admin-v2/components/TemplatesPanel.jsx:202
+msgid "Ready to use in carousel settings"
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:125
+#: src/admin-v2/components/TemplatesPanel.jsx:220
+msgid "Template sections"
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:128
+#: src/admin-v2/components/TemplatesPanel.jsx:223
+msgid "Installed templates"
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:135
+#: src/admin-v2/components/TemplatesPanel.jsx:230
+msgid "Available in store"
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:147
+#: src/admin-v2/components/TemplatesPanel.jsx:242
+msgid "Loading installed templates..."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:148
+#: src/admin-v2/components/TemplatesPanel.jsx:243
+msgid "Loading store templates..."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:181
+#: src/admin-v2/components/TemplatesPanel.jsx:276
+msgid "Unlock premium carousel templates for this domain."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:182
+#: src/admin-v2/components/TemplatesPanel.jsx:277
+msgid "Keep the builder focused while template packs extend visual layouts."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:300
+msgid "No templates are installed for this site yet."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:301
+msgid "No templates found."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:298
+msgid "Template store is not connected yet."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:310
+msgid "No template packs are installed for this site yet."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:311
+msgid "Template packs from your store will appear here."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:305
+msgid ""
+"The template store is temporarily unavailable. Installed templates remain "
+"ready to use."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:315
+msgid "Go to available templates"
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:340
+msgid "Reusable carousel layout."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:347
+msgid ""
+"Installed, but requires an active WP Posts Carousel Pro license for this "
+"domain."
+msgstr ""
+
+#: assets/js/766.38776006.js:2 src/admin-v2/components/TemplatesPanel.jsx:369
+#: src/admin-v2/components/TemplatesPanel.jsx:407
+msgid "Untitled template"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 assets/js/admin-v2.js:2
+#: src/admin-v2/components/DashboardSidebar.jsx:220
+#: src/admin-v2/components/LicensePanel.jsx:86
+msgid "License server is temporarily unavailable. Please try again later."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 assets/js/admin-v2.js:2
+#: src/admin-v2/components/DashboardSidebar.jsx:221
+#: src/admin-v2/components/DashboardSidebar.jsx:229
+#: src/admin-v2/components/LicensePanel.jsx:87
+#: src/admin-v2/components/LicensePanel.jsx:93
+msgid "License request failed."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 assets/js/admin-v2.js:2
+#: src/admin-v2/components/DashboardSidebar.jsx:260
+#: src/admin-v2/components/LicensePanel.jsx:115
+msgid "Pro license was deactivated."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:142
+msgid "Module status"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:154
+msgid "New version available"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:156
+msgid "You are up to date"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:157
+msgid "Version feed is unavailable"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:161
+msgid "Review and install the latest release when you are ready."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:163
+msgid "Pro access is active and premium features can be used on this site."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:164
+msgid "This site is using the base carousel plugin."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:170
+msgid "Latest"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:180
+msgid "View update"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:187
+msgid "Last check"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:190
+msgid "Next check"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:193
+msgid "Expires"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:206
+msgid "License activation"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:210
+msgid "Manage Pro access"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:211
+msgid "Activate Pro"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:215
+msgid "Your Pro license is active for this site."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:216
+msgid ""
+"Activate your license to unlock Pro add-ons and premium tools on this site."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 assets/js/admin-v2.js:2
+#: src/admin-v2/components/DashboardSidebar.jsx:333
+#: src/admin-v2/components/LicensePanel.jsx:226
+msgid "License key"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:106
+msgid "License status was refreshed."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:251
+msgid "Checking..."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:252
+msgid "Check license"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:255
+msgid "Deactivate"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 assets/js/admin-v2.js:2
+#: src/admin-v2/components/DashboardSidebar.jsx:250
+#: src/admin-v2/components/LicensePanel.jsx:102
+msgid "Pro license was activated."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 assets/js/admin-v2.js:2
+#: src/admin-v2/components/DashboardSidebar.jsx:358
+#: src/admin-v2/components/LicensePanel.jsx:266
+msgid "Activating..."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:274
+msgid ""
+"Already have a license key? Paste it above and activate Pro in a few seconds."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 assets/js/admin-v2.js:2
+#: src/admin-v2/components/DashboardSidebar.jsx:291
+#: src/admin-v2/components/LicensePanel.jsx:297
+msgid "WP Posts Carousel Pro"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:300
+msgid "Build carousels that help visitors choose"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:305
+msgid ""
+"Add product data, commercial layouts, Elementor publishing and consent-aware "
+"engagement reports."
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:312
+msgid "Premium carousel templates"
+msgstr ""
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:313
+msgid "Current WooCommerce data and buying actions"
+msgstr "Aktualne dane WooCommerce i akcje zakupowe"
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:314
+msgid "Elementor publishing and Multisite tools"
+msgstr "Publikacja w Elementorze i narzędzia Multisite"
+
+#: assets/js/844.ae8a4e4c.js:1 src/admin-v2/components/LicensePanel.jsx:315
+msgid "Engagement analytics and autoplay progress"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:209
+msgid "Failed loading compatibility settings."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:308
+#: src/admin-v2/components/CompatibilitySettings.jsx:313
+msgid "Failed loading diagnostics."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:355
+msgid "Loading compatibility settings..."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:363
+msgid "Settings sections"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:366
+#: src/admin-v2/components/CompatibilitySettings.jsx:380
+msgid "Compatibility"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:370
+msgid "Diagnostics"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:382
+msgid ""
+"Control bundled carousel libraries when the theme already loads its own "
+"versions."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:287
+msgid "Compatibility settings were saved."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:293
+msgid "Failed saving compatibility settings."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:389
+msgid "Save settings"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:150
+msgid "Detected another Owl Carousel asset."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:151
+msgid ""
+"If your theme or another plugin already loads Owl Carousel, disable bundled "
+"Owl assets here to avoid version conflicts."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:160
+msgid "Detected another icon library asset."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:161
+msgid ""
+"If your theme or another plugin already loads this icon library, switch icon "
+"source to the existing asset option."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:169
+msgid "Detected another Swiper asset."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:170
+msgid ""
+"If your theme or another plugin already loads Swiper, switch Swiper source "
+"to the global window.Swiper option or disable bundled Swiper CSS when needed."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:416
+msgid "Detected on this page."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:430
+msgid "Load bundled Owl Carousel JS"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:437
+msgid "Load bundled Owl Carousel CSS"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:444
+msgid "Load bundled mousewheel plugin"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:447
+msgid "Swiper source"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:452
+msgid "Bundled with plugin"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:453
+msgid "Use global window.Swiper"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:458
+msgid "Navigation icon library"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:469
+msgid "Icon source"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:479
+msgid ""
+"Use existing assets when the active theme or another plugin already loads "
+"the selected icon library."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:490
+msgid "Load bundled Swiper CSS"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:497
+msgid "Global breakpoints"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:500
+msgid ""
+"Default responsive items for new carousels. Each carousel can still override "
+"these values in its editor."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:256
+msgid "Delete global breakpoint?"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:257
+msgid "New carousels will no longer use this responsive rule by default:"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:340
+msgid "Diagnostics copied to clipboard."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:346
+msgid "Failed copying diagnostics."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:330
+msgid "Clipboard is not available in this browser."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:597
+msgid "Diagnostics and logs"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:599
+msgid ""
+"Copy this report when you contact paid support. It excludes license keys and "
+"tokens."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:608
+msgid "Refreshing..."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:608
+msgid "Refresh"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:612
+msgid "Copy report"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:623
+msgid "Diagnostics could not be loaded."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:633
+msgid "Loading diagnostics..."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:639
+msgid "Support note"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:642
+msgid ""
+"This report helps verify versions, active add-ons, asset conflicts and the "
+"last license status without exposing your private license key."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:651
+msgid "Plugin"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:653
+msgid "Free version"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:655
+msgid "Pro active"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:657
+msgid "Yes"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:660
+msgid "License status"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2 assets/js/admin-v2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:664
+#: src/admin-v2/components/DashboardSidebar.jsx:314
+msgid "Environment"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:666
+msgid "WordPress"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:667
+msgid "PHP"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:668
+msgid "Theme"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:672
+msgid "Checks"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:674
+msgid "Active plugins"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:675
+msgid "Asset warnings"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:676
+msgid "Logs"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:683
+msgid "Recent logs"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:693
+msgid "Log"
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:702
+msgid "No recent license or compatibility logs were recorded."
+msgstr ""
+
+#: assets/js/893.899db5d2.js:2
+#: src/admin-v2/components/CompatibilitySettings.jsx:709
+msgid "Raw diagnostic report"
+msgstr ""
+
+#: assets/js/admin-v2.js:2
+#: src/admin-v2/components/ConfirmLicenseDeactivateModal.jsx:28
+msgid "Deactivate Pro license?"
+msgstr ""
+
+#: assets/js/admin-v2.js:2
+#: src/admin-v2/components/ConfirmLicenseDeactivateModal.jsx:31
+msgid ""
+"Pro features will stop working on this site until the license is activated "
+"again."
+msgstr ""
+
+#: assets/js/admin-v2.js:2
+#: src/admin-v2/components/ConfirmLicenseDeactivateModal.jsx:44
+#: src/admin-v2/components/DashboardSidebar.jsx:322
+msgid "Deactivating..."
+msgstr ""
+
+#: assets/js/admin-v2.js:2
+#: src/admin-v2/components/ConfirmLicenseDeactivateModal.jsx:45
+#: src/admin-v2/components/DashboardSidebar.jsx:323
+msgid "Deactivate license"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/LoadingState.jsx:5
+msgid "Loading..."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/ConfirmDialog.jsx:54
+msgid "Confirm"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:53
+msgid "Expand sidebar"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:54
+msgid "Collapse sidebar"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:130
+msgid "Need more carousel options?"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:133
+msgid ""
+"This site is using the base plugin. After you install WP Posts Carousel Pro, "
+"license activation will appear here."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:177
+msgid "License key looks too short."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:173
+msgid "Enter your license key."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:294
+msgid "Pro upgrade"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:302
+msgid "Premium features are active on this site."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:308
+msgid "Site"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:329
+msgid "Enter your license key to unlock Pro add-ons on this domain."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/DashboardSidebar.jsx:362
+msgid "Already have a key? Paste it here and activate Pro in seconds."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/components/Notice.jsx:5
+msgid "Close notification"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/App.jsx:230
+msgid "Create, manage and embed carousel definitions."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/App.jsx:233
+msgid "Integrations"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/App.jsx:234
+msgid "Carousel data integrations"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/App.jsx:235
+msgid "Connect add-ons that extend carousel sources and ordering."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/App.jsx:239
+msgid "Carousel template library"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/App.jsx:240
+msgid "Manage installed layouts and browse templates from your store."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/App.jsx:243
+msgid "Analytics"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/App.jsx:244
+msgid "Carousel usage overview"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/App.jsx:245
+msgid "Review local configuration insights without visitor tracking."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/App.jsx:250
+msgid "Configure compatibility, assets and global carousel defaults."
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/App.jsx:193
+msgid "Loading section..."
+msgstr ""
+
+#: blocks/carousel/index.js:27
+msgid "Carousel #%d"
+msgstr ""
+
+#: blocks/carousel/index.js:35
+msgid "Embed a saved WP Posts Carousel."
+msgstr ""
+
+#: blocks/carousel/index.js:72
+msgid "Select carousel"
+msgstr ""
+
+#: blocks/carousel/index.js:85
+msgid "Current carousel #%d"
+msgstr ""
+
+#: blocks/carousel/index.js:96
+msgid "Carousel list is unavailable in this editor."
+msgstr ""
+
+#: blocks/carousel/index.js:122
+msgid "Could not load saved carousels. Check permissions and plugin access."
+msgstr ""
+
+#: blocks/carousel/index.js:254
+msgid "Choose one of the saved carousel definitions."
+msgstr ""
+
+#: blocks/carousel/index.js:255
+msgid "Search carousels"
+msgstr ""
+
+#: assets/js/admin-v2.js:2 src/admin-v2/i18n.js:7
+msgid "License active"
+msgstr "Licencja aktywna"
+
+#: assets/js/admin-v2.js:2 src/admin-v2/i18n.js:11
+msgid "License inactive"
+msgstr "Licencja nieaktywna"

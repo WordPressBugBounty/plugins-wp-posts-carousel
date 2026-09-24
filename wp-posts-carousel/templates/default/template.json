@@ -1,0 +1,21 @@
+{
+    "name": "default",
+    "title": "Default Template",
+    "description": "Polished visual card template for posts, products and editorial highlights.",
+    "version": "2.0.0",
+    "author": "Cool Cat Ideas",
+    "author_url": "https://coolcatideas.com/",
+    "tags": ["carousel", "posts", "default", "visual", "owl-carousel"],
+    "render": "views/template.php",
+    "style": "assets/css/style.css",
+    "screenshot": "screenshot.png",
+    "supports": {
+        "renderers": ["php"],
+        "engines": ["owl-carousel"],
+        "itemTypes": ["post", "product", "media", "ad"],
+        "manualComposition": false,
+        "connectedImages": false
+    },
+    "fields": [],
+    "pro": false
+}

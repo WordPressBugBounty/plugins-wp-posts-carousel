@@ -1,0 +1,21 @@
+{
+  "name": "simple",
+  "title": "Simple Template",
+  "description": "Clean content card template for readable blog and news carousels.",
+    "version": "2.0.0",
+  "author": "Cool Cat Ideas",
+  "author_url": "https://coolcatideas.com/",
+  "tags": ["carousel", "posts", "simple", "clean", "owl-carousel"],
+  "render": "views/template.php",
+  "style": "assets/css/style.css",
+    "screenshot": "screenshot.png",
+  "supports": {
+    "renderers": ["php"],
+    "engines": ["owl-carousel"],
+    "itemTypes": ["post", "product", "media", "ad"],
+    "manualComposition": false,
+    "connectedImages": false
+  },
+  "fields": [],
+  "pro": false
+}
