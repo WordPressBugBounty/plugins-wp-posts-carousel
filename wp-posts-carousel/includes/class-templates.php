@@ -154,8 +154,8 @@ class WP_Posts_Carousel_Templates
     {
         $upload_dir = wp_upload_dir(null, false);
         $paths = array(
-            WP_POSTS_CAROUSEL_DIR_PATH . 'templates' => WP_POSTS_CAROUSEL_DIR_URL . 'templates',
             get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'wp-posts-carousel' . DIRECTORY_SEPARATOR . 'templates' => get_stylesheet_directory_uri() . '/wp-posts-carousel/templates',
+            WP_POSTS_CAROUSEL_DIR_PATH . 'templates' => WP_POSTS_CAROUSEL_DIR_URL . 'templates',
         );
 
         if (empty($upload_dir['error'])) {
@@ -180,6 +180,10 @@ class WP_Posts_Carousel_Templates
 
         $name = sanitize_key(isset($manifest['name']) ? $manifest['name'] : basename($template_dir));
         $render = self::resolve_template_file($template_dir, isset($manifest['render']) ? $manifest['render'] : 'views/template.php');
+        // An incomplete override must not hide a working template further down the path list.
+        if ($name === '' || $render === '' || !is_file($render) || !is_readable($render)) {
+            return null;
+        }
         $style = self::resolve_template_file($template_dir, isset($manifest['style']) ? $manifest['style'] : 'assets/css/style.css');
         $screenshot = isset($manifest['screenshot']) ? $manifest['screenshot'] : 'screenshot.png';
         $screenshot_path = self::resolve_template_file($template_dir, $screenshot);
