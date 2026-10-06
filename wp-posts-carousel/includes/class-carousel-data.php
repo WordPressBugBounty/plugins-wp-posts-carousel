@@ -38,10 +38,11 @@ class WP_Posts_Carousel_Data
         $config = self::apply_template_runtime_overrides($config, $template);
 
         $runtime_params = self::runtime_params($config, $args['instance_id']);
-        $slides = array_map(
-            array('WP_Posts_Carousel_Slide_View_Model', 'public_data'),
-            self::slides($config, $runtime_params)
-        );
+        $prepared_slides = self::slides($config, $runtime_params);
+        if (isset($args['_render_context']) && $args['_render_context'] instanceof WP_Posts_Carousel_Render_Context) {
+            $args['_render_context']->prepare($config, $runtime_params, $prepared_slides);
+        }
+        $slides = array_map(array('WP_Posts_Carousel_Slide_View_Model', 'public_data'), $prepared_slides);
 
         $runtime_params['post_count'] = count($slides);
 
@@ -87,10 +88,11 @@ class WP_Posts_Carousel_Data
         $config = self::apply_template_runtime_overrides($config, $template);
 
         $runtime_params = self::runtime_params($config, $args['instance_id']);
-        $slides = array_map(
-            array('WP_Posts_Carousel_Slide_View_Model', 'public_data'),
-            self::slides($config, $runtime_params)
-        );
+        $prepared_slides = self::slides($config, $runtime_params);
+        if (isset($args['_render_context']) && $args['_render_context'] instanceof WP_Posts_Carousel_Render_Context) {
+            $args['_render_context']->prepare($config, $runtime_params, $prepared_slides);
+        }
+        $slides = array_map(array('WP_Posts_Carousel_Slide_View_Model', 'public_data'), $prepared_slides);
 
         $runtime_params['post_count'] = count($slides);
 
@@ -320,6 +322,7 @@ class WP_Posts_Carousel_Data
             'pro' => $template['pro'],
             'locked' => $template['locked'],
             'availability' => $template['availability'],
+            'stylesheet' => WP_Posts_Carousel_Template_Assets::stylesheet($template),
         );
     }
 }

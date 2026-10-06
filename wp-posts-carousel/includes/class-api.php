@@ -421,15 +421,18 @@ class WP_Posts_Carousel_API
 
   public function get_public_carousel(WP_REST_Request $request)
   {
+    $render_context = new WP_Posts_Carousel_Render_Context();
     $post_id = absint($request['id']);
     $instance_id = isset($request['instance_id']) ? sanitize_html_class($request['instance_id']) : '';
+    $instance_id = $instance_id ? $instance_id : 'wp-posts-carousel_' . $post_id . '-api';
     $renderer = isset($request['renderer']) ? sanitize_key($request['renderer']) : '';
     $is_editor_context = sanitize_key((string) $request->get_param('context')) === 'edit'
       || sanitize_key((string) $request->get_param('editor_preview')) === '1';
     $data = WP_Posts_Carousel_Data::get(
       $post_id,
       array(
-        'instance_id' => $instance_id ? $instance_id : 'wp-posts-carousel_' . $post_id . '-api',
+        '_render_context' => $render_context,
+        'instance_id' => $instance_id,
       )
     );
 
@@ -445,6 +448,7 @@ class WP_Posts_Carousel_API
       $data['html'] = $this->render_carousel_preview_html(
         $data['config'],
         array(
+          '_render_context' => $render_context,
           'id' => $post_id,
           'index' => 0,
           'instance_id' => $instance_id,
@@ -459,11 +463,12 @@ class WP_Posts_Carousel_API
 
   public function get_carousel_preview(WP_REST_Request $request)
   {
+    $render_context = new WP_Posts_Carousel_Render_Context();
     $post_id = absint($request['id']);
-    $config = WP_Posts_Carousel_Repository::get_config($post_id);
     $data = WP_Posts_Carousel_Data::get(
       $post_id,
       array(
+        '_render_context' => $render_context,
         'context' => 'edit',
         'instance_id' => 'wp-posts-carousel_' . $post_id . '-admin-preview',
       )
@@ -477,10 +482,11 @@ class WP_Posts_Carousel_API
       );
     }
 
-    if ($config) {
+    if (isset($data['config']) && is_array($data['config'])) {
       $data['html'] = $this->render_carousel_preview_html(
-        $config,
+        $data['config'],
         array(
+          '_render_context' => $render_context,
           'id' => $post_id,
           'index' => 0,
           'instance_id' => 'wp-posts-carousel_' . $post_id . '-admin-preview',
@@ -494,6 +500,7 @@ class WP_Posts_Carousel_API
 
   public function preview_carousel_draft(WP_REST_Request $request)
   {
+    $render_context = new WP_Posts_Carousel_Render_Context();
     $values = $request->get_json_params();
 
     if (!is_array($values)) {
@@ -502,6 +509,7 @@ class WP_Posts_Carousel_API
 
     $config = WP_Posts_Carousel_Config::normalize($values);
     $preview_args = array(
+      '_render_context' => $render_context,
       'id' => isset($values['id']) ? absint($values['id']) : 0,
       'title' => isset($values['title']) && $values['title'] !== ''
         ? sanitize_text_field($values['title'])
@@ -525,8 +533,9 @@ class WP_Posts_Carousel_API
     }
 
     $data['html'] = $this->render_carousel_preview_html(
-      $config,
+      $data['config'],
       array(
+        '_render_context' => $render_context,
         'id' => $preview_args['id'],
         'index' => 0,
         'instance_id' => $preview_args['instance_id'],

@@ -83,6 +83,7 @@ class WP_Posts_Carousel_Generator
             'instance_id' => sanitize_html_class($args['instance_id']),
             'force_editor_renderer' => ! empty($args['force_editor_renderer']),
             'lazy' => ! empty($args['lazy']),
+            '_render_context' => isset($args['_render_context']) ? $args['_render_context'] : null,
         );
 
         return $this->render_config($config, absint($args['id']), $atts, absint($args['index']));
@@ -113,11 +114,19 @@ class WP_Posts_Carousel_Generator
             return '<div class="cci-wpc-error">' . esc_html($this->template['error']) . '</div>';
         }
 
+        WP_Posts_Carousel_Template_Assets::enqueue($this->template);
+
         $slides = array();
         $has_merged_slides = false;
 
         if (!$lazy_render) {
-            $slides = WP_Posts_Carousel_Data::slides($config, $this->carousel_params);
+            $context = isset($atts['_render_context']) ? $atts['_render_context'] : null;
+            $slides = $context instanceof WP_Posts_Carousel_Render_Context
+                ? $context->slides_for($config, $this->carousel_params)
+                : null;
+            if ($slides === null) {
+                $slides = WP_Posts_Carousel_Data::slides($config, $this->carousel_params);
+            }
 
             if (count($slides) < 1) {
                 return '';

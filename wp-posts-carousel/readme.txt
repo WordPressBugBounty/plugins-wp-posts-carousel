@@ -2,9 +2,9 @@
 Contributors: coolcatideas
 Tags: carousel, slider, posts, gutenberg, custom post types
 Requires at least: 6.2
-Tested up to: 7.1.2
+Tested up to: 7.1.3
 Requires PHP: 7.4
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,10 @@ For a walkthrough, see the [getting started guide](https://coolcatideas.com/docs
 
 == Frequently Asked Questions ==
 
+= Why did my carousels stop working after upgrading from 1.x to 2.x? =
+
+Version 2.x is a rewrite of the plugin, including the carousel data model, editor, widgets and shortcode configuration. Settings from 1.x are not automatically converted. Open WP Posts Carousel > Dashboard, click New carousel, recreate each carousel, then save and publish it. Replace every old shortcode and select the new carousel in the current block or widget wherever it was displayed. Creating a replacement alone does not reconnect those placements. Clear cache after saving and check the published pages on desktop and mobile. The [upgrade guide](https://coolcatideas.com/docs/wp-posts-carousel-all-in-one/2.0.x/upgrading-from-1.x/) includes the steps and a screenshot of the new dashboard.
+
 = Can I reuse the same carousel on several pages? =
 
 Yes. Select the same saved carousel in the Gutenberg block or reuse its shortcode. Changes to that carousel apply everywhere it is used.
@@ -159,6 +163,12 @@ The plugin includes compiled JavaScript and CSS. The repositories above contain 
 
 == Changelog ==
 
+= 2.0.2 =
+* Fix retrying a carousel after a temporary API or template stylesheet loading error.
+* Reuse slide data when a REST response includes both JSON and HTML, avoiding a duplicate content query.
+* Load only the template styles used on the page, including carousels added dynamically. Keep all template styles available in editor previews.
+* Declare compatibility with WordPress 7.1.3.
+
 = 2.0.1 =
 * Fix child-theme template precedence. Incomplete overrides fall back to the bundled template.
 * Exclude manifests without a usable PHP view from template discovery.
@@ -176,6 +186,9 @@ The plugin includes compiled JavaScript and CSS. The repositories above contain 
 * Added Pro-ready feature and license gating hooks.
 
 == Upgrade Notice ==
+
+= 2.0.2 =
+More reliable carousel loading and fewer duplicate queries and unused template styles. Existing 2.x carousel settings are preserved.
 
 = 2.0.0 =
 Initial public release of the rebuilt carousel editor and rendering system.

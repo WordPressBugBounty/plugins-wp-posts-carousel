@@ -232,7 +232,7 @@ class WP_Posts_Carousel_Frontend
             $this->asset_version('assets/css/frontend.css')
         );
 
-        $this->enqueue_template_styles();
+        $this->enqueue_template_styles($context);
 
         wp_enqueue_script('jquery-effects-core');
         wp_enqueue_script('wp-posts-carousel-frontend-loader');
@@ -274,25 +274,48 @@ class WP_Posts_Carousel_Frontend
         }
     }
 
-    private function enqueue_template_styles()
+    private function enqueue_template_styles($context)
     {
-        if (!class_exists('WP_Posts_Carousel_Templates')) {
+        if ($context !== 'frontend' || is_preview() || is_customize_preview() || isset($_GET['elementor-preview'])) {
+            foreach (WP_Posts_Carousel_Templates::discover_templates() as $template) {
+                WP_Posts_Carousel_Template_Assets::enqueue($template);
+            }
             return;
         }
 
-        foreach (WP_Posts_Carousel_Templates::discover_templates() as $template) {
-            if (empty($template['name']) || empty($template['style']) || empty($template['style_url']) || !file_exists($template['style'])) {
+        global $wp_query;
+        $posts = $wp_query instanceof WP_Query && is_array($wp_query->posts) ? $wp_query->posts : array();
+        $queried = get_queried_object();
+        if ($queried instanceof WP_Post) {
+            $posts[] = $queried;
+        }
+        $visited = array();
+        foreach ($posts as $post) {
+            if (!$post instanceof WP_Post || isset($visited[$post->ID])) {
                 continue;
             }
+            $visited[$post->ID] = true;
+            WP_Posts_Carousel_Template_Assets::enqueue_content($post->post_content, $visited);
+            WP_Posts_Carousel_Template_Assets::enqueue_elementor(json_decode((string) get_post_meta($post->ID, '_elementor_data', true), true));
+        }
 
-            $style_version = (string) filemtime($template['style']);
-
-            wp_enqueue_style(
-                'wp-posts-carousel-template-' . sanitize_key($template['name']),
-                $template['style_url'],
-                array(),
-                $style_version ? $style_version : (!empty($template['version']) ? $template['version'] : WP_POSTS_CAROUSEL_VERSION)
-            );
+        foreach (wp_get_sidebars_widgets() as $sidebar => $widgets) {
+            if ($sidebar === 'wp_inactive_widgets') {
+                continue;
+            }
+            foreach ((array) $widgets as $widget) {
+                if (!preg_match('/^(wp_posts_carousel|text|block)-(\d+)$/', $widget, $match)) {
+                    continue;
+                }
+                $settings = get_option('widget_' . $match[1], array());
+                $instance = isset($settings[$match[2]]) ? $settings[$match[2]] : array();
+                if ($match[1] === 'wp_posts_carousel') {
+                    WP_Posts_Carousel_Template_Assets::enqueue_carousel(isset($instance['carousel']) ? $instance['carousel'] : 0);
+                } else {
+                    $key = $match[1] === 'block' ? 'content' : 'text';
+                    WP_Posts_Carousel_Template_Assets::enqueue_content(isset($instance[$key]) ? $instance[$key] : '', $visited);
+                }
+            }
         }
     }
 
