@@ -3272,3 +3272,131 @@ msgstr "Licencja aktywna"
 #: assets/js/admin-v2.js:2 src/admin-v2/i18n.js:11
 msgid "License inactive"
 msgstr "Licencja nieaktywna"
+
+#: assets/js/admin-v2.js
+msgid "Search categories"
+msgstr "Szukaj kategorii"
+
+#: assets/js/admin-v2.js
+msgid "Search tags"
+msgstr "Szukaj tagów"
+
+#: assets/js/admin-v2.js
+msgid "Remove term"
+msgstr "Usuń pozycję"
+
+#: assets/js/admin-v2.js
+msgid "Could not load terms. Focus the field to try again."
+msgstr "Nie udało się pobrać pozycji. Wróć do pola, aby spróbować ponownie."
+
+#: assets/js/admin-v2.js
+msgid "No matching terms."
+msgstr "Brak pasujących pozycji."
+
+#: assets/js/admin-v2.js
+msgid "Content selection"
+msgstr "Wybór treści"
+
+#: assets/js/admin-v2.js
+msgid "Query (automatic)"
+msgstr "Zapytanie (automatycznie)"
+
+#: assets/js/admin-v2.js
+msgid "Use automatic query results?"
+msgstr "Użyć automatycznych wyników zapytania?"
+
+#: assets/js/admin-v2.js
+msgid "The manual slide selection will be cleared. Posts and media will not be deleted."
+msgstr "Ręczny wybór slajdów zostanie wyczyszczony. Wpisy i media nie zostaną usunięte."
+
+#: assets/js/admin-v2.js
+msgid "Use query results"
+msgstr "Użyj wyników zapytania"
+
+#: assets/js/admin-v2.js
+msgid "Keep manual slides"
+msgstr "Zachowaj ręczne slajdy"
+
+#: assets/js/admin-v2.js
+msgid "Choose post types, categories and ordering. Query results update automatically."
+msgstr "Wybierz typy wpisów, kategorie i kolejność. Wyniki zapytania aktualizują się automatycznie."
+
+#: assets/js/admin-v2.js
+msgid "Manual slides keep a fixed selection. Choose Query for automatically updated posts."
+msgstr "Ręczne slajdy zachowują stały wybór. Wybierz zapytanie, aby automatycznie aktualizować wpisy."
+
+#: assets/js/admin-v2.js
+msgid "Query preview"
+msgstr "Podgląd zapytania"
+
+#: assets/js/admin-v2.js
+msgid "Matching posts update automatically. Save the carousel to apply these query rules to your site."
+msgstr "Pasujące wpisy aktualizują się automatycznie. Zapisz karuzelę, aby zastosować te reguły na stronie."
+
+#: assets/js/admin-v2.js
+msgid "Loading matching posts..."
+msgstr "Wczytywanie pasujących wpisów..."
+
+#: assets/js/admin-v2.js
+msgid "Could not load matching posts. Change a query setting to try again."
+msgstr "Nie udało się wczytać pasujących wpisów. Zmień ustawienie zapytania, aby spróbować ponownie."
+
+#: assets/js/admin-v2.js
+msgid "Use these posts as manual slides"
+msgstr "Użyj tych wpisów jako ręcznych slajdów"
+
+#: assets/js/admin-v2.js
+msgid "Add manual slides to start arranging this carousel."
+msgstr "Dodaj ręczne slajdy, aby ułożyć karuzelę."
+
+#: assets/js/admin-v2.js
+msgid "No published posts match these query settings."
+msgstr "Żadne opublikowane wpisy nie pasują do ustawień zapytania."
+
+#: assets/js/admin-v2.js
+msgid "Posts follow the saved query. Switch to manual slides to curate a fixed selection."
+msgstr "Wpisy są pobierane według zapytania. Przełącz na ręczne slajdy, aby ułożyć stały wybór."
+
+#: assets/js/admin-v2.js
+msgid "Results follow the selected categories, ordering and limit."
+msgstr "Wyniki uwzględniają wybrane kategorie, kolejność i limit."
+
+#: assets/js/admin-v2.js
+msgid "Choose a post type and a positive posts limit."
+msgstr "Wybierz typ wpisu i limit wpisów większy od zera."
+
+#: assets/js/admin-v2.js
+msgid "Version information from the product catalog."
+msgstr "Informacje o wersji pochodzą z katalogu produktów."
+
+#: assets/js/admin-v2.js
+msgid "License verification"
+msgstr "Weryfikacja licencji"
+
+#: assets/js/admin-v2.js
+msgid "License last verified"
+msgstr "Ostatnia weryfikacja licencji"
+
+#: assets/js/admin-v2.js
+msgid "Next license verification"
+msgstr "Następna weryfikacja licencji"
+
+#: assets/js/admin-v2.js
+msgid "License verification due"
+msgstr "Termin weryfikacji licencji"
+
+#: assets/js/admin-v2.js
+msgid "License expires"
+msgstr "Licencja wygasa"
+
+#: assets/js/admin-v2.js
+msgid "Automatic license verification is overdue. Check the license in License settings."
+msgstr "Termin automatycznej weryfikacji licencji minął. Sprawdź licencję w jej ustawieniach."
+
+#: assets/js/admin-v2.js
+msgid "Version information needs refreshing"
+msgstr "Informacje o wersji wymagają odświeżenia"
+
+#: assets/js/admin-v2.js
+msgid "Showing saved version information. The product catalog could not be reached."
+msgstr "Wyświetlamy zapisane informacje o wersji. Nie udało się połączyć z katalogiem produktów."

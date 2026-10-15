@@ -779,6 +779,11 @@ class WP_Posts_Carousel_Generator
                         autoplayObserver.observe(carousel[0]);
                     }
                     document.addEventListener("visibilitychange", wpcPlayAutoplayVideos);
+                    carousel.on("translate.owl.carousel", function(event) {
+                        if (event.relatedTarget && typeof event.relatedTarget.speed === "function") {
+                            carousel[0].style.setProperty("--wpc-transition-duration", event.relatedTarget.speed() + "ms");
+                        }
+                    });
                     carousel.on("initialized.owl.carousel translated.owl.carousel refreshed.owl.carousel", function() {
                         window.setTimeout(wpcPlayAutoplayVideos, 60);
                     });

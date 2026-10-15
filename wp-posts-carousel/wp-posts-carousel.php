@@ -4,7 +4,7 @@
  * Plugin Name: WP Posts Carousel All In One
  * Plugin URI: https://coolcatideas.com/products/wp-posts-carousel-all-in-one
  * Description: Create reusable carousels for posts, pages, products and manual slides, then place them with Gutenberg or a shortcode. Pro adds live WooCommerce data, buying actions, sales templates, Elementor and reports.
- * Version: 2.0.2
+ * Version: 2.0.4
  * Requires at least: 6.2
  * Tested up to: 7.1.3
  * Requires PHP: 7.4
@@ -41,7 +41,7 @@ if (!defined('ABSPATH')) {
  */
 class WP_Posts_Carousel
 {
-	public $version      = '2.0.2';
+	public $version      = '2.0.4';
 	public $settings     = array();
 	public $templates    = array();
 	public $integrations = array();
@@ -83,23 +83,23 @@ class WP_Posts_Carousel
 	 */
 	public function includes()
 	{
-		include_once 'includes/class-init.php';
-		include_once 'includes/class-utils.php';
-		include_once 'includes/class-icons.php';
-		include_once 'includes/class-carousel-config.php';
-		include_once 'includes/class-carousel-repository.php';
-		include_once 'includes/class-features.php';
-		include_once 'includes/class-slide-view-model.php';
+		include_once 'includes/bootstrap/class-init.php';
+		include_once 'includes/support/class-utils.php';
+		include_once 'includes/support/class-icons.php';
+		include_once 'includes/carousels/class-carousel-config.php';
+		include_once 'includes/carousels/class-carousel-repository.php';
+		include_once 'includes/features/class-features.php';
+		include_once 'includes/carousels/class-slide-view-model.php';
         include_once 'includes/frontend/class-carousel-query-builder.php';
-        include_once 'includes/class-templates.php';
-        include_once 'includes/class-render-context.php';
-        include_once 'includes/class-template-assets.php';
-        include_once 'includes/class-carousel-data.php';
-        include_once 'includes/class-api.php';
-        include_once 'includes/class-widget.php';
-        include_once 'includes/class-blocks.php';
+        include_once 'includes/templates/class-templates.php';
+        include_once 'includes/carousels/class-render-context.php';
+        include_once 'includes/templates/class-template-assets.php';
+        include_once 'includes/carousels/class-carousel-data.php';
+        include_once 'includes/api/class-api.php';
+        include_once 'includes/widgets/class-widget.php';
+        include_once 'includes/blocks/class-blocks.php';
 
-        include_once 'includes/class-integrations.php';
+        include_once 'includes/integrations/class-integrations.php';
 
         include_once 'includes/admin/class-admin-settings.php';
 

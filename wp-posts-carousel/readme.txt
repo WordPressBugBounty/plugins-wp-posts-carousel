@@ -4,7 +4,7 @@ Tags: carousel, slider, posts, gutenberg, custom post types
 Requires at least: 6.2
 Tested up to: 7.1.3
 Requires PHP: 7.4
-Stable tag: 2.0.2
+Stable tag: 2.0.4
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -163,6 +163,19 @@ The plugin includes compiled JavaScript and CSS. The repositories above contain 
 
 == Changelog ==
 
+= 2.0.4 =
+* Apply separate autoplay, arrow and dot transition speeds in Swiper and the editor preview.
+* Make Owl fade animations follow the selected transition duration.
+
+= 2.0.3 =
+* Find matching categories and tags as you type, with keyboard selection and individual remove buttons.
+* Refresh query previews automatically when filters, ordering or the post limit change.
+* Keep automatic queries separate from manual slide selections so newly published posts can appear.
+* Fix taxonomy searches returning unrelated results.
+* Clarify category selection, transition timing and query filter arguments.
+* Separate version information from license verification dates and identify overdue verification.
+* Keep category and tag suggestions visible outside the editor panels and within the viewport.
+
 = 2.0.2 =
 * Fix retrying a carousel after a temporary API or template stylesheet loading error.
 * Reuse slide data when a REST response includes both JSON and HTML, avoiding a duplicate content query.
@@ -186,6 +199,12 @@ The plugin includes compiled JavaScript and CSS. The repositories above contain 
 * Added Pro-ready feature and license gating hooks.
 
 == Upgrade Notice ==
+
+= 2.0.4 =
+Autoplay, arrow and dot transitions now use their own speed settings in Swiper and the editor preview. Owl fade animations follow the selected duration. Existing carousel settings are preserved.
+
+= 2.0.3 =
+Category and tag autocomplete, automatic query previews and clearer manual selection controls. Existing manual carousels keep their selected slides.
 
 = 2.0.2 =
 More reliable carousel loading and fewer duplicate queries and unused template styles. Existing 2.x carousel settings are preserved.

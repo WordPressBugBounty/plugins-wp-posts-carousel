@@ -3524,3 +3524,131 @@ msgstr ""
 #: assets/js/admin-v2.js:2 src/admin-v2/i18n.js:11
 msgid "License inactive"
 msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Search categories"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Search tags"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Remove term"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Could not load terms. Focus the field to try again."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "No matching terms."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Content selection"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Query (automatic)"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Use automatic query results?"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "The manual slide selection will be cleared. Posts and media will not be deleted."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Use query results"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Keep manual slides"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Choose post types, categories and ordering. Query results update automatically."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Manual slides keep a fixed selection. Choose Query for automatically updated posts."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Query preview"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Matching posts update automatically. Save the carousel to apply these query rules to your site."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Loading matching posts..."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Could not load matching posts. Change a query setting to try again."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Use these posts as manual slides"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Add manual slides to start arranging this carousel."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "No published posts match these query settings."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Posts follow the saved query. Switch to manual slides to curate a fixed selection."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Results follow the selected categories, ordering and limit."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Choose a post type and a positive posts limit."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Version information from the product catalog."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "License verification"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "License last verified"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Next license verification"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "License verification due"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "License expires"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Automatic license verification is overdue. Check the license in License settings."
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Version information needs refreshing"
+msgstr ""
+
+#: assets/js/admin-v2.js
+msgid "Showing saved version information. The product catalog could not be reached."
+msgstr ""
