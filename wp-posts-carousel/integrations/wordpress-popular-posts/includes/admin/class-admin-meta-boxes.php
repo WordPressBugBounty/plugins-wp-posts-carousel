@@ -30,14 +30,14 @@ class WP_Posts_Carousel_Wordpress_Popular_Posts_Meta_Boxes {
         $custom_interval = apply_filters( 'wp_posts_carousel_wordpress_popular_posts_shows_custom_interval', '1 YEAR' );
 
         $plugin_shows = array(
-            'wordpress-popular-posts-popular'          => __( 'Popular all the time', 'wp-posts-carousel' ),
-            'wordpress-popular-posts-popular-1-day'    => __( 'Popular from 24 hours', 'wp-posts-carousel' ),
-            'wordpress-popular-posts-popular-2-days'   => __( 'Popular from 2 days', 'wp-posts-carousel' ),
-            'wordpress-popular-posts-popular-2-weeks'  => __( 'Popular from 2 weeks', 'wp-posts-carousel' ),
-            'wordpress-popular-posts-popular-1-month'  => __( 'Popular from month', 'wp-posts-carousel' ),
-            'wordpress-popular-posts-popular-2-months' => __( 'Popular from 2 months', 'wp-posts-carousel' ),
-            'wordpress-popular-posts-popular-3-months' => __( 'Popular from 3 months', 'wp-posts-carousel' ),
-            'wordpress-popular-posts-popular-custom'   => sprintf( __( 'Popular from custom interval', 'wp-posts-carousel' ) . ' (%s)', $custom_interval ),
+            'wordpress-popular-posts-popular'          => __( 'Popular all the time', 'cci-posts-carousel' ),
+            'wordpress-popular-posts-popular-1-day'    => __( 'Popular from 24 hours', 'cci-posts-carousel' ),
+            'wordpress-popular-posts-popular-2-days'   => __( 'Popular from 2 days', 'cci-posts-carousel' ),
+            'wordpress-popular-posts-popular-2-weeks'  => __( 'Popular from 2 weeks', 'cci-posts-carousel' ),
+            'wordpress-popular-posts-popular-1-month'  => __( 'Popular from month', 'cci-posts-carousel' ),
+            'wordpress-popular-posts-popular-2-months' => __( 'Popular from 2 months', 'cci-posts-carousel' ),
+            'wordpress-popular-posts-popular-3-months' => __( 'Popular from 3 months', 'cci-posts-carousel' ),
+            'wordpress-popular-posts-popular-custom'   => sprintf( __( 'Popular from custom interval', 'cci-posts-carousel' ) . ' (%s)', $custom_interval ),
         );
 
         return array_merge( $shows, $plugin_shows );

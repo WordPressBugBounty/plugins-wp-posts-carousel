@@ -30,7 +30,7 @@ final class WP_Posts_Carousel_Template_Assets
 
     public static function enqueue_content($content, &$visited)
     {
-        if (preg_match_all('/' . get_shortcode_regex(array('wp_posts_carousel')) . '/s', (string) $content, $matches, PREG_SET_ORDER)) {
+        if (preg_match_all('/' . get_shortcode_regex(array('wp_posts_carousel', 'cci_posts_carousel')) . '/s', (string) $content, $matches, PREG_SET_ORDER)) {
             foreach ($matches as $match) {
                 if ($match[1] === '[' && $match[6] === ']') {
                     continue;

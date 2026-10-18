@@ -46,7 +46,7 @@ class WP_Posts_Carousel_Template
             'author_url'                          => 'Author URI',
             'author_email'                        => 'Author Email',
             'version'                             => 'Version',
-            'requires_wp_posts_carousel_at_least' => 'Requires WP Posts Carousel at least',
+            'requires_wp_posts_carousel_at_least' => 'Requires CCI Posts Carousel All In One at least',
             'license'                             => 'License',
             'license_url'                         => 'License URI',
         );
@@ -87,7 +87,7 @@ class WP_Posts_Carousel_Template
             return array(
                 'status' => false,
                 /* translators: %s: carousel template name. */
-                'error'  => sprintf(__("This template '%s' is not compatible with the current version of this plugin", 'wp-posts-carousel'), $template_details['template_name']),
+                'error'  => sprintf(__("This template '%s' is not compatible with the current version of this plugin", 'cci-posts-carousel'), $template_details['template_name']),
             );
         }
 

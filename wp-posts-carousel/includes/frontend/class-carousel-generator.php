@@ -175,7 +175,7 @@ class WP_Posts_Carousel_Generator
         $root_style = ' style="' . esc_attr(implode('', $root_style_rules)) . '"';
         $filterbar = $this->frontend_filters_html($config, $post_id);
         $lazy_render_attribute = $lazy_render ? ' data-wpc-lazy-render="true" aria-busy="true"' : '';
-        $out = $filterbar . '<div id="' . esc_attr($this->carousel_id) . '" class="' . esc_attr($template_classes) . ' ' . esc_attr($engine_class) . '" data-wpc-id="' . esc_attr($post_id) . '"' . $demo_key_attribute . $root_style . $lazy_render_attribute . ' data-wpc-renderer="' . esc_attr($renderer) . '" data-wpc-react-mode="' . esc_attr($react_mode) . '" data-wpc-api="' . esc_url($api_url) . '" data-wpc-engine="' . esc_attr($engine_name) . '" data-wpc-template="' . esc_attr($this->template['name']) . '" data-wpc-filter-prefix="' . esc_attr($filter_prefix) . '" data-wpc-config-version="' . esc_attr($config_version) . '" data-wpc-prev-label="' . esc_attr__('previous', 'wp-posts-carousel') . '" data-wpc-next-label="' . esc_attr__('next', 'wp-posts-carousel') . '">';
+        $out = $filterbar . '<div id="' . esc_attr($this->carousel_id) . '" class="' . esc_attr($template_classes) . ' ' . esc_attr($engine_class) . '" data-wpc-id="' . esc_attr($post_id) . '"' . $demo_key_attribute . $root_style . $lazy_render_attribute . ' data-wpc-renderer="' . esc_attr($renderer) . '" data-wpc-react-mode="' . esc_attr($react_mode) . '" data-wpc-api="' . esc_url($api_url) . '" data-wpc-engine="' . esc_attr($engine_name) . '" data-wpc-template="' . esc_attr($this->template['name']) . '" data-wpc-filter-prefix="' . esc_attr($filter_prefix) . '" data-wpc-config-version="' . esc_attr($config_version) . '" data-wpc-prev-label="' . esc_attr__('previous', 'cci-posts-carousel') . '" data-wpc-next-label="' . esc_attr__('next', 'cci-posts-carousel') . '">';
 
         if ($lazy_render || ($renderer === 'react' && in_array($react_mode, array('full', 'render'), true))) {
             return $out . '</div>';
@@ -425,7 +425,7 @@ class WP_Posts_Carousel_Generator
         $prefix = $prefix ? $prefix : 'wpcf_';
         $term_limit = isset($filters['term_limit']) ? max(1, min(50, absint($filters['term_limit']))) : 12;
         $show_all = !array_key_exists('show_all_option', $filters) || $this->truthy($filters['show_all_option']);
-        $all_label = !empty($filters['all_label']) ? sanitize_text_field($filters['all_label']) : __('All', 'wp-posts-carousel');
+        $all_label = !empty($filters['all_label']) ? sanitize_text_field($filters['all_label']) : __('All', 'cci-posts-carousel');
         $groups = array();
 
         foreach ($taxonomies as $taxonomy_name) {
@@ -467,7 +467,7 @@ class WP_Posts_Carousel_Generator
             return '';
         }
 
-        $html = '<nav class="cci-wpc-filterbar" data-wpc-filterbar-for="' . esc_attr($this->carousel_id) . '" data-wpc-id="' . esc_attr($post_id) . '" aria-label="' . esc_attr__('Carousel filters', 'wp-posts-carousel') . '">' . implode('', $groups) . '</nav>';
+        $html = '<nav class="cci-wpc-filterbar" data-wpc-filterbar-for="' . esc_attr($this->carousel_id) . '" data-wpc-id="' . esc_attr($post_id) . '" aria-label="' . esc_attr__('Carousel filters', 'cci-posts-carousel') . '">' . implode('', $groups) . '</nav>';
 
         return apply_filters('wp_posts_carousel_frontend_filterbar_html', $html, $config, $post_id, $this->carousel_id);
     }
@@ -547,6 +547,9 @@ class WP_Posts_Carousel_Generator
         $classes = array(
             'cci-wpc-layout-span-' . $span,
         );
+        if (!empty($this->slide['pinned'])) {
+            $classes[] = 'cci-wpc-slide-pinned';
+        }
 
         if ($group !== '') {
             $classes[] = 'cci-wpc-layout-group-' . $group;
@@ -840,8 +843,8 @@ class WP_Posts_Carousel_Generator
             ? ($is_vertical ? 'up' : 'previous')
             : ($is_vertical ? 'down' : 'next');
         $label = $direction === 'previous'
-            ? __('previous', 'wp-posts-carousel')
-            : __('next', 'wp-posts-carousel');
+            ? __('previous', 'cci-posts-carousel')
+            : __('next', 'cci-posts-carousel');
         $icon_html = class_exists('WP_Posts_Carousel_Icons')
             ? WP_Posts_Carousel_Icons::navigation_icon_html($icon_direction, $params)
             : '<i class="fa fa-' . esc_attr($direction === 'previous' ? ($is_vertical ? 'angle-up' : 'angle-left') : ($is_vertical ? 'angle-down' : 'angle-right')) . '" aria-hidden="true"></i>';

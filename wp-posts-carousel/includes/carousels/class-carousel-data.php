@@ -70,7 +70,7 @@ class WP_Posts_Carousel_Data
             $args,
             array(
                 'id' => 0,
-                'title' => __('Carousel preview', 'wp-posts-carousel'),
+                'title' => __('Carousel preview', 'cci-posts-carousel'),
                 'status' => 'draft',
                 'context' => 'edit',
                 'instance_id' => 'wp-posts-carousel-admin-preview',
@@ -116,6 +116,23 @@ class WP_Posts_Carousel_Data
 
     public static function slides($config, $runtime_params)
     {
+        if (($config['source']['mode'] ?? '') === 'hybrid') {
+            $selection = self::pinned_selection($config);
+            $slides = array();
+            foreach ($selection['items'] as $item) {
+                $slide = ($item['type'] ?? '') === 'custom'
+                    ? WP_Posts_Carousel_Slide_View_Model::from_custom_item($item, $runtime_params, $config)
+                    : WP_Posts_Carousel_Slide_View_Model::from_post($selection['posts'][(int) $item['id']], $runtime_params, $config);
+                if ($slide) {
+                    $slide['pinned'] = true;
+                    $slides[] = $slide;
+                }
+            }
+            foreach ($selection['automatic'] as $post) {
+                $slides[] = WP_Posts_Carousel_Slide_View_Model::from_post($post, $runtime_params, $config);
+            }
+            return array_values(array_filter($slides));
+        }
         $post_slides = self::post_slides($config, $runtime_params);
         $items = isset($config['curation']['items']) && is_array($config['curation']['items'])
             ? $config['curation']['items']
@@ -152,6 +169,71 @@ class WP_Posts_Carousel_Data
         }
 
         return array_values(array_filter($slides));
+    }
+
+    /** Shared by frontend rendering and the editor's automatic-result preview. */
+    public static function pinned_selection($config)
+    {
+        $limit = max(1, (int) $config['source']['limit']);
+        $items = $config['curation']['items'] ?? array();
+        $excluded = array_map('absint', $config['source']['exclude'] ?? array());
+        $ids = array();
+        foreach ($items as $item) {
+            if (($item['type'] ?? '') !== 'custom' && !empty($item['id'])) {
+                $ids[] = absint($item['id']);
+            }
+        }
+        $posts = array();
+        if ($ids) {
+            $query = new WP_Query(array(
+                'post_type' => array_values(get_post_types(array('public' => true))),
+                'post_status' => 'publish', 'has_password' => false,
+                'post__in' => array_values(array_unique($ids)), 'post__not_in' => $excluded,
+                'posts_per_page' => count(array_unique($ids)), 'orderby' => 'post__in',
+                'ignore_sticky_posts' => true, 'no_found_rows' => true,
+            ));
+            foreach ($query->posts as $post) {
+                if (self::public_selection_post($post)) $posts[(int) $post->ID] = $post;
+            }
+        }
+        $accepted = array();
+        $seen = array();
+        foreach ($items as $item) {
+            $custom = ($item['type'] ?? '') === 'custom';
+            $id = $item['id'] ?? '';
+            $key = ($custom ? 'custom:' : 'post:') . $id;
+            if (isset($seen[$key]) || (!$custom && (!isset($posts[(int) $id]) || in_array((int) $id, $excluded, true)))) continue;
+            $accepted[] = $item;
+            $seen[$key] = true;
+            if (count($accepted) >= $limit) break;
+        }
+        $remaining = $limit - count($accepted);
+        $automatic = array();
+        if ($remaining > 0) {
+            $query_config = $config;
+            $query_config['source']['mode'] = 'query';
+            $query_config['source']['limit'] = $remaining;
+            $query_config['source']['exclude'] = array_values(array_unique(array_merge($excluded, $ids)));
+            $query_config['curation']['items'] = array();
+            $args = WP_Posts_Carousel_Query_Builder::build($query_config);
+            $args['has_password'] = false;
+            $args['ignore_sticky_posts'] = true;
+            $query = new WP_Query($args);
+            foreach ($query->posts as $post) {
+                $key = 'post:' . (int) $post->ID;
+                if (!self::public_selection_post($post) || isset($seen[$key]) || in_array((int) $post->ID, $query_config['source']['exclude'], true)) continue;
+                $automatic[] = $post;
+                $seen[$key] = true;
+                if (count($automatic) >= $remaining) break;
+            }
+        }
+        return array('items' => $accepted, 'posts' => $posts, 'automatic' => $automatic);
+    }
+
+    private static function public_selection_post($post)
+    {
+        $type = get_post_type_object($post->post_type);
+        return $post->post_status === 'publish' && $post->post_password === '' && $type && $type->public;
     }
 
     private static function apply_template_runtime_overrides($config, $template)
@@ -301,7 +383,7 @@ class WP_Posts_Carousel_Data
                 $fallback['fallback_for'] = sanitize_key($template_name);
                 $fallback['fallback_message'] = !empty($template['error'])
                     ? sanitize_text_field($template['error'])
-                    : __('Requested carousel template is unavailable. Rendering with the default template.', 'wp-posts-carousel');
+                    : __('Requested carousel template is unavailable. Rendering with the default template.', 'cci-posts-carousel');
 
                 return apply_filters('wp_posts_carousel_template_fallback', $fallback, $template, $config);
             }

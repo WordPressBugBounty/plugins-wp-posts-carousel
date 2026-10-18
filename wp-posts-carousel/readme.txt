@@ -1,10 +1,10 @@
-=== WP Posts Carousel All In One ===
+=== CCI Posts Carousel All In One ===
 Contributors: coolcatideas
 Tags: carousel, slider, posts, gutenberg, custom post types
 Requires at least: 6.2
 Tested up to: 7.1.3
 Requires PHP: 7.4
-Stable tag: 2.0.4
+Stable tag: 2.1.0
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,16 +12,21 @@ Give your content a place to shine. Create responsive carousels with a visual ed
 
 == Description ==
 
+CCI Posts Carousel All In One was previously called WP Posts Carousel All In One. The name and plugin slug are changing following WordPress’s decision on the use of “WP”. Existing carousels and legacy shortcodes remain supported.
+
+
 Your latest articles, your favourite guides, the pages you wish more people would discover. Bring them together in a carousel that invites visitors to keep exploring.
 
-[See it in action](https://wordpress-demo.coolcatideas.com/) | [Explore the product](https://coolcatideas.com/products/wp-posts-carousel-all-in-one/) | [Read the guide](https://coolcatideas.com/docs/wp-posts-carousel-all-in-one/2.0.0/) | [Get help](https://github.com/cool-cat-ideas/wp-posts-carousel-all-in-one/issues)
+[See it in action](https://wordpress-demo.coolcatideas.com/) | [Explore the product](https://coolcatideas.com/products/cci-posts-carousel-all-in-one/) | [Read the guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.1.0/) | [Get help](https://github.com/cool-cat-ideas/cci-posts-carousel-all-in-one/issues)
 
-**WP Posts Carousel All In One** gives you a visual editor to choose your content, arrange your slides and preview the result. Add your saved carousel with a Gutenberg block or shortcode, then reuse it across your site. Change it once and every place using it stays in sync.
+**CCI Posts Carousel All In One** gives you a visual editor to choose your content, arrange your slides and preview the result. Add your saved carousel with a Gutenberg block or shortcode, then reuse it across your site. Change it once and every place using it stays in sync.
 
 We're **Cool Cat Ideas**, and we're proud of this plugin. We built it for the enjoyable part of putting a page together: choosing what deserves attention and finding the right way to present it. We'd love to see what you create.
 
 = Plenty to create with, right from the start =
 
+* **Show a second image on hover.** Keep the featured image as primary and optionally preview another image from the content, WooCommerce gallery or your own selection. Off by default; touch screens keep the primary image.
+* **Keep selected slides first.** Pin articles, pages or custom slides, then automatically fill the remaining places from your query. Published posts appear once, and newly matching content can join without editing the carousel again.
 * **Your content, your selection.** Display posts, pages and custom post types. Pick categories and tags, or choose individual items for a hand-picked collection.
 * **A visual editor with a live preview.** Arrange slides by dragging them into place and check the result before publishing.
 * **Layouts for large and small screens.** Set responsive breakpoints and adjust how your carousel behaves at different widths.
@@ -43,7 +48,7 @@ Give your homepage a row of recent articles. Bring a set of useful guides togeth
 
 = Take it further with Pro =
 
-When your carousel becomes part of the shopping experience, **WP Posts Carousel Pro** adds:
+When your carousel becomes part of the shopping experience, **CCI Posts Carousel All In One Pro** adds:
 
 * **WooCommerce shopping cards** with current prices, sale labels, ratings and Add to cart actions, plus bestseller and top-rated selections.
 * **Commerce Luxe and Story Commerce** for product presentations and shopping stories.
@@ -54,17 +59,17 @@ When your carousel becomes part of the shopping experience, **WP Posts Carousel 
 
 These features come together in one Pro plugin, installed alongside this one. WooCommerce prices and buying actions require Pro; standard linked product cards do not.
 
-[Explore Pro and compare editions](https://coolcatideas.com/products/wp-posts-carousel-all-in-one/)
+[Explore Pro and compare editions](https://coolcatideas.com/products/cci-posts-carousel-all-in-one/)
 
 = Made to grow with your ideas =
 
-Optional extensions can add more layouts and content sources. [Aurora Cards](https://coolcatideas.com/products/wp-posts-carousel-aurora-cards/) adds another card design, while [Related Content](https://coolcatideas.com/products/wp-posts-carousel-related-content/) finds posts or products related to the page being viewed. Both are separate, no-cost additions.
+Optional extensions can add more layouts and content sources. [Aurora Cards](https://coolcatideas.com/products/cci-posts-carousel-aurora-cards/) adds another card design, while [Related Content](https://coolcatideas.com/products/cci-posts-carousel-related-content/) finds posts or products related to the page being viewed. Both are separate, no-cost additions.
 
-For developers, the [documentation](https://coolcatideas.com/docs/wp-posts-carousel-all-in-one/2.0.0/) covers hooks and filters for your own queries, templates and integrations.
+For developers, the [documentation](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.1.0/) covers hooks and filters for your own queries, templates and integrations.
 
 = We'd love to hear from you =
 
-Need a hand, spotted a bug or have an idea? [Open an issue on GitHub](https://github.com/cool-cat-ideas/wp-posts-carousel-all-in-one/issues). Tell us what you're trying to build and include your WordPress and plugin versions so we can help. Please keep passwords, license keys and other private details out of public issues.
+Need a hand, spotted a bug or have an idea? [Open an issue on GitHub](https://github.com/cool-cat-ideas/cci-posts-carousel-all-in-one/issues). Tell us what you're trying to build and include your WordPress and plugin versions so we can help. Please keep passwords, license keys and other private details out of public issues.
 
 For help with an agreed scope, [contact Cool Cat Ideas](https://coolcatideas.com/contact/) about a private support service.
 
@@ -73,19 +78,48 @@ For help with an agreed scope, [contact Cool Cat Ideas](https://coolcatideas.com
 Requires WordPress 6.2 or later and PHP 7.4 or later.
 
 1. Open **Plugins > Add New > Upload Plugin**.
-2. Upload the ZIP and activate **WP Posts Carousel All In One**.
-3. Open **WP Posts Carousel** and click **New carousel**.
+2. Upload the ZIP and activate **CCI Posts Carousel All In One**.
+3. Open **CCI Posts Carousel All In One** and click **New carousel**.
 4. Choose your content and template, arrange the slides and check the preview.
-5. Save, then add the **WP Posts Carousel** block to a page and select your carousel. You can also paste its shortcode into a Shortcode block.
+5. Save, then add the **CCI Posts Carousel All In One** block to a page and select your carousel. You can also paste its shortcode into a Shortcode block.
 6. Publish your page and enjoy your new carousel.
 
-For a walkthrough, see the [getting started guide](https://coolcatideas.com/docs/wp-posts-carousel-all-in-one/2.0.0/).
+For a walkthrough, see the [getting started guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.1.0/).
 
 == Frequently Asked Questions ==
 
+= Can a slide show another image on hover? =
+
+Yes, in the base plugin. Open Advanced > Image on hover, enable Change image on hover and choose the content, WooCommerce gallery or manual source. The featured image stays primary. To override a slide, use Hover image URL in the slide editor. Paste an image URL or click Choose from media library. Save and check the page with a mouse. The second image loads on demand; touch screens and missing or failed images keep the primary image. This option is off by default.
+
+
+= Can I keep selected slides first and update the rest automatically? =
+
+Yes. Open Query > Content selection and choose Pinned slides + automatic fill. Set the post types, categories, ordering and Posts limit. Click the pin button on a preview card, then drag pinned cards into your preferred order. Save the carousel. With two pins and a limit of six, up to four matching posts follow the pins without repeating them. This option is included in the base plugin. Remove a pin to let that post return to automatic results when it matches the query.
+
+= How do I update from 2.0.x to 2.1.0 after the rename? =
+
+This includes 2.0.0 through 2.0.4. CCI Posts Carousel All In One was previously
+named WP Posts Carousel All In One. Your saved carousel IDs, settings, Gutenberg
+blocks and existing [wp_posts_carousel] shortcodes stay supported. You do not
+need to recreate carousels or replace shortcodes.
+
+1. Back up your WordPress files and database. Try the update on staging first.
+2. Keep WP Posts Carousel All In One installed and active. Download cci-posts-carousel-2.1.0.zip from the product page and install it through Plugins > Add New Plugin > Upload Plugin. Two plugin entries are expected because the folder name has changed.
+3. Activate CCI Posts Carousel All In One. Activation switches to the renamed package and makes the old entry inactive while preserving saved carousel data.
+4. An already active Pro 2.0.0 can stay active. Update Pro and external add-ons separately when their renamed ZIPs are available. Their version numbers do not need to match the base plugin, and an active license does not need to be entered again.
+5. Clear cache, open the saved carousel list and check existing pages on desktop and mobile, including Pro layouts or WooCommerce actions you use.
+
+Do not click Delete on the old plugin entry in WordPress: its uninstall routine
+may remove shared saved data. Keep the inactive folder until you have checked
+the site. Remove old files only through SFTP or your hosting file manager after
+confirming that the renamed replacements are active.
+
+See the [full update guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.1.0/installation/#updating-from-the-previous-package-name) for checks and rollback steps. The separate 1.x upgrade procedure does not apply to 2.0.x installations.
+
 = Why did my carousels stop working after upgrading from 1.x to 2.x? =
 
-Version 2.x is a rewrite of the plugin, including the carousel data model, editor, widgets and shortcode configuration. Settings from 1.x are not automatically converted. Open WP Posts Carousel > Dashboard, click New carousel, recreate each carousel, then save and publish it. Replace every old shortcode and select the new carousel in the current block or widget wherever it was displayed. Creating a replacement alone does not reconnect those placements. Clear cache after saving and check the published pages on desktop and mobile. The [upgrade guide](https://coolcatideas.com/docs/wp-posts-carousel-all-in-one/2.0.x/upgrading-from-1.x/) includes the steps and a screenshot of the new dashboard.
+Version 2.x is a rewrite of the plugin, including the carousel data model, editor, widgets and shortcode configuration. Settings from 1.x are not automatically converted. Open CCI Posts Carousel All In One > Dashboard, click New carousel, recreate each carousel, then save and publish it. Replace every old shortcode and select the new carousel in the current block or widget wherever it was displayed. Creating a replacement alone does not reconnect those placements. Clear cache after saving and check the published pages on desktop and mobile. The [upgrade guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.0.x/upgrading-from-1.x/) includes the steps and a screenshot of the new dashboard.
 
 = Can I reuse the same carousel on several pages? =
 
@@ -113,7 +147,7 @@ No. The integration is built into the base plugin. Activate WordPress Popular Po
 
 = Can developers change queries and output? =
 
-Yes. The [developer documentation](https://coolcatideas.com/docs/wp-posts-carousel-all-in-one/2.0.0/) describes supported actions and filters for queries, templates and integrations.
+Yes. The [developer documentation](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.1.0/) describes supported actions and filters for queries, templates and integrations.
 
 = Why is my carousel empty? =
 
@@ -126,20 +160,22 @@ Check that the selected content is published, the chosen categories or tags cont
 3. Compare installed templates and browse additional layouts. The demo includes Pro templates and optional extensions.
 4. Control carousel libraries and icon assets, and set the default responsive breakpoints.
 5. Choose the rendering engine and slide behavior, then drag cards to arrange the carousel sequence.
-6. Select posts, pages or products, limit the result count and filter the source by taxonomy.
+6. Pin selected posts first and fill the remaining places automatically.
 7. Choose which card elements appear and set title and excerpt limits. The price and sale controls shown require Pro.
 8. Search for existing content or add a custom image slide, then arrange its position in the sequence.
-9. Configure visitor-facing taxonomy filters and image loading options for the carousel.
+9. Enable an optional second image on mouse hover. The featured image remains the default.
 10. Each saved carousel has its own shortcode, publication status and last update date.
-11. Open the carousel preview in the editor and inspect its layout at a selected width.
-12. Place a single-card product carousel beside article text. This example uses Aurora Cards and Pro WooCommerce buying features.
+11. Preview article cards and test the carousel at different widths.
+12. Two pinned posts lead this six-slide example. Four more are selected automatically; three cards are visible on desktop.
 13. Present WordPress articles as image cards with excerpts and links to the full posts.
 14. Aurora Cards is an optional template extension. The displayed prices, sale badges and Add to cart actions are supplied by Pro.
-15. Product cards combine categories, prices and buying actions with arrow navigation and a progress indicator. Shown with Pro active.
-16. A split layout places the featured image beside the article title, excerpt and Read more link.
+15. The optional Aurora Cards extension presents article images, excerpts and navigation.
+16. The base plugin can show a second image on mouse hover. Touch screens retain the featured image.
 17. Story Commerce combines a wide opening slide and supporting cards into a numbered shopping story. Included in Pro.
 18. Video Showcase pairs the active video with a playlist of entries and timestamps. Included in Pro.
 19. Commerce Luxe presents product images, sale prices, quantity controls and Add to cart buttons on a dark carousel background. Included in Pro.
+20. Reorder pinned posts and let the query fill the remaining places without duplicate posts.
+21. Set a second image for a manual slide by pasting its URL or choosing it from the media library.
 
 == External services ==
 
@@ -157,11 +193,22 @@ Icons are local by default. Choosing **CDN** in compatibility settings loads Fon
 
 == Source code ==
 
-[Plugin source](https://github.com/cool-cat-ideas/wp-posts-carousel-all-in-one) | [Build instructions](https://github.com/cool-cat-ideas/wp-posts-carousel-all-in-one/blob/main/docs/building-from-source.md) | [CCI Admin UI source (v1.0.0)](https://github.com/cool-cat-ideas/cci-admin-ui/tree/v1.0.0)
+[Plugin source](https://github.com/cool-cat-ideas/cci-posts-carousel-all-in-one) | [Build instructions](https://github.com/cool-cat-ideas/cci-posts-carousel-all-in-one/blob/main/docs/building-from-source.md) | [CCI Admin UI source (v1.0.0)](https://github.com/cool-cat-ideas/cci-admin-ui/tree/v1.0.0)
 
 The plugin includes compiled JavaScript and CSS. The repositories above contain the readable sources and build tools; the product lockfile pins the shared UI packages.
 
 == Changelog ==
+
+= 2.1.0 =
+* Renamed WP Posts Carousel All In One to CCI Posts Carousel All In One following WordPress's decision about the plugin name and slug. Existing shortcodes, saved carousels, settings and license rights remain supported.
+* Use normal page scrolling for long administration lists and editors, without extra sidebar scrollbars.
+* Added optional image changes on mouse hover in the base plugin, with content, WooCommerce gallery and manual sources. Featured images remain primary; touch screens keep the primary image.
+* Add pinned slides with automatic query fill in the base plugin.
+* Preserve pin order and layout settings while keeping automatic results free of duplicate pinned posts.
+* Count pinned and automatic slides within one total limit; skip unavailable pinned posts.
+* Add pin actions and separate pinned/automatic previews in the editor.
+* Show author and version on shared integration and template cards.
+* Clarify extension registration and supported hooks in developer documentation.
 
 = 2.0.4 =
 * Apply separate autoplay, arrow and dot transition speeds in Swiper and the editor preview.
@@ -199,6 +246,9 @@ The plugin includes compiled JavaScript and CSS. The repositories above contain 
 * Added Pro-ready feature and license gating hooks.
 
 == Upgrade Notice ==
+
+= 2.1.0 =
+Renamed from WP Posts Carousel All In One. Updating from 2.0.x? Follow the update steps in the FAQ and keep the old plugin until you activate CCI. Saved carousels and shortcodes stay supported. Pinning and hover images are included; hover is off by default.
 
 = 2.0.4 =
 Autoplay, arrow and dot transitions now use their own speed settings in Swiper and the editor preview. Owl fade animations follow the selected duration. Existing carousel settings are preserved.

@@ -21,10 +21,10 @@ class WP_Posts_Carousel_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'wp_posts_carousel',
-            'WP Posts Carousel',
+            'CCI Posts Carousel All In One',
             array(
                 'classname'   => 'widget_wp_posts_carousel',
-                'description' =>  __( 'Show posts in Wp Posts Carousel', 'wp-posts-carousel' )
+                'description' =>  __( 'Show posts in Wp Posts Carousel', 'cci-posts-carousel' )
             )
         );
     }
@@ -40,7 +40,7 @@ class WP_Posts_Carousel_Widget extends WP_Widget {
             echo wp_kses_post( $args['after_title'] );
         }
         if ( ! empty( $instance['carousel'] ) ) {
-            echo do_shortcode( '[wp_posts_carousel id="' . absint( $instance['carousel'] ) . '"]' );
+            echo do_shortcode( '[cci_posts_carousel id="' . absint( $instance['carousel'] ) . '"]' );
         }
 
         echo wp_kses_post( $args['after_widget'] );
@@ -54,11 +54,11 @@ class WP_Posts_Carousel_Widget extends WP_Widget {
     ?>
         <div class="cci-wpc-widget-form">
             <p>
-                <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'wp-posts-carousel' ); ?>:</label>
+                <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'cci-posts-carousel' ); ?>:</label>
                 <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( array_key_exists( 'title', $instance ) ? $instance['title'] : '' ); ?>" />
             </p>
             <p>
-                <label for="<?php echo esc_attr( $this->get_field_id( 'carousel' ) ); ?>"><?php esc_html_e( 'Carousel', 'wp-posts-carousel' ); ?>:</label>
+                <label for="<?php echo esc_attr( $this->get_field_id( 'carousel' ) ); ?>"><?php esc_html_e( 'Carousel', 'cci-posts-carousel' ); ?>:</label>
                 <br />
                 <select class="select widefat cci-wpc-field cci-wpc-field-required" name="<?php echo esc_attr( $this->get_field_name( 'carousel' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'carousel' ) ); ?>" size="1" required>
                     <option value=""></option>

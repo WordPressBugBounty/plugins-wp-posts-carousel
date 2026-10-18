@@ -26,7 +26,7 @@ class WP_Posts_Carousel_Utils
             'wp_posts_carousel_params_defaults',
             array(
                 'post_selection_options' => array(
-                    'post_types'          => array(array('value' => 'post', 'label' => __('Posts', 'wp-posts-carousel'), 'post_type' => 'post')),
+                    'post_types'          => array(array('value' => 'post', 'label' => __('Posts', 'cci-posts-carousel'), 'post_type' => 'post')),
                     'taxonomies'          => array(),
                     'order_by'            => 'id',
                     'ordering'            => 'asc',
@@ -43,7 +43,7 @@ class WP_Posts_Carousel_Utils
                     'enabled' => false,
                     'taxonomies' => array(),
                     'show_all_option' => true,
-                    'all_label' => __('All', 'wp-posts-carousel'),
+                    'all_label' => __('All', 'cci-posts-carousel'),
                     'param_prefix' => 'wpcf_',
                     'term_limit' => 12,
                 ),
@@ -223,11 +223,11 @@ class WP_Posts_Carousel_Utils
         $array = array(
             array(
                 'value'   => 'in',
-                'label' => __('In', 'wp-posts-carousel'),
+                'label' => __('In', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'not in',
-                'label' => __('Not in', 'wp-posts-carousel'),
+                'label' => __('Not in', 'cci-posts-carousel'),
             ),
         );
 
@@ -239,23 +239,23 @@ class WP_Posts_Carousel_Utils
         $array = array(
             array(
                 'value'   => 'id',
-                'label' => __('By id', 'wp-posts-carousel'),
+                'label' => __('By id', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'post_title',
-                'label' => __('By title', 'wp-posts-carousel'),
+                'label' => __('By title', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'post_date',
-                'label' => __('By date', 'wp-posts-carousel'),
+                'label' => __('By date', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'post_modified',
-                'label' => __('By modified date', 'wp-posts-carousel'),
+                'label' => __('By modified date', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'posts_order',
-                'label' => __('By posts order', 'wp-posts-carousel'),
+                'label' => __('By posts order', 'cci-posts-carousel'),
             ),
         );
 
@@ -267,15 +267,15 @@ class WP_Posts_Carousel_Utils
         $array = array(
             array(
                 'value'   => 'asc',
-                'label' => __('Ascending', 'wp-posts-carousel'),
+                'label' => __('Ascending', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'desc',
-                'label' => __('Descending', 'wp-posts-carousel'),
+                'label' => __('Descending', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'random',
-                'label' => __('Random', 'wp-posts-carousel'),
+                'label' => __('Random', 'cci-posts-carousel'),
             ),
         );
 
@@ -287,15 +287,15 @@ class WP_Posts_Carousel_Utils
         $array = array(
             array(
                 'value'   => 'false',
-                'label' => __('No', 'wp-posts-carousel'),
+                'label' => __('No', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'excerpt',
-                'label' => __('Excerpt', 'wp-posts-carousel'),
+                'label' => __('Excerpt', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'content',
-                'label' => __('Full content', 'wp-posts-carousel'),
+                'label' => __('Full content', 'cci-posts-carousel'),
             ),
         );
 
@@ -307,19 +307,19 @@ class WP_Posts_Carousel_Utils
         $array = array(
             array(
                 'value'   => 'thumbnail',
-                'label' => __('Thumbnail', 'wp-posts-carousel'),
+                'label' => __('Thumbnail', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'medium',
-                'label' => __('Medium', 'wp-posts-carousel'),
+                'label' => __('Medium', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'large',
-                'label' => __('Large', 'wp-posts-carousel'),
+                'label' => __('Large', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'full',
-                'label' => __('Full', 'wp-posts-carousel'),
+                'label' => __('Full', 'cci-posts-carousel'),
             ),
         );
 
@@ -331,27 +331,27 @@ class WP_Posts_Carousel_Utils
         $sizes = array(
             array(
                 'value' => 'inherit',
-                'label' => __('Use display setting', 'wp-posts-carousel'),
+                'label' => __('Use display setting', 'cci-posts-carousel'),
             ),
             array(
                 'value' => 'thumbnail',
-                'label' => __('Thumbnail', 'wp-posts-carousel'),
+                'label' => __('Thumbnail', 'cci-posts-carousel'),
             ),
             array(
                 'value' => 'medium',
-                'label' => __('Medium', 'wp-posts-carousel'),
+                'label' => __('Medium', 'cci-posts-carousel'),
             ),
             array(
                 'value' => 'medium_large',
-                'label' => __('Medium large', 'wp-posts-carousel'),
+                'label' => __('Medium large', 'cci-posts-carousel'),
             ),
             array(
                 'value' => 'large',
-                'label' => __('Large', 'wp-posts-carousel'),
+                'label' => __('Large', 'cci-posts-carousel'),
             ),
             array(
                 'value' => 'full',
-                'label' => __('Full', 'wp-posts-carousel'),
+                'label' => __('Full', 'cci-posts-carousel'),
             ),
         );
 
@@ -361,15 +361,15 @@ class WP_Posts_Carousel_Utils
     public static function get_field_mapping_targets()
     {
         $targets = array(
-            array('value' => 'eyebrow', 'label' => __('Eyebrow / badge', 'wp-posts-carousel')),
-            array('value' => 'kicker', 'label' => __('Kicker / secondary text', 'wp-posts-carousel')),
-            array('value' => 'story_step', 'label' => __('Story step', 'wp-posts-carousel')),
-            array('value' => 'duration', 'label' => __('Video duration', 'wp-posts-carousel')),
-            array('value' => 'accent', 'label' => __('Accent color', 'wp-posts-carousel')),
-            array('value' => 'price_text', 'label' => __('Price text fallback', 'wp-posts-carousel')),
-            array('value' => 'button_label', 'label' => __('Button label', 'wp-posts-carousel')),
-            array('value' => 'url', 'label' => __('Custom URL', 'wp-posts-carousel')),
-            array('value' => 'image_url', 'label' => __('Custom image URL', 'wp-posts-carousel')),
+            array('value' => 'eyebrow', 'label' => __('Eyebrow / badge', 'cci-posts-carousel')),
+            array('value' => 'kicker', 'label' => __('Kicker / secondary text', 'cci-posts-carousel')),
+            array('value' => 'story_step', 'label' => __('Story step', 'cci-posts-carousel')),
+            array('value' => 'duration', 'label' => __('Video duration', 'cci-posts-carousel')),
+            array('value' => 'accent', 'label' => __('Accent color', 'cci-posts-carousel')),
+            array('value' => 'price_text', 'label' => __('Price text fallback', 'cci-posts-carousel')),
+            array('value' => 'button_label', 'label' => __('Button label', 'cci-posts-carousel')),
+            array('value' => 'url', 'label' => __('Custom URL', 'cci-posts-carousel')),
+            array('value' => 'image_url', 'label' => __('Custom image URL', 'cci-posts-carousel')),
         );
 
         return apply_filters('wp_posts_carousel_field_mapping_targets', $targets);
@@ -424,11 +424,11 @@ class WP_Posts_Carousel_Utils
         return array(
             array(
                 'value'   => 'and',
-                'label' => __('And', 'wp-posts-carousel'),
+                'label' => __('And', 'cci-posts-carousel'),
             ),
             array(
                 'value'   => 'or',
-                'label' => __('Or', 'wp-posts-carousel'),
+                'label' => __('Or', 'cci-posts-carousel'),
             )
         );
     }
@@ -464,7 +464,7 @@ class WP_Posts_Carousel_Utils
                 'name' => 'show_title',
                 'type' => 'radio',
                 'default_value' => true,
-                'label' => __('Show title', 'wp-posts-carousel')
+                'label' => __('Show title', 'cci-posts-carousel')
             ),
             array(
                 'name' => 'title_length',
@@ -472,26 +472,26 @@ class WP_Posts_Carousel_Utils
                 'default_value' => 0,
                 'min' => 0,
                 'step' => 1,
-                'unit' => __('chars', 'wp-posts-carousel'),
-                'label' => __('Title character limit', 'wp-posts-carousel')
+                'unit' => __('chars', 'cci-posts-carousel'),
+                'label' => __('Title character limit', 'cci-posts-carousel')
             ),
             array(
                 'name' => 'show_author',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Show author', 'wp-posts-carousel')
+                'label' => __('Show author', 'cci-posts-carousel')
             ),
             array(
                 'name' => 'show_created_date',
                 'type' => 'radio',
                 'default_value' => true,
-                'label' => __('Show created date', 'wp-posts-carousel')
+                'label' => __('Show created date', 'cci-posts-carousel')
             ),
             array(
                 'name' => 'show_description',
                 'type' => 'select',
                 'default_value' => null,
-                'label' => __('Show description', 'wp-posts-carousel'),
+                'label' => __('Show description', 'cci-posts-carousel'),
                 'required' => true,
                 'options' => self::get_descriptions()
             ),
@@ -501,45 +501,45 @@ class WP_Posts_Carousel_Utils
                 'default_value' => 0,
                 'min' => 0,
                 'step' => 1,
-                'unit' => __('chars', 'wp-posts-carousel'),
-                'label' => __('Description character limit', 'wp-posts-carousel')
+                'unit' => __('chars', 'cci-posts-carousel'),
+                'label' => __('Description character limit', 'cci-posts-carousel')
             ),
             array(
                 'name' => 'show_categories',
                 'type' => 'radio',
                 'default_value' => true,
-                'label' => __('Show categories', 'wp-posts-carousel')
+                'label' => __('Show categories', 'cci-posts-carousel')
             ),
             array(
                 'name' => 'show_tags',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Show tags', 'wp-posts-carousel')
+                'label' => __('Show tags', 'cci-posts-carousel')
             ),
             array(
                 'name' => 'show_more_button',
                 'type' => 'radio',
                 'default_value' => true,
-                'label' => __('Show more button', 'wp-posts-carousel')
+                'label' => __('Show more button', 'cci-posts-carousel')
             ),
             array(
                 'name' => 'show_featured_image',
                 'type' => 'radio',
                 'default_value' => true,
-                'label' => __('Show featured image', 'wp-posts-carousel')
+                'label' => __('Show featured image', 'cci-posts-carousel')
             ),
             array(
                 'name' => 'featured_image_source',
                 'type' => 'select',
                 'default_value' => null,
-                'label' => __('Image source', 'wp-posts-carousel'),
+                'label' => __('Image source', 'cci-posts-carousel'),
                 'required' => true,
                 'options' => self::get_image_sources()
             ),
             array(
                 'name' => 'featured_image_width_group',
                 'type' => 'group',
-                'label' => __('Image width', 'wp-posts-carousel'),
+                'label' => __('Image width', 'cci-posts-carousel'),
                 'label_for' => 'featured_image_width',
                 'fields' => array(
                     array(
@@ -559,7 +559,7 @@ class WP_Posts_Carousel_Utils
             array(
                 'name' => 'featured_image_height_group',
                 'type' => 'group',
-                'label' => __('Image height', 'wp-posts-carousel'),
+                'label' => __('Image height', 'cci-posts-carousel'),
                 'label_for' => 'featured_image_height',
                 'fields' => array(
                     array(
@@ -620,15 +620,15 @@ class WP_Posts_Carousel_Utils
         $renderers = array(
             array(
                 'name' => 'php',
-                'label' => __('PHP fallback', 'wp-posts-carousel'),
-                'description' => __('Server-rendered carousel output. Best default for SEO and broad compatibility.', 'wp-posts-carousel'),
+                'label' => __('PHP fallback', 'cci-posts-carousel'),
+                'description' => __('Server-rendered carousel output. Best default for SEO and broad compatibility.', 'cci-posts-carousel'),
                 'feature' => 'php_renderer',
                 'enabled' => WP_Posts_Carousel_Features::enabled('php_renderer'),
             ),
             array(
                 'name' => 'react',
-                'label' => __('React enhancement', 'wp-posts-carousel'),
-                'description' => __('Loads React only near the viewport and enhances the PHP-rendered carousel.', 'wp-posts-carousel'),
+                'label' => __('React enhancement', 'cci-posts-carousel'),
+                'description' => __('Loads React only near the viewport and enhances the PHP-rendered carousel.', 'cci-posts-carousel'),
                 'feature' => 'react_frontend',
                 'enabled' => WP_Posts_Carousel_Features::enabled('react_frontend'),
             ),
@@ -647,57 +647,57 @@ class WP_Posts_Carousel_Utils
                 'name' => 'slide_by',
                 'type' => 'number',
                 'default_value' => 1,
-                'label' => __('Slide by', 'wp-posts-carousel'),
-                'description' => __('Number of slides going on one "click".', 'wp-posts-carousel'),
-                'endAdornment' => __('items', 'wp-posts-carousel'),
+                'label' => __('Slide by', 'cci-posts-carousel'),
+                'description' => __('Number of slides going on one "click".', 'cci-posts-carousel'),
+                'endAdornment' => __('items', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'start_position',
                 'type' => 'number',
                 'default_value' => 1,
-                'label' => __('Start position', 'wp-posts-carousel'),
-                'description' => __('The initial index of the slide. Counting from 0', 'wp-posts-carousel'),
-                'endAdornment' => __('item index', 'wp-posts-carousel'),
+                'label' => __('Start position', 'cci-posts-carousel'),
+                'description' => __('The initial index of the slide. Counting from 0', 'cci-posts-carousel'),
+                'endAdornment' => __('item index', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'rtl',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('RTL', 'wp-posts-carousel'),
+                'label' => __('RTL', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'loop',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Inifnity loop', 'wp-posts-carousel'),
-                'description' => __('Duplicate last and first items to get loop illusion.', 'wp-posts-carousel'),
+                'label' => __('Inifnity loop', 'cci-posts-carousel'),
+                'description' => __('Duplicate last and first items to get loop illusion.', 'cci-posts-carousel'),
             ),
             array(
                 'name' => 'center',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Center item', 'wp-posts-carousel'),
-                'description' => __('Center the active slide in the viewport.', 'wp-posts-carousel'),
+                'label' => __('Center item', 'cci-posts-carousel'),
+                'description' => __('Center the active slide in the viewport.', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'margin',
                 'type' => 'number',
                 'default_value' => '',
-                'label' => __('Margin', 'wp-posts-carousel'),
-                'endAdornment' => __('px', 'wp-posts-carousel'),
+                'label' => __('Margin', 'cci-posts-carousel'),
+                'endAdornment' => __('px', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'stage_padding',
                 'type' => 'number',
                 'default_value' => '',
-                'label' => __('Stage padding', 'wp-posts-carousel'),
-                'description' => __('Padding left and right on stage (can see neighbours).', 'wp-posts-carousel'),
-                'endAdornment' => __('px', 'wp-posts-carousel'),
+                'label' => __('Stage padding', 'cci-posts-carousel'),
+                'description' => __('Padding left and right on stage (can see neighbours).', 'cci-posts-carousel'),
+                'endAdornment' => __('px', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
 
@@ -705,37 +705,37 @@ class WP_Posts_Carousel_Utils
                 'name' => 'stop_on_hover',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Pause on mouse hover', 'wp-posts-carousel'),
+                'label' => __('Pause on mouse hover', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'auto_play',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Auto play', 'wp-posts-carousel'),
+                'label' => __('Auto play', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'auto_play_timeout',
                 'type' => 'number',
                 'default_value' => '',
-                'label' => __('Autoplay interval timeout', 'wp-posts-carousel'),
-                'endAdornment' => __('ms', 'wp-posts-carousel'),
+                'label' => __('Autoplay interval timeout', 'cci-posts-carousel'),
+                'endAdornment' => __('ms', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'nav',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Show "next" and "prev" buttons', 'wp-posts-carousel'),
+                'label' => __('Show "next" and "prev" buttons', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'nav_speed',
                 'type' => 'number',
                 'default_value' => '',
-                'label' => __('Navigation speed', 'wp-posts-carousel'),
-                'endAdornment' => __('ms', 'wp-posts-carousel'),
+                'label' => __('Navigation speed', 'cci-posts-carousel'),
+                'endAdornment' => __('ms', 'cci-posts-carousel'),
                 'min' => 1,
                 'responsive_option' => true,
             ),
@@ -743,15 +743,15 @@ class WP_Posts_Carousel_Utils
                 'name' => 'dots',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Show dots navigation', 'wp-posts-carousel'),
+                'label' => __('Show dots navigation', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'dots_speed',
                 'type' => 'number',
                 'default_value' => '',
-                'label' => __('Dots speed', 'wp-posts-carousel'),
-                'endAdornment' => __('ms', 'wp-posts-carousel'),
+                'label' => __('Dots speed', 'cci-posts-carousel'),
+                'endAdornment' => __('ms', 'cci-posts-carousel'),
                 'min' => 1,
                 'responsive_option' => true,
             ),
@@ -759,16 +759,16 @@ class WP_Posts_Carousel_Utils
                 'name' => 'lazy_load',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Delays loading of images', 'wp-posts-carousel'),
-                'description' => __('Lazy load images. data-src and data-src-retina for highres. Also load images into background inline style if element is not <img>', 'wp-posts-carousel'),
+                'label' => __('Delays loading of images', 'cci-posts-carousel'),
+                'description' => __('Lazy load images. data-src and data-src-retina for highres. Also load images into background inline style if element is not <img>', 'cci-posts-carousel'),
             ),
             array(
                 'name' => 'lazy_load_eager',
                 'type' => 'number',
                 'default_value' => '',
-                'label' => __('Lazy Load Eager', 'wp-posts-carousel'),
-                'description' => __('Eagerly pre-loads images to the right (and left when loop is enabled) based on how many items you want to preload.', 'wp-posts-carousel'),
-                'endAdornment' => __('items', 'wp-posts-carousel'),
+                'label' => __('Lazy Load Eager', 'cci-posts-carousel'),
+                'description' => __('Eagerly pre-loads images to the right (and left when loop is enabled) based on how many items you want to preload.', 'cci-posts-carousel'),
+                'endAdornment' => __('items', 'cci-posts-carousel'),
                 'min' => 1,
                 'responsive_option' => true,
             ),
@@ -776,56 +776,56 @@ class WP_Posts_Carousel_Utils
                 'name' => 'mouse_drag',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Mouse events', 'wp-posts-carousel'),
+                'label' => __('Mouse events', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'mouse_wheel',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Mousewheel scrolling', 'wp-posts-carousel'),
+                'label' => __('Mousewheel scrolling', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'touch_drag',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Touch events', 'wp-posts-carousel'),
+                'label' => __('Touch events', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'pull_drag',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Pull drag', 'wp-posts-carousel'),
-                'description' => __('Stage pull to edge.', 'wp-posts-carousel'),
+                'label' => __('Pull drag', 'cci-posts-carousel'),
+                'description' => __('Stage pull to edge.', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'free_drag',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Free drag', 'wp-posts-carousel'),
-                'description' => __('Item pull to edge.', 'wp-posts-carousel'),
+                'label' => __('Free drag', 'cci-posts-carousel'),
+                'description' => __('Item pull to edge.', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'transition_effect',
                 'type' => 'select',
                 'default_value' => 'slide',
-                'label' => __('Transition effect', 'wp-posts-carousel'),
-                'description' => __('Choose how slides animate when the carousel moves.', 'wp-posts-carousel'),
+                'label' => __('Transition effect', 'cci-posts-carousel'),
+                'description' => __('Choose how slides animate when the carousel moves.', 'cci-posts-carousel'),
                 'options' => array(
-                    array('label' => __('Slide', 'wp-posts-carousel'), 'value' => 'slide'),
-                    array('label' => __('Fade', 'wp-posts-carousel'), 'value' => 'fade'),
+                    array('label' => __('Slide', 'cci-posts-carousel'), 'value' => 'slide'),
+                    array('label' => __('Fade', 'cci-posts-carousel'), 'value' => 'fade'),
                 ),
             ),
             array(
                 'name' => 'fallback_easing',
                 'type' => 'select',
                 'default_value' => 'linear',
-                'label' => __('Easing', 'wp-posts-carousel'),
-                'description' => __('Motion curve used by Owl Carousel when CSS transitions are not available.', 'wp-posts-carousel'),
+                'label' => __('Easing', 'cci-posts-carousel'),
+                'description' => __('Motion curve used by Owl Carousel when CSS transitions are not available.', 'cci-posts-carousel'),
                 'required' => true,
                 'options' => self::get_animations()
             ),
@@ -833,28 +833,28 @@ class WP_Posts_Carousel_Utils
                 'name' => 'animate_in',
                 'type' => 'text',
                 'default_value' => '',
-                'label' => __('Animation in class', 'wp-posts-carousel'),
-                'description' => __('Class for CSS3 animation in.', 'wp-posts-carousel'),
+                'label' => __('Animation in class', 'cci-posts-carousel'),
+                'description' => __('Class for CSS3 animation in.', 'cci-posts-carousel'),
             ),
             array(
                 'name' => 'animate_out',
                 'type' => 'text',
                 'default_value' => '',
-                'label' => __('Animation out class', 'wp-posts-carousel'),
-                'description' => __('Class for CSS3 animation out.', 'wp-posts-carousel'),
+                'label' => __('Animation out class', 'cci-posts-carousel'),
+                'description' => __('Class for CSS3 animation out.', 'cci-posts-carousel'),
             ),
             array(
                 'name' => 'auto_width',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Auto width', 'wp-posts-carousel'),
+                'label' => __('Auto width', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
             array(
                 'name' => 'auto_height',
                 'type' => 'radio',
                 'default_value' => false,
-                'label' => __('Auto height', 'wp-posts-carousel'),
+                'label' => __('Auto height', 'cci-posts-carousel'),
                 'responsive_option' => true,
             ),
         );
@@ -900,7 +900,7 @@ class WP_Posts_Carousel_Utils
                     break;
             }
         }
-        return '<a href="" title="' . esc_html($text) . '" class="cci-wpc-tooltip tooltip-' . esc_html($type) . '"><span class="dashicons dashicons-' . esc_attr($type) . '" title="' . __('Hint', 'wp-posts-carousel') . '"></span></a>';
+        return '<a href="" title="' . esc_html($text) . '" class="cci-wpc-tooltip tooltip-' . esc_html($type) . '"><span class="dashicons dashicons-' . esc_attr($type) . '" title="' . __('Hint', 'cci-posts-carousel') . '"></span></a>';
     }
 
     public static function get_tip($text = null, $type = 'help')
@@ -1066,7 +1066,7 @@ class WP_Posts_Carousel_Utils
             $out .= "\r\n";
             $out .= "/**\r\n";
             $out .= "*\r\n";
-            $out .= "* WP Posts Carousel DEBUG MESSAGE\r\n";
+            $out .= "* CCI Posts Carousel All In One DEBUG MESSAGE\r\n";
             $out .= '* version: ' . WP_POSTS_CAROUSEL_VERSION . "\r\n";
             $out .= '* message: ' . $msg . "\r\n";
             $out .= "*\r\n";

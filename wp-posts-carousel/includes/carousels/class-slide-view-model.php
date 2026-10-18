@@ -42,6 +42,7 @@ class WP_Posts_Carousel_Slide_View_Model
         $slide = array(
             'id' => (int) $post->ID,
             'type' => 'post',
+            'pinned' => false,
             'post_type' => $post_type,
             'source' => array(
                 'kind' => 'wp_post',
@@ -115,7 +116,7 @@ class WP_Posts_Carousel_Slide_View_Model
         $slide = apply_filters('wp_posts_carousel_slide_view_model', $slide, $post, $params, $config);
         $slide['html'] = apply_filters('wp_posts_carousel_slide_html_parts', $slide['html'], $slide, $params, $config);
 
-        return $slide;
+        return WP_Posts_Carousel_Hover_Image::apply($slide, $config, $post);
     }
 
     public static function from_custom_item($item, $params, $config = array())
@@ -134,7 +135,7 @@ class WP_Posts_Carousel_Slide_View_Model
         $url = isset($item['url']) ? esc_url_raw($item['url']) : '';
         $image_url = isset($item['image_url']) ? esc_url_raw($item['image_url']) : '';
         $image_url = self::demo_custom_item_image_url($id, $image_url);
-        $button_label = isset($item['button_label']) ? sanitize_text_field($item['button_label']) : __('read more', 'wp-posts-carousel');
+        $button_label = isset($item['button_label']) ? sanitize_text_field($item['button_label']) : __('read more', 'cci-posts-carousel');
         $video_url = isset($item['video_url']) ? esc_url_raw($item['video_url']) : '';
         $youtube_url = isset($item['youtube_url']) ? esc_url_raw($item['youtube_url']) : '';
         $media_kind = isset($item['media_kind']) ? sanitize_key($item['media_kind']) : 'image';
@@ -171,6 +172,7 @@ class WP_Posts_Carousel_Slide_View_Model
         $slide = array(
             'id' => $id,
             'type' => 'custom',
+            'pinned' => false,
             'post_type' => isset($item['post_type']) ? sanitize_key($item['post_type']) : 'custom',
             'source' => array(
                 'kind' => 'custom',
@@ -241,7 +243,7 @@ class WP_Posts_Carousel_Slide_View_Model
         $slide = apply_filters('wp_posts_carousel_custom_slide_view_model', $slide, $item, $params, $config);
         $slide['html'] = apply_filters('wp_posts_carousel_slide_html_parts', $slide['html'], $slide, $params, $config);
 
-        return $slide;
+        return WP_Posts_Carousel_Hover_Image::apply($slide, $config, null, $item);
     }
 
     private static function custom_playlist_data($playlist, $params)
@@ -973,8 +975,8 @@ class WP_Posts_Carousel_Slide_View_Model
 
         $is_product = get_post_type($post) === 'product';
         $label = $is_product
-            ? __('View product', 'wp-posts-carousel')
-            : __('read more', 'wp-posts-carousel');
+            ? __('View product', 'cci-posts-carousel')
+            : __('read more', 'cci-posts-carousel');
         $label = !empty($params['button_label']) ? sanitize_text_field($params['button_label']) : $label;
         $class = $is_product
             ? 'cci-wpc-more-button cci-wpc-product-button button'

@@ -12,11 +12,11 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Adds clear WP Posts Carousel add-on information to WordPress > Plugins.
+ * Adds clear CCI Posts Carousel All In One add-on information to WordPress > Plugins.
  */
 class WP_Posts_Carousel_Admin_Plugins_Page
 {
-    const PRO_PLUGIN = 'wp-posts-carousel-pro/wp-posts-carousel-pro.php';
+    const PRO_PLUGIN = 'cci-posts-carousel-pro/cci-posts-carousel-pro.php';
 
     public function __construct()
     {
@@ -100,8 +100,8 @@ class WP_Posts_Carousel_Admin_Plugins_Page
             ? $dependencies['wp-posts-carousel']
             : array();
 
-        $dependency['name'] = 'WP Posts Carousel All In One';
-        $dependency['Name'] = 'WP Posts Carousel All In One';
+        $dependency['name'] = 'CCI Posts Carousel All In One';
+        $dependency['Name'] = 'CCI Posts Carousel All In One';
         $dependency['slug'] = 'wp-posts-carousel';
         $dependency['last_updated'] = gmdate('Y-m-d H:i:s');
         $dependencies['wp-posts-carousel'] = $dependency;
@@ -137,7 +137,7 @@ class WP_Posts_Carousel_Admin_Plugins_Page
     {
         array_unshift(
             $links,
-            '<a href="' . esc_url(admin_url('admin.php?page=wp-posts-carousel')) . '">' . esc_html__('Open WP Posts Carousel', 'wp-posts-carousel') . '</a>'
+            '<a href="' . esc_url(admin_url('admin.php?page=cci-posts-carousel')) . '">' . esc_html__('Open CCI Posts Carousel All In One', 'cci-posts-carousel') . '</a>'
         );
 
         return $links;
@@ -145,7 +145,7 @@ class WP_Posts_Carousel_Admin_Plugins_Page
 
     public function plugin_action_links($links, $plugin_file)
     {
-        $dashboard_link = '<a href="' . esc_url(admin_url('admin.php?page=wp-posts-carousel')) . '">' . esc_html__('Open WP Posts Carousel', 'wp-posts-carousel') . '</a>';
+        $dashboard_link = '<a href="' . esc_url(admin_url('admin.php?page=cci-posts-carousel')) . '">' . esc_html__('Open CCI Posts Carousel All In One', 'cci-posts-carousel') . '</a>';
 
         if ($plugin_file === self::PRO_PLUGIN) {
             array_unshift($links, $dashboard_link);
@@ -171,7 +171,7 @@ class WP_Posts_Carousel_Admin_Plugins_Page
         }
 
         if (empty($missing_dependencies) && !$this->license_allows_feature($definition['feature'], $plugin_file, $definition['type'])) {
-            $custom_links[] = '<a href="' . esc_url(admin_url('admin.php?page=wp-posts-carousel')) . '">' . esc_html__('Activate Pro license', 'wp-posts-carousel') . '</a>';
+            $custom_links[] = '<a href="' . esc_url(admin_url('admin.php?page=cci-posts-carousel')) . '">' . esc_html__('Activate Pro license', 'cci-posts-carousel') . '</a>';
         }
 
         return array_merge($custom_links, $links);
@@ -220,7 +220,7 @@ class WP_Posts_Carousel_Admin_Plugins_Page
                 'tone' => 'blocked',
                 'title' => sprintf(
                     /* translators: %s: plugin names */
-                    __('Requires: %s.', 'wp-posts-carousel'),
+                    __('Requires: %s.', 'cci-posts-carousel'),
                     $this->format_plugin_labels($missing_dependencies)
                 ),
                 'message' => $definition['missing_dependency'],
@@ -231,7 +231,7 @@ class WP_Posts_Carousel_Admin_Plugins_Page
         if ($this->is_plugin_active($plugin_file)) {
             return array(
                 'tone' => 'ready',
-                'title' => __('The add-on is active.', 'wp-posts-carousel'),
+                'title' => __('The add-on is active.', 'cci-posts-carousel'),
                 'message' => $definition['ready'],
                 'actions' => array($this->dashboard_action()),
             );
@@ -239,8 +239,8 @@ class WP_Posts_Carousel_Admin_Plugins_Page
 
         return array(
             'tone' => 'warning',
-            'title' => __('The add-on is inactive.', 'wp-posts-carousel'),
-            'message' => __('Activate it to use this integration in carousel queries.', 'wp-posts-carousel'),
+            'title' => __('The add-on is inactive.', 'cci-posts-carousel'),
+            'message' => __('Activate it to use this integration in carousel queries.', 'cci-posts-carousel'),
             'actions' => array($this->activate_action($plugin_file), $this->dashboard_action()),
         );
     }
@@ -252,9 +252,9 @@ class WP_Posts_Carousel_Admin_Plugins_Page
         if (!$this->is_plugin_active($plugin_file)) {
             return array(
                 'tone' => 'warning',
-                'title' => __('WP Posts Carousel All In One Pro is installed but inactive.', 'wp-posts-carousel'),
-                'message' => __('Activate the Pro plugin, then enter the license key in the carousel dashboard.', 'wp-posts-carousel'),
-                'actions' => array($this->activate_action($plugin_file), $this->dashboard_action(__('Open license panel', 'wp-posts-carousel'))),
+                'title' => __('CCI Posts Carousel All In One Pro is installed but inactive.', 'cci-posts-carousel'),
+                'message' => __('Activate the Pro plugin, then enter the license key in the carousel dashboard.', 'cci-posts-carousel'),
+                'actions' => array($this->activate_action($plugin_file), $this->dashboard_action(__('Open license panel', 'cci-posts-carousel'))),
             );
         }
 
@@ -262,20 +262,20 @@ class WP_Posts_Carousel_Admin_Plugins_Page
             return array(
                 'tone' => !empty($license['writeLocked']) ? 'warning' : 'ready',
                 'title' => !empty($license['writeLocked'])
-                    ? __('Pro is running in read-only mode.', 'wp-posts-carousel')
-                    : __('Pro license is active.', 'wp-posts-carousel'),
+                    ? __('Pro is running in read-only mode.', 'cci-posts-carousel')
+                    : __('Pro license is active.', 'cci-posts-carousel'),
                 'message' => !empty($license['writeLocked'])
-                    ? __('Frontend carousels remain available, but Pro editing is locked until the license server responds again.', 'wp-posts-carousel')
-                    : __('All bundled Pro modules are available on this site.', 'wp-posts-carousel'),
+                    ? __('Frontend carousels remain available, but Pro editing is locked until the license server responds again.', 'cci-posts-carousel')
+                    : __('All bundled Pro modules are available on this site.', 'cci-posts-carousel'),
                 'actions' => array($this->dashboard_action()),
             );
         }
 
         return array(
             'tone' => 'warning',
-            'title' => __('The Pro plugin is active, but the license is missing.', 'wp-posts-carousel'),
-            'message' => __('Enter a license key to unlock Pro templates, integrations and editor controls.', 'wp-posts-carousel'),
-            'actions' => array($this->dashboard_action(__('Activate license', 'wp-posts-carousel'), 'button button-primary')),
+            'title' => __('The Pro plugin is active, but the license is missing.', 'cci-posts-carousel'),
+            'message' => __('Enter a license key to unlock Pro templates, integrations and editor controls.', 'cci-posts-carousel'),
+            'actions' => array($this->dashboard_action(__('Activate license', 'cci-posts-carousel'), 'button button-primary')),
         );
     }
 
@@ -288,7 +288,7 @@ class WP_Posts_Carousel_Admin_Plugins_Page
                 'tone' => 'blocked',
                 'title' => sprintf(
                     /* translators: %s: plugin names */
-                    __('Requires: %s.', 'wp-posts-carousel'),
+                    __('Requires: %s.', 'cci-posts-carousel'),
                     $this->format_plugin_labels($missing_dependencies)
                 ),
                 'message' => $definition['missing_dependency'],
@@ -299,9 +299,9 @@ class WP_Posts_Carousel_Admin_Plugins_Page
         if (!$this->is_plugin_active(self::PRO_PLUGIN)) {
             return array(
                 'tone' => 'warning',
-                'title' => __('Requires WP Posts Carousel All In One Pro.', 'wp-posts-carousel'),
-                'message' => __('This add-on is installed, but Pro features remain locked until WP Posts Carousel All In One Pro is active.', 'wp-posts-carousel'),
-                'actions' => array($this->activate_action(self::PRO_PLUGIN), $this->dashboard_action(__('Open license panel', 'wp-posts-carousel'))),
+                'title' => __('Requires CCI Posts Carousel All In One Pro.', 'cci-posts-carousel'),
+                'message' => __('This add-on is installed, but Pro features remain locked until CCI Posts Carousel All In One Pro is active.', 'cci-posts-carousel'),
+                'actions' => array($this->activate_action(self::PRO_PLUGIN), $this->dashboard_action(__('Open license panel', 'cci-posts-carousel'))),
             );
         }
 
@@ -310,24 +310,24 @@ class WP_Posts_Carousel_Admin_Plugins_Page
         if (!$this->license_allows_feature($feature, $plugin_file, $definition['type'])) {
             return array(
                 'tone' => 'warning',
-                'title' => __('This add-on requires a Pro license.', 'wp-posts-carousel'),
+                'title' => __('This add-on requires a Pro license.', 'cci-posts-carousel'),
                 'message' => $definition['license_required'],
-                'actions' => array($this->dashboard_action(__('Activate license', 'wp-posts-carousel'), 'button button-primary')),
+                'actions' => array($this->dashboard_action(__('Activate license', 'cci-posts-carousel'), 'button button-primary')),
             );
         }
 
         if (!$this->is_plugin_active($plugin_file)) {
             return array(
                 'tone' => 'ready',
-                'title' => __('The license is ready. Activate the add-on.', 'wp-posts-carousel'),
-                'message' => __('Your license includes this add-on. Activate it to make it available in the carousel editor.', 'wp-posts-carousel'),
+                'title' => __('The license is ready. Activate the add-on.', 'cci-posts-carousel'),
+                'message' => __('Your license includes this add-on. Activate it to make it available in the carousel editor.', 'cci-posts-carousel'),
                 'actions' => array($this->activate_action($plugin_file), $this->dashboard_action()),
             );
         }
 
         return array(
             'tone' => 'ready',
-            'title' => __('The add-on is ready to use.', 'wp-posts-carousel'),
+            'title' => __('The add-on is ready to use.', 'cci-posts-carousel'),
             'message' => $definition['ready'],
             'actions' => array($this->dashboard_action()),
         );
@@ -337,9 +337,9 @@ class WP_Posts_Carousel_Admin_Plugins_Page
     {
         return array(
             self::PRO_PLUGIN => array(
-                'name' => 'WP Posts Carousel All In One Pro',
+                'name' => 'CCI Posts Carousel All In One Pro',
                 'badge' => 'PRO',
-                'meta' => __('License valid for this site.', 'wp-posts-carousel'),
+                'meta' => __('License valid for this site.', 'cci-posts-carousel'),
             ),
         );
     }
@@ -373,10 +373,10 @@ class WP_Posts_Carousel_Admin_Plugins_Page
 
             $issues[] = array(
                 'type' => 'error',
-                'title' => __('A required plugin is missing.', 'wp-posts-carousel'),
+                'title' => __('A required plugin is missing.', 'cci-posts-carousel'),
                 'message' => sprintf(
                     /* translators: 1: add-on name, 2: plugin names */
-                    __('%1$s requires an active plugin: %2$s.', 'wp-posts-carousel'),
+                    __('%1$s requires an active plugin: %2$s.', 'cci-posts-carousel'),
                     $definition['name'],
                     $this->format_plugin_labels($missing_dependencies)
                 ),
@@ -387,14 +387,14 @@ class WP_Posts_Carousel_Admin_Plugins_Page
         if (!empty($installed_paid_addons) && !$this->is_plugin_active(self::PRO_PLUGIN)) {
             $issues[] = array(
                 'type' => 'warning',
-                'title' => __('Pro add-ons are installed.', 'wp-posts-carousel'),
-                'message' => __('Activate WP Posts Carousel All In One Pro, then activate the license in the carousel dashboard.', 'wp-posts-carousel'),
+                'title' => __('Pro add-ons are installed.', 'cci-posts-carousel'),
+                'message' => __('Activate CCI Posts Carousel All In One Pro, then activate the license in the carousel dashboard.', 'cci-posts-carousel'),
                 'action' => $this->is_plugin_installed(self::PRO_PLUGIN)
                     ? array(
-                        'label' => __('Activate WP Posts Carousel All In One Pro', 'wp-posts-carousel'),
+                        'label' => __('Activate CCI Posts Carousel All In One Pro', 'cci-posts-carousel'),
                         'url' => $this->activate_url(self::PRO_PLUGIN),
                     )
-                    : $this->dashboard_action(__('Open WP Posts Carousel', 'wp-posts-carousel')),
+                    : $this->dashboard_action(__('Open CCI Posts Carousel All In One', 'cci-posts-carousel')),
             );
         }
 
@@ -404,9 +404,9 @@ class WP_Posts_Carousel_Admin_Plugins_Page
         if ($license_inactive) {
             $issues[] = array(
                 'type' => 'warning',
-                'title' => __('The WP Posts Carousel All In One Pro license is inactive.', 'wp-posts-carousel'),
-                'message' => __('Installed Pro templates and integrations remain locked until a license is activated for this site.', 'wp-posts-carousel'),
-                'action' => $this->dashboard_action(__('Activate license', 'wp-posts-carousel')),
+                'title' => __('The CCI Posts Carousel All In One Pro license is inactive.', 'cci-posts-carousel'),
+                'message' => __('Installed Pro templates and integrations remain locked until a license is activated for this site.', 'cci-posts-carousel'),
+                'action' => $this->dashboard_action(__('Activate license', 'cci-posts-carousel')),
             );
         }
 
@@ -419,7 +419,7 @@ class WP_Posts_Carousel_Admin_Plugins_Page
             'wp_posts_carousel_license_data',
             array(
                 'status' => 'inactive',
-                'label' => __('Inactive', 'wp-posts-carousel'),
+                'label' => __('Inactive', 'cci-posts-carousel'),
             )
         );
     }
@@ -441,8 +441,8 @@ class WP_Posts_Carousel_Admin_Plugins_Page
     private function dashboard_action($label = '', $class = 'button')
     {
         return array(
-            'label' => $label ? $label : __('Open WP Posts Carousel', 'wp-posts-carousel'),
-            'url' => admin_url('admin.php?page=wp-posts-carousel'),
+            'label' => $label ? $label : __('Open CCI Posts Carousel All In One', 'cci-posts-carousel'),
+            'url' => admin_url('admin.php?page=cci-posts-carousel'),
             'class' => $class,
         );
     }
@@ -450,7 +450,7 @@ class WP_Posts_Carousel_Admin_Plugins_Page
     private function activate_action($plugin_file)
     {
         return array(
-            'label' => __('Activate plugin', 'wp-posts-carousel'),
+            'label' => __('Activate plugin', 'cci-posts-carousel'),
             'url' => $this->activate_url($plugin_file),
             'class' => 'button button-primary',
         );
@@ -519,7 +519,7 @@ class WP_Posts_Carousel_Admin_Plugins_Page
             return array(
                 'label' => sprintf(
                     /* translators: %s: plugin name */
-                    __('Activate %s', 'wp-posts-carousel'),
+                    __('Activate %s', 'cci-posts-carousel'),
                     $label
                 ),
                 'url' => $this->activate_url($plugin_file),
@@ -530,7 +530,7 @@ class WP_Posts_Carousel_Admin_Plugins_Page
         return array(
             'label' => sprintf(
                 /* translators: %s: plugin name */
-                __('Install %s', 'wp-posts-carousel'),
+                __('Install %s', 'cci-posts-carousel'),
                 $label
             ),
             'url' => add_query_arg(

@@ -59,6 +59,7 @@ class WP_Posts_Carousel_Config
                 'url' => '',
                 'image_url' => '',
             ),
+            'image_hover' => array('enabled' => false, 'source' => 'content'),
             'requirements' => array(
                 'required_features' => array(),
             ),
@@ -90,7 +91,11 @@ class WP_Posts_Carousel_Config
             : $values;
 
         $posts = self::option_list_to_items(self::array_get($post_selection, 'posts', array()));
-        if (self::array_get($post_selection, 'mode', '') === 'query') {
+        $mode = self::array_get($post_selection, 'mode', empty($posts) ? 'query' : 'manual');
+        if (!in_array($mode, array('query', 'manual', 'hybrid'), true)) {
+            $mode = empty($posts) ? 'query' : 'manual';
+        }
+        if ($mode === 'query') {
             $posts = array();
         }
         $exclude = self::option_list_to_ids(self::array_get($post_selection, 'exclude', array()));
@@ -103,7 +108,7 @@ class WP_Posts_Carousel_Config
         $config = $defaults;
         $config['renderer'] = sanitize_key(self::array_get($values, 'renderer', 'php'));
         $config['source'] = array(
-            'mode' => empty($posts) ? 'query' : 'manual',
+            'mode' => $mode,
             'post_types' => $post_types,
             'taxonomies' => self::array_get($post_selection, 'taxonomies', array()),
             'relation' => strtolower(self::array_get($post_selection, 'relation', 'or')),
@@ -113,7 +118,7 @@ class WP_Posts_Carousel_Config
             'exclude' => $exclude,
         );
         $config['curation'] = array(
-            'mode' => empty($posts) ? 'query' : 'manual',
+            'mode' => $mode,
             'items' => $posts,
             'pattern' => self::sanitize_pattern(self::array_get($values, 'curation_pattern', array())),
         );
@@ -128,6 +133,7 @@ class WP_Posts_Carousel_Config
         $config['frontend_filters'] = self::array_get($values, 'frontend_filters', $defaults['frontend_filters']);
         $config['performance'] = self::array_get($values, 'performance_options', self::array_get($values, 'performance', $defaults['performance']));
         $config['field_mapping'] = self::array_get($values, 'field_mapping', $defaults['field_mapping']);
+        $config['image_hover'] = self::array_get($values, 'image_hover', $defaults['image_hover']);
         $config['requirements'] = self::array_get($values, 'requirements', $defaults['requirements']);
 
         return self::sanitize_config($config);
@@ -157,6 +163,7 @@ class WP_Posts_Carousel_Config
             'frontend_filters' => $config['frontend_filters'],
             'performance_options' => $config['performance'],
             'field_mapping' => $config['field_mapping'],
+            'image_hover' => $config['image_hover'],
             'curation_pattern' => isset($config['curation']['pattern']) ? $config['curation']['pattern'] : array(),
             'requirements' => isset($config['requirements']) ? $config['requirements'] : array('required_features' => array()),
         );
@@ -205,7 +212,7 @@ class WP_Posts_Carousel_Config
             $config['renderer'] = 'php';
         }
 
-        foreach (array('source', 'curation', 'engine', 'template', 'frontend_filters', 'performance', 'field_mapping', 'requirements') as $section) {
+        foreach (array('source', 'curation', 'engine', 'template', 'frontend_filters', 'performance', 'field_mapping', 'image_hover', 'requirements') as $section) {
             if (!isset($config[$section]) || !is_array($config[$section])) {
                 $config[$section] = $defaults[$section];
             }
@@ -232,6 +239,11 @@ class WP_Posts_Carousel_Config
         $config['frontend_filters'] = self::sanitize_frontend_filters($config['frontend_filters']);
         $config['performance'] = self::sanitize_performance_options($config['performance']);
         $config['field_mapping'] = self::sanitize_field_mapping($config['field_mapping']);
+        $hover_source = self::array_get($config['image_hover'], 'source', 'content');
+        $config['image_hover'] = array(
+            'enabled' => self::sanitize_bool(self::array_get($config['image_hover'], 'enabled', false)),
+            'source' => in_array($hover_source, array('content', 'gallery', 'manual'), true) ? $hover_source : 'content',
+        );
         $required_features = self::array_get(
             $config['requirements'],
             'required_features',
@@ -288,6 +300,7 @@ class WP_Posts_Carousel_Config
                 'post_type' => sanitize_key(self::array_get($item, 'post_type', self::array_get($item, 'postType', 'post'))),
                 'id' => $id,
                 'label' => sanitize_text_field(self::array_get($item, 'label', '')),
+                'hover_image_url' => esc_url_raw(self::array_get($item, 'hover_image_url', ''), array('http', 'https')),
                 'span' => max(1, min(6, absint(self::array_get($item, 'span', self::array_get(self::array_get($item, 'layout', array()), 'span', 1))))),
                 'group' => sanitize_text_field(self::array_get($item, 'group', self::array_get(self::array_get($item, 'layout', array()), 'group', ''))),
                 'crop_x' => max(-100, min(100, intval(self::array_get($item, 'crop_x', self::array_get(self::array_get($item, 'layout', array()), 'crop_x', 0))))),
@@ -317,6 +330,7 @@ class WP_Posts_Carousel_Config
             'description' => wp_kses_post(self::array_get($item, 'description', '')),
             'url' => esc_url_raw(self::array_get($item, 'url', '')),
             'image_url' => esc_url_raw(self::array_get($item, 'image_url', self::array_get($item, 'thumbnail', ''))),
+            'hover_image_url' => esc_url_raw(self::array_get($item, 'hover_image_url', ''), array('http', 'https')),
             'button_label' => sanitize_text_field(self::array_get($item, 'button_label', '')),
             'media_kind' => $video_allowed ? self::sanitize_media_kind(self::array_get($item, 'media_kind', 'image')) : 'image',
             'video_url' => $video_allowed ? esc_url_raw(self::array_get($item, 'video_url', '')) : '',
@@ -583,6 +597,7 @@ class WP_Posts_Carousel_Config
                     'post_type' => self::array_get($option, 'post_type', self::array_get($option, 'postType', 'post')),
                     'id' => self::array_get($option, 'value', 0),
                     'label' => self::array_get($option, 'label', ''),
+                    'hover_image_url' => self::array_get($option, 'hover_image_url', ''),
                     'span' => self::array_get($option, 'span', 1),
                     'group' => self::array_get($option, 'group', ''),
                     'crop_x' => self::array_get($option, 'crop_x', 0),
@@ -625,6 +640,7 @@ class WP_Posts_Carousel_Config
                 'description' => self::array_get($item, 'description', ''),
                 'url' => self::array_get($item, 'url', ''),
                 'image_url' => self::array_get($item, 'image_url', ''),
+                'hover_image_url' => self::array_get($item, 'hover_image_url', ''),
                 'button_label' => self::array_get($item, 'button_label', ''),
                 'media_kind' => $video_allowed ? self::array_get($item, 'media_kind', 'image') : 'image',
                 'video_url' => $video_allowed ? self::array_get($item, 'video_url', '') : '',

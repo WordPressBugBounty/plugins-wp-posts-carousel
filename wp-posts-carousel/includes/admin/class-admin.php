@@ -77,7 +77,7 @@ class WP_Posts_Carousel_Admin
       'wp-posts-carousel-js-react',
       'wpPostsCarouselPluginData',
       array(
-        'pluginUrl' => 'admin.php?page=wp-posts-carousel',
+        'pluginUrl' => 'admin.php?page=cci-posts-carousel',
         'assetsUrl' => esc_url_raw(WP_POSTS_CAROUSEL_DIR_URL),
         'restRoot' => esc_url_raw(rest_url()),
         'pluginVersion' => WP_POSTS_CAROUSEL_VERSION,
@@ -97,7 +97,7 @@ class WP_Posts_Carousel_Admin
           'wp_posts_carousel_license_data',
           array(
             'status' => 'free',
-            'label' => __('Free', 'wp-posts-carousel'),
+            'label' => __('Free', 'cci-posts-carousel'),
             'expires' => '',
           )
         ),
@@ -110,36 +110,36 @@ class WP_Posts_Carousel_Admin
         'documentationUrl' => esc_url_raw(apply_filters('wp_posts_carousel_documentation_url', '')),
         'upgradeUrl' => esc_url_raw(apply_filters(
           'wp_posts_carousel_upgrade_url',
-          class_exists('WP_Posts_Carousel_API') ? WP_Posts_Carousel_API::MARKETPLACE_PRODUCT_URL : 'https://coolcatideas.com/products/wp-posts-carousel-all-in-one'
+          class_exists('WP_Posts_Carousel_API') ? WP_Posts_Carousel_API::MARKETPLACE_PRODUCT_URL : 'https://coolcatideas.com/products/cci-posts-carousel-all-in-one'
         )),
         'reviewFeedbackEndpoint' => esc_url_raw(rest_url('wp-posts-carousel/v1/admin/review-feedback')),
         'wordpressReviewUrl' => esc_url_raw(apply_filters('wp_posts_carousel_wordpress_review_url', 'https://wordpress.org/support/plugin/wp-posts-carousel/reviews/#new-post')),
         'reviewEndpoint' => esc_url_raw(rest_url('wp-posts-carousel/v1/admin/review-feedback')),
         'reviewUrl' => esc_url_raw(apply_filters('wp_posts_carousel_review_url', 'https://wordpress.org/support/plugin/wp-posts-carousel/reviews/#new-post')),
         'i18n' => array(
-          'actions' => __('Actions', 'wp-posts-carousel'),
-          'addNew' => __('Add New', 'wp-posts-carousel'),
-          'dashboard' => __('Dashboard', 'wp-posts-carousel'),
-          'date' => __('Date', 'wp-posts-carousel'),
-          'delete' => __('Delete', 'wp-posts-carousel'),
-          'draft' => __('Draft', 'wp-posts-carousel'),
-          'duplicate' => __('Duplicate', 'wp-posts-carousel'),
-          'edit' => __('Edit', 'wp-posts-carousel'),
-          'reviewConsentContent' => __('I agree to send this rating and review to Cool Cat Ideas for moderation and possible publication on the product page. The review will not be published automatically.', 'wp-posts-carousel'),
-          'loading' => __('Loading...', 'wp-posts-carousel'),
-          'menu' => __('Menu', 'wp-posts-carousel'),
-          'published' => __('Published', 'wp-posts-carousel'),
-          'settings' => __('Settings', 'wp-posts-carousel'),
-          'status' => __('Status', 'wp-posts-carousel'),
-          'title' => __('Title', 'wp-posts-carousel'),
-          'tools' => __('Tools', 'wp-posts-carousel'),
+          'actions' => __('Actions', 'cci-posts-carousel'),
+          'addNew' => __('Add New', 'cci-posts-carousel'),
+          'dashboard' => __('Dashboard', 'cci-posts-carousel'),
+          'date' => __('Date', 'cci-posts-carousel'),
+          'delete' => __('Delete', 'cci-posts-carousel'),
+          'draft' => __('Draft', 'cci-posts-carousel'),
+          'duplicate' => __('Duplicate', 'cci-posts-carousel'),
+          'edit' => __('Edit', 'cci-posts-carousel'),
+          'reviewConsentContent' => __('I agree to send this rating and review to Cool Cat Ideas for moderation and possible publication on the product page. The review will not be published automatically.', 'cci-posts-carousel'),
+          'loading' => __('Loading...', 'cci-posts-carousel'),
+          'menu' => __('Menu', 'cci-posts-carousel'),
+          'published' => __('Published', 'cci-posts-carousel'),
+          'settings' => __('Settings', 'cci-posts-carousel'),
+          'status' => __('Status', 'cci-posts-carousel'),
+          'title' => __('Title', 'cci-posts-carousel'),
+          'tools' => __('Tools', 'cci-posts-carousel'),
         ),
       )
     );
 
     wp_enqueue_script('wp-posts-carousel-js-react');
 
-    wp_set_script_translations('wp-posts-carousel-js-react', 'wp-posts-carousel', WP_POSTS_CAROUSEL_DIR_PATH . 'languages');
+    wp_set_script_translations('wp-posts-carousel-js-react', 'cci-posts-carousel', WP_POSTS_CAROUSEL_DIR_PATH . 'languages');
     do_action('wp_posts_carousel_in_admin_after_enqueue_scripts', array());
   }
 
@@ -147,7 +147,7 @@ class WP_Posts_Carousel_Admin
   {
     $screen = function_exists('get_current_screen') ? get_current_screen() : null;
 
-    return $screen && $screen->id === 'toplevel_page_wp-posts-carousel';
+    return $screen && $screen->id === 'toplevel_page_cci-posts-carousel';
   }
 
   private function should_load_editor_preview_assets()
@@ -367,7 +367,7 @@ class WP_Posts_Carousel_Admin
         $endpoint,
         array(
           'timeout' => 2,
-          'user-agent' => 'WP Posts Carousel product feed',
+          'user-agent' => 'CCI Posts Carousel All In One product feed',
           'headers' => array(
             'Accept' => 'application/json',
           ),
@@ -413,7 +413,7 @@ class WP_Posts_Carousel_Admin
       function ($base) use ($locale, $limit) {
         $product_slug = class_exists('WP_Posts_Carousel_API')
           ? WP_Posts_Carousel_API::MARKETPLACE_PRODUCT_SLUG
-          : 'wp-posts-carousel-all-in-one';
+          : 'cci-posts-carousel-all-in-one';
         $url = untrailingslashit($base) . '/api/products/' . rawurlencode($product_slug) . '/plugin-feed/';
 
         return add_query_arg(

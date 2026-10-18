@@ -21,7 +21,7 @@ class WP_Posts_Carousel_Icons
     {
         $libraries = array(
             'fontawesome' => array(
-                'label' => __('Font Awesome', 'wp-posts-carousel'),
+                'label' => __('Font Awesome', 'cci-posts-carousel'),
                 'class_base' => 'fa',
                 'class_prefix' => 'fa-',
                 'defaults' => array(
@@ -46,7 +46,7 @@ class WP_Posts_Carousel_Icons
                 ),
             ),
             'tabler' => array(
-                'label' => __('Tabler Icons', 'wp-posts-carousel'),
+                'label' => __('Tabler Icons', 'cci-posts-carousel'),
                 'class_base' => 'ti',
                 'class_prefix' => 'ti-',
                 'defaults' => array(
@@ -104,18 +104,18 @@ class WP_Posts_Carousel_Icons
         $sources = array(
             array(
                 'value' => 'local',
-                'label' => __('Local plugin files', 'wp-posts-carousel'),
-                'description' => __('Load the selected icon CSS from this plugin.', 'wp-posts-carousel'),
+                'label' => __('Local plugin files', 'cci-posts-carousel'),
+                'description' => __('Load the selected icon CSS from this plugin.', 'cci-posts-carousel'),
             ),
             array(
                 'value' => 'cdn',
-                'label' => __('CDN', 'wp-posts-carousel'),
-                'description' => __('Load the selected icon CSS from a public CDN.', 'wp-posts-carousel'),
+                'label' => __('CDN', 'cci-posts-carousel'),
+                'description' => __('Load the selected icon CSS from a public CDN.', 'cci-posts-carousel'),
             ),
             array(
                 'value' => 'existing',
-                'label' => __('Already loaded by theme or plugin', 'wp-posts-carousel'),
-                'description' => __('Do not enqueue icon CSS. Use classes from assets already present on the page.', 'wp-posts-carousel'),
+                'label' => __('Already loaded by theme or plugin', 'cci-posts-carousel'),
+                'description' => __('Do not enqueue icon CSS. Use classes from assets already present on the page.', 'cci-posts-carousel'),
             ),
         );
 

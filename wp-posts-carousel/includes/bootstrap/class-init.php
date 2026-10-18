@@ -63,19 +63,19 @@ class WP_Posts_Carousel_Init
             'wp-posts-carousel',
             array(
                 'labels'             => array(
-                    'name'               => __('WP Posts Carousel', 'wp-posts-carousel'),
-                    'singular_name'      => __('Carousel', 'wp-posts-carousel'),
-                    'menu_name'          => __('WP Posts Carousel', 'wp-posts-carousel'),
-                    'name_admin_bar'     => __('Carousel', 'wp-posts-carousel'),
-                    'add_new'            => __('Add Carousel', 'wp-posts-carousel'),
-                    'add_new_item'       => __('Add new Carousel', 'wp-posts-carousel'),
-                    'new_item'           => __('New Carousel', 'wp-posts-carousel'),
-                    'edit_item'          => __('Edit Carousel', 'wp-posts-carousel'),
-                    'view_item'          => __('View ', 'wp-posts-carousel'),
-                    'all_items'          => __('WP Posts Carousel', 'wp-posts-carousel'),
-                    'search_items'       => __('Search Carousels', 'wp-posts-carousel'),
-                    'not_found'          => __('Not found any Carousels', 'wp-posts-carousel'),
-                    'not_found_in_trash' => __('Not found in trash', 'wp-posts-carousel')
+                    'name'               => __('CCI Posts Carousel All In One', 'cci-posts-carousel'),
+                    'singular_name'      => __('Carousel', 'cci-posts-carousel'),
+                    'menu_name'          => __('CCI Posts Carousel All In One', 'cci-posts-carousel'),
+                    'name_admin_bar'     => __('Carousel', 'cci-posts-carousel'),
+                    'add_new'            => __('Add Carousel', 'cci-posts-carousel'),
+                    'add_new_item'       => __('Add new Carousel', 'cci-posts-carousel'),
+                    'new_item'           => __('New Carousel', 'cci-posts-carousel'),
+                    'edit_item'          => __('Edit Carousel', 'cci-posts-carousel'),
+                    'view_item'          => __('View ', 'cci-posts-carousel'),
+                    'all_items'          => __('CCI Posts Carousel All In One', 'cci-posts-carousel'),
+                    'search_items'       => __('Search Carousels', 'cci-posts-carousel'),
+                    'not_found'          => __('Not found any Carousels', 'cci-posts-carousel'),
+                    'not_found_in_trash' => __('Not found in trash', 'cci-posts-carousel')
                 ),
                 'description'         => null,
                 'public'              => false,
@@ -135,7 +135,7 @@ class WP_Posts_Carousel_Init
             return new WP_Error(
                 'wp_posts_carousel_table_create_failed',
                 /* translators: %s: carousel database table name. */
-                sprintf(__('Failed create table %s', 'wp-posts-carousel'), $table_name),
+                sprintf(__('Failed create table %s', 'cci-posts-carousel'), $table_name),
                 array('status' => 500)
             );
         }

@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: Light Template for WP Posts Carousel
- * Plugin URI: https://coolcatideas.com/products/wp-posts-carousel-all-in-one
+ * Plugin Name: Light Template for CCI Posts Carousel All In One
+ * Plugin URI: https://coolcatideas.com/products/cci-posts-carousel-all-in-one
  * Description: Free, light template
  * Tags: carousel, posts carousel, wordpress carousel, wordpress owl carousel, owl carousel, wp posts carousel compact, compact theme, clean theme, flat theme
  * Author: Cool Cat Ideas
  * Author URI: https://coolcatideas.com/
  * Version: 2.0.0
- * Requires WP Posts Carousel at least: 2.0.0
+ * Requires CCI Posts Carousel All In One at least: 2.0.0
  * Requires at least: 6.2
  * Tested up to: 7.1.3
  * License: GPLv2 or later

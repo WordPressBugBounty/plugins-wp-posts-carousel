@@ -27,10 +27,10 @@ class WP_Posts_Carousel_Menu {
      */
     public function admin_menu() {
         add_menu_page(
-            'WP Posts Carousel',
-            'WP Posts Carousel',
+            'CCI Posts Carousel All In One',
+            'CCI Posts Carousel All In One',
             'edit_wp_posts_carousels',
-            'wp-posts-carousel',
+            'cci-posts-carousel',
             array( 'WP_Posts_Carousel_Carousels', 'manage' )
         );
     }

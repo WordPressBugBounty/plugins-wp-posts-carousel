@@ -24,15 +24,15 @@
 		}
 
 		return {
-			label: title || sprintf( __( 'Carousel #%d', 'wp-posts-carousel' ), id ),
+			label: title || sprintf( __( 'Carousel #%d', 'cci-posts-carousel' ), id ),
 			value: String( id ),
 		};
 	}
 
 	blocks.registerBlockType( 'wp-posts-carousel/carousel', {
 		apiVersion: 2,
-		title: __( 'WP Posts Carousel', 'wp-posts-carousel' ),
-		description: __( 'Embed a saved WP Posts Carousel.', 'wp-posts-carousel' ),
+		title: __( 'CCI Posts Carousel All In One', 'cci-posts-carousel' ),
+		description: __( 'Embed a saved CCI Posts Carousel All In One.', 'cci-posts-carousel' ),
 		category: 'widgets',
 		icon: 'images-alt2',
 		attributes: {
@@ -69,7 +69,7 @@
 			const options = useMemo( function () {
 				const next = [
 					{
-						label: __( 'Select carousel', 'wp-posts-carousel' ),
+						label: __( 'Select carousel', 'cci-posts-carousel' ),
 						value: '0',
 					},
 					...carousels,
@@ -82,7 +82,7 @@
 					} )
 				) {
 					next.push( {
-						label: sprintf( __( 'Current carousel #%d', 'wp-posts-carousel' ), carouselId ),
+						label: sprintf( __( 'Current carousel #%d', 'cci-posts-carousel' ), carouselId ),
 						value: String( carouselId ),
 					} );
 				}
@@ -93,7 +93,7 @@
 			useEffect( function () {
 				if ( ! apiFetch ) {
 					setLoading( false );
-					setError( __( 'Carousel list is unavailable in this editor.', 'wp-posts-carousel' ) );
+					setError( __( 'Carousel list is unavailable in this editor.', 'cci-posts-carousel' ) );
 					return;
 				}
 
@@ -119,7 +119,7 @@
 					} )
 					.catch( function () {
 						if ( active ) {
-							setError( __( 'Could not load saved carousels. Check permissions and plugin access.', 'wp-posts-carousel' ) );
+							setError( __( 'Could not load saved carousels. Check permissions and plugin access.', 'cci-posts-carousel' ) );
 						}
 					} )
 					.finally( function () {
@@ -247,12 +247,12 @@
 
 			const renderCarouselSelect = function ( context ) {
 				return el( CarouselPickerControl, {
-					label: __( 'Carousel', 'wp-posts-carousel' ),
+					label: __( 'Carousel', 'cci-posts-carousel' ),
 					value: String( carouselId || 0 ),
 					options,
 					disabled: loading,
-					help: context === 'inspector' ? __( 'Choose one of the saved carousel definitions.', 'wp-posts-carousel' ) : undefined,
-					placeholder: __( 'Search carousels', 'wp-posts-carousel' ),
+					help: context === 'inspector' ? __( 'Choose one of the saved carousel definitions.', 'cci-posts-carousel' ) : undefined,
+					placeholder: __( 'Search carousels', 'cci-posts-carousel' ),
 					showSuggestionsWhenValueIsEmpty: true,
 					onChange: setCarouselId,
 				} );
@@ -308,7 +308,7 @@
 					Placeholder,
 					{
 						icon: 'images-alt2',
-						label: __( 'WP Posts Carousel', 'wp-posts-carousel' ),
+						label: __( 'CCI Posts Carousel All In One', 'cci-posts-carousel' ),
 					},
 					renderLoadingState(),
 					renderErrorState(),
@@ -324,7 +324,7 @@
 					el(
 						PanelBody,
 						{
-							title: __( 'Carousel', 'wp-posts-carousel' ),
+							title: __( 'Carousel', 'cci-posts-carousel' ),
 							initialOpen: true,
 						},
 						renderLoadingState(),

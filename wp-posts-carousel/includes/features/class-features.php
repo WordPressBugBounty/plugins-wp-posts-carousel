@@ -10,44 +10,44 @@ class WP_Posts_Carousel_Features
     {
         $features = array(
             'shortcode' => self::feature(
-                __('Shortcode rendering', 'wp-posts-carousel'),
-                __('Render carousels with the wp_posts_carousel shortcode.', 'wp-posts-carousel'),
+                __('Shortcode rendering', 'cci-posts-carousel'),
+                __('Render carousels with the wp_posts_carousel shortcode.', 'cci-posts-carousel'),
                 true,
                 'core'
             ),
             'php_renderer' => self::feature(
-                __('PHP renderer', 'wp-posts-carousel'),
-                __('Server-rendered carousel markup and fallback output.', 'wp-posts-carousel'),
+                __('PHP renderer', 'cci-posts-carousel'),
+                __('Server-rendered carousel markup and fallback output.', 'cci-posts-carousel'),
                 true,
                 'core'
             ),
             'template_registry' => self::feature(
-                __('Template registry', 'wp-posts-carousel'),
-                __('Manifest-based templates loaded from the plugin, theme, uploads, or add-ons.', 'wp-posts-carousel'),
+                __('Template registry', 'cci-posts-carousel'),
+                __('Manifest-based templates loaded from the plugin, theme, uploads, or add-ons.', 'cci-posts-carousel'),
                 true,
                 'core'
             ),
             'query_builder' => self::feature(
-                __('Query builder', 'wp-posts-carousel'),
-                __('Build carousel items from post types, taxonomies, and manual selections.', 'wp-posts-carousel'),
+                __('Query builder', 'cci-posts-carousel'),
+                __('Build carousel items from post types, taxonomies, and manual selections.', 'cci-posts-carousel'),
                 true,
                 'core'
             ),
             'manual_curation' => self::feature(
-                __('Manual curation', 'wp-posts-carousel'),
-                __('Manually order selected posts in a carousel.', 'wp-posts-carousel'),
+                __('Manual curation', 'cci-posts-carousel'),
+                __('Manually order selected posts in a carousel.', 'cci-posts-carousel'),
                 true,
                 'core'
             ),
             'analytics' => self::feature(
-                __('Basic analytics', 'wp-posts-carousel'),
-                __('Show local carousel configuration insights without visitor tracking.', 'wp-posts-carousel'),
+                __('Basic analytics', 'cci-posts-carousel'),
+                __('Show local carousel configuration insights without visitor tracking.', 'cci-posts-carousel'),
                 true,
                 'core'
             ),
             'react_frontend' => self::feature(
-                __('React frontend renderer', 'wp-posts-carousel'),
-                __('Lazy-mounted React rendering and enhancements for public carousel output.', 'wp-posts-carousel'),
+                __('React frontend renderer', 'cci-posts-carousel'),
+                __('Lazy-mounted React rendering and enhancements for public carousel output.', 'cci-posts-carousel'),
                 true,
                 'core'
             ),
@@ -116,11 +116,11 @@ class WP_Posts_Carousel_Features
         $message = '';
         if (!$enabled) {
             /* translators: %s: required product feature name. */
-            $message = sprintf(__('Requires feature: %s', 'wp-posts-carousel'), isset($features[$feature]['label']) ? $features[$feature]['label'] : $feature);
+            $message = sprintf(__('Requires feature: %s', 'cci-posts-carousel'), isset($features[$feature]['label']) ? $features[$feature]['label'] : $feature);
         }
 
         if (!$enabled && isset($features[$feature]['plan']) && $features[$feature]['plan'] === 'paid') {
-            $message = __('Requires an active WP Posts Carousel Pro license for this domain.', 'wp-posts-carousel');
+            $message = __('Requires an active CCI Posts Carousel All In One Pro license for this domain.', 'cci-posts-carousel');
         }
 
         return array(
@@ -189,6 +189,8 @@ class WP_Posts_Carousel_Features
             'key' => $key,
             'label' => isset($feature['label']) ? sanitize_text_field($feature['label']) : $key,
             'description' => isset($feature['description']) ? sanitize_text_field($feature['description']) : '',
+            'author' => isset($feature['author']) ? sanitize_text_field($feature['author']) : '',
+            'version' => isset($feature['version']) ? sanitize_text_field($feature['version']) : '',
             'enabled' => !empty($feature['enabled']),
             'source' => $source,
             'expires' => isset($feature['expires']) ? sanitize_text_field($feature['expires']) : '',

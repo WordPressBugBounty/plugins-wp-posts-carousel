@@ -73,7 +73,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="cci-wpc-admin-bootstrap-spinner"></span>
 			</span>
 			<span class="cci-wpc-admin-bootstrap-label">
-				<?php esc_html_e( 'Loading dashboard...', 'wp-posts-carousel' ); ?>
+				<?php esc_html_e( 'Loading dashboard...', 'cci-posts-carousel' ); ?>
 			</span>
 		</div>
 	</div>

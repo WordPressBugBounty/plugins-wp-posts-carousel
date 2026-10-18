@@ -83,7 +83,7 @@ class WP_Posts_Carousel_Blocks
 
         if (!$carousel_id) {
             return $editor_context
-                ? self::render_admin_placeholder(esc_html__('Select a carousel.', 'wp-posts-carousel'))
+                ? self::render_admin_placeholder(esc_html__('Select a carousel.', 'cci-posts-carousel'))
                 : '';
         }
 
@@ -115,8 +115,8 @@ class WP_Posts_Carousel_Blocks
 
             if (!$config) {
                 return self::render_admin_placeholder(
-                    __('Selected carousel is not available.', 'wp-posts-carousel'),
-                    __('The selected carousel definition could not be loaded.', 'wp-posts-carousel')
+                    __('Selected carousel is not available.', 'cci-posts-carousel'),
+                    __('The selected carousel definition could not be loaded.', 'cci-posts-carousel')
                 );
             }
 
@@ -127,11 +127,11 @@ class WP_Posts_Carousel_Blocks
 
             if (!empty($missing_features)) {
                 return self::render_admin_placeholder(
-                    __('This carousel requires additional features.', 'wp-posts-carousel'),
+                    __('This carousel requires additional features.', 'cci-posts-carousel'),
                     self::feature_list_message($missing_features),
                     esc_url_raw(apply_filters(
                         'wp_posts_carousel_upgrade_url',
-                        'https://coolcatideas.com/products/wp-posts-carousel-all-in-one'
+                        'https://coolcatideas.com/products/cci-posts-carousel-all-in-one'
                     ))
                 );
             }
@@ -163,8 +163,8 @@ class WP_Posts_Carousel_Blocks
 
         if ($editor_context && !$output) {
             return self::render_admin_placeholder(
-                __('This carousel is empty.', 'wp-posts-carousel'),
-                __('No slides were rendered. Check the carousel settings and posts.', 'wp-posts-carousel')
+                __('This carousel is empty.', 'cci-posts-carousel'),
+                __('No slides were rendered. Check the carousel settings and posts.', 'cci-posts-carousel')
             );
         }
 
@@ -182,7 +182,7 @@ class WP_Posts_Carousel_Blocks
 
         if ($cta_url) {
             $output .= '<p><a href="' . esc_url($cta_url) . '" target="_blank" rel="noopener noreferrer">'
-                . esc_html__('Open store', 'wp-posts-carousel')
+                . esc_html__('Open store', 'cci-posts-carousel')
                 . '</a></p>';
         }
 
@@ -207,12 +207,12 @@ class WP_Posts_Carousel_Blocks
         }
 
         if (empty($messages)) {
-            return __('Missing premium feature.', 'wp-posts-carousel');
+            return __('Missing premium feature.', 'cci-posts-carousel');
         }
 
         return sprintf(
             /* translators: %s: comma-separated required product feature names. */
-            __('Missing required features: %s.', 'wp-posts-carousel'),
+            __('Missing required features: %s.', 'cci-posts-carousel'),
             implode(', ', array_map('esc_html', $messages))
         );
     }

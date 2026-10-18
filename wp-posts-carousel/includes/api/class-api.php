@@ -18,8 +18,8 @@ class WP_Posts_Carousel_API
 {
   const MARKETPLACE_API_BASE = 'https://coolcatideas.com';
   const MARKETPLACE_API_BASE_OVERRIDE = 'WP_POSTS_CAROUSEL_MARKETPLACE_API_BASE';
-  const MARKETPLACE_PRODUCT_SLUG = 'wp-posts-carousel-all-in-one';
-  const MARKETPLACE_PRODUCT_URL = 'https://coolcatideas.com/products/wp-posts-carousel-all-in-one';
+  const MARKETPLACE_PRODUCT_SLUG = 'cci-posts-carousel-all-in-one';
+  const MARKETPLACE_PRODUCT_URL = 'https://coolcatideas.com/products/cci-posts-carousel-all-in-one';
   const MARKETPLACE_CACHE_TTL = 600;
   const MARKETPLACE_STALE_CACHE_TTL = DAY_IN_SECONDS;
   protected $site_url = 'http://demuo.wp-api.org/wp-json/wp/v2/';
@@ -400,6 +400,10 @@ class WP_Posts_Carousel_API
   {
     $result = array();
     $config = WP_Posts_Carousel_Config::normalize($request);
+    if (($config['source']['mode'] ?? '') === 'hybrid') {
+      $selection = WP_Posts_Carousel_Data::pinned_selection($config);
+      return new WP_REST_Response(array_map(array($this, 'prepare_post_option'), $selection['automatic']), 200);
+    }
     $query_config = $config;
     $query_config['source']['mode'] = 'query';
     $query_config['curation']['mode'] = 'query';
@@ -439,7 +443,7 @@ class WP_Posts_Carousel_API
     if (!$data) {
       return new WP_Error(
         'wp_posts_carousel_not_found',
-        __('Carousel not found', 'wp-posts-carousel'),
+        __('Carousel not found', 'cci-posts-carousel'),
         array('status' => 404)
       );
     }
@@ -477,7 +481,7 @@ class WP_Posts_Carousel_API
     if (!$data) {
       return new WP_Error(
         'wp_posts_carousel_preview_not_found',
-        __('Carousel preview not found', 'wp-posts-carousel'),
+        __('Carousel preview not found', 'cci-posts-carousel'),
         array('status' => 404)
       );
     }
@@ -513,7 +517,7 @@ class WP_Posts_Carousel_API
       'id' => isset($values['id']) ? absint($values['id']) : 0,
       'title' => isset($values['title']) && $values['title'] !== ''
         ? sanitize_text_field($values['title'])
-        : __('Unsaved carousel preview', 'wp-posts-carousel'),
+        : __('Unsaved carousel preview', 'cci-posts-carousel'),
       'status' => isset($values['status']) ? sanitize_key($values['status']) : 'draft',
       'context' => 'preview',
       'instance_id' => 'wp-posts-carousel-admin-preview-' . time(),
@@ -527,7 +531,7 @@ class WP_Posts_Carousel_API
     if (!$data) {
       return new WP_Error(
         'wp_posts_carousel_preview_not_available',
-        __('Carousel preview is not available for this configuration.', 'wp-posts-carousel'),
+        __('Carousel preview is not available for this configuration.', 'cci-posts-carousel'),
         array('status' => 400)
       );
     }
@@ -643,7 +647,7 @@ class WP_Posts_Carousel_API
     if ($rating < 1 || $rating > 5) {
       return new WP_Error(
         'wp_posts_carousel_review_rating_required',
-        __('Please select a rating before saving feedback.', 'wp-posts-carousel'),
+        __('Please select a rating before saving feedback.', 'cci-posts-carousel'),
         array('status' => 400)
       );
     }
@@ -657,7 +661,7 @@ class WP_Posts_Carousel_API
     if (empty($review_consent['accepted']) || $consent_content === '') {
       return new WP_Error(
         'wp_posts_carousel_review_consent_required',
-        __('Please accept the required consent before sending your review.', 'wp-posts-carousel'),
+        __('Please accept the required consent before sending your review.', 'cci-posts-carousel'),
         array('status' => 400)
       );
     }
@@ -737,7 +741,7 @@ class WP_Posts_Carousel_API
     if (is_wp_error($remote_response)) {
       return new WP_Error(
         'wp_posts_carousel_feedback_unavailable',
-        __('Feedback could not be sent. Please try again.', 'wp-posts-carousel'),
+        __('Feedback could not be sent. Please try again.', 'cci-posts-carousel'),
         array('status' => 502, 'details' => $remote_response->get_error_message())
       );
     }
@@ -752,12 +756,12 @@ class WP_Posts_Carousel_API
     ) {
       return new WP_Error(
         'wp_posts_carousel_feedback_rejected',
-        __('Feedback could not be sent. Please try again.', 'wp-posts-carousel'),
+        __('Feedback could not be sent. Please try again.', 'cci-posts-carousel'),
         array(
           'status' => 502,
           'details' => is_array($remote_payload) && isset($remote_payload['error'])
             ? sanitize_text_field((string) $remote_payload['error'])
-            : __('The feedback service returned an invalid response.', 'wp-posts-carousel'),
+            : __('The feedback service returned an invalid response.', 'cci-posts-carousel'),
         )
       );
     }
@@ -801,7 +805,7 @@ class WP_Posts_Carousel_API
       'wp_posts_carousel_license_data',
       array(
         'status' => 'free',
-        'label' => __('Free', 'wp-posts-carousel'),
+        'label' => __('Free', 'cci-posts-carousel'),
         'expires' => '',
       )
     );
@@ -1140,7 +1144,7 @@ class WP_Posts_Carousel_API
         $endpoint,
         array(
           'timeout' => 8,
-          'user-agent' => 'WP Posts Carousel product feed',
+          'user-agent' => 'CCI Posts Carousel All In One product feed',
           'headers' => array(
             'Accept' => 'application/json',
           ),
@@ -1159,8 +1163,8 @@ class WP_Posts_Carousel_API
       if ($code < 200 || $code >= 300 || !self::is_valid_marketplace_feed($data)) {
         $last_error = $code < 200 || $code >= 300
           /* translators: %d: HTTP response status code. */
-          ? sprintf(__('Marketplace feed returned HTTP %d.', 'wp-posts-carousel'), $code)
-          : __('Marketplace feed returned an invalid response.', 'wp-posts-carousel');
+          ? sprintf(__('Marketplace feed returned HTTP %d.', 'cci-posts-carousel'), $code)
+          : __('Marketplace feed returned an invalid response.', 'cci-posts-carousel');
         continue;
       }
 
@@ -1218,7 +1222,7 @@ class WP_Posts_Carousel_API
           'source' => 'empty',
           'cached' => false,
           'stale' => false,
-          'error' => sanitize_text_field($message ? $message : __('Marketplace feed is temporarily unavailable.', 'wp-posts-carousel')),
+          'error' => sanitize_text_field($message ? $message : __('Marketplace feed is temporarily unavailable.', 'cci-posts-carousel')),
           'retryAfter' => 120,
         ),
       ),
@@ -1290,7 +1294,7 @@ class WP_Posts_Carousel_API
 
   public function create_carousel(WP_REST_Request $request)
   {
-    $title = isset($request['title']) ? $request['title'] : __('Untitled carousel', 'wp-posts-carousel');
+    $title = isset($request['title']) ? $request['title'] : __('Untitled carousel', 'cci-posts-carousel');
     $params = $request->get_json_params();
 
     if (!is_array($params)) {
@@ -1328,7 +1332,7 @@ class WP_Posts_Carousel_API
       return new WP_REST_Response(array_merge(array('post' => $post), $settings), 200);
     }
 
-    return new WP_Error(__('Failed get carousel', 'wp-posts-carousel'), $request, array('status' => 500));
+    return new WP_Error(__('Failed get carousel', 'cci-posts-carousel'), $request, array('status' => 500));
   }
 
   public function prepare_posts_options($settings, $post)
@@ -1353,7 +1357,7 @@ class WP_Posts_Carousel_API
 
   public function update_carousel(WP_REST_Request $request)
   {
-    $title = isset($request['title']) ? $request['title'] : __('Untitled carousel', 'wp-posts-carousel');
+    $title = isset($request['title']) ? $request['title'] : __('Untitled carousel', 'cci-posts-carousel');
     $params = $request->get_json_params();
 
     if (!is_array($params)) {

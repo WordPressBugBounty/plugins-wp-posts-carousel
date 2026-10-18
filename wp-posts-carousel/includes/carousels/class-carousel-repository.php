@@ -117,7 +117,7 @@ class WP_Posts_Carousel_Repository
         $existing = get_post($post_id);
 
         if (!$existing || $existing->post_type !== 'wp-posts-carousel') {
-            return new WP_Error('wp_posts_carousel_not_found', __('Carousel not found', 'wp-posts-carousel'), array('status' => 404));
+            return new WP_Error('wp_posts_carousel_not_found', __('Carousel not found', 'cci-posts-carousel'), array('status' => 404));
         }
 
         $updated = wp_update_post(
@@ -150,7 +150,7 @@ class WP_Posts_Carousel_Repository
         $post_id = absint($post_id);
 
         if (!wp_delete_post($post_id, true)) {
-            return new WP_Error('wp_posts_carousel_delete_failed', __('Failed delete carousel', 'wp-posts-carousel'), array('status' => 500));
+            return new WP_Error('wp_posts_carousel_delete_failed', __('Failed delete carousel', 'cci-posts-carousel'), array('status' => 500));
         }
 
         $wpdb->delete(self::table_name(), array('post_id' => $post_id), array('%d'));
@@ -163,13 +163,13 @@ class WP_Posts_Carousel_Repository
         $carousel = self::get($post_id);
 
         if (!$carousel || empty($carousel['params'])) {
-            return new WP_Error('wp_posts_carousel_not_found', __('Carousel not found', 'wp-posts-carousel'), array('status' => 404));
+            return new WP_Error('wp_posts_carousel_not_found', __('Carousel not found', 'cci-posts-carousel'), array('status' => 404));
         }
 
         $config = json_decode($carousel['params'], true);
 
         if (!is_array($config)) {
-            return new WP_Error('wp_posts_carousel_invalid_params', __('Carousel params are invalid', 'wp-posts-carousel'), array('status' => 500));
+            return new WP_Error('wp_posts_carousel_invalid_params', __('Carousel params are invalid', 'cci-posts-carousel'), array('status' => 500));
         }
 
         $config = WP_Posts_Carousel_Config::normalize($config);
@@ -177,7 +177,7 @@ class WP_Posts_Carousel_Repository
 
         return self::create(
             /* translators: %s: original carousel title. */
-            sprintf(__('%s copy', 'wp-posts-carousel'), $carousel['post_title']),
+            sprintf(__('%s copy', 'cci-posts-carousel'), $carousel['post_title']),
             $config
         );
     }
@@ -217,7 +217,7 @@ class WP_Posts_Carousel_Repository
         }
 
         if ($result === false) {
-            return new WP_Error('wp_posts_carousel_params_save_failed', __('Failed save carousel params', 'wp-posts-carousel'), array('status' => 500));
+            return new WP_Error('wp_posts_carousel_params_save_failed', __('Failed save carousel params', 'cci-posts-carousel'), array('status' => 500));
         }
 
         return true;

@@ -22,7 +22,7 @@ class WP_Posts_Carousel_Query_Builder
             'no_found_rows' => true,
         );
 
-        if (!empty($manual_ids)) {
+        if (!empty($manual_ids) && ($source['mode'] ?? '') !== 'hybrid') {
             $args['post__in'] = $manual_ids;
             $args['orderby'] = 'post__in';
             $args['posts_per_page'] = count($manual_ids);

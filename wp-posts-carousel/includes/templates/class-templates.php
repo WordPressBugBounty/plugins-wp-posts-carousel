@@ -58,7 +58,7 @@ class WP_Posts_Carousel_Templates
         if (!$template_name) {
             return array(
                 'status' => false,
-                'error' => __('Template name is not valid', 'wp-posts-carousel'),
+                'error' => __('Template name is not valid', 'cci-posts-carousel'),
             );
         }
 
@@ -68,7 +68,7 @@ class WP_Posts_Carousel_Templates
             return array(
                 'status' => false,
                 /* translators: %s: carousel template name. */
-                'error' => sprintf(__('Could not find template: %s', 'wp-posts-carousel'), $template_name),
+                'error' => sprintf(__('Could not find template: %s', 'cci-posts-carousel'), $template_name),
             );
         }
 
@@ -76,7 +76,7 @@ class WP_Posts_Carousel_Templates
             return array(
                 'status' => false,
                 /* translators: %s: carousel template name. */
-                'error' => sprintf(__('Template view file is missing: %s', 'wp-posts-carousel'), $template_name),
+                'error' => sprintf(__('Template view file is missing: %s', 'cci-posts-carousel'), $template_name),
             );
         }
 

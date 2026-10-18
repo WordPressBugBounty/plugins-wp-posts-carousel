@@ -210,10 +210,10 @@ class WP_Posts_Carousel_Frontend
                         'loadSwiperCss' => (bool) apply_filters('wp_posts_carousel_load_swiper_css', !empty($settings['load_swiper_css']), $settings),
                     ),
                     'labels' => array(
-                        'previousSlide' => __('Previous slide', 'wp-posts-carousel'),
-                        'nextSlide' => __('Next slide', 'wp-posts-carousel'),
+                        'previousSlide' => __('Previous slide', 'cci-posts-carousel'),
+                        'nextSlide' => __('Next slide', 'cci-posts-carousel'),
                         /* translators: %d: slide number. */
-                        'goToSlide' => __('Go to slide %d', 'wp-posts-carousel'),
+                        'goToSlide' => __('Go to slide %d', 'cci-posts-carousel'),
                     ),
                 ),
                 $settings

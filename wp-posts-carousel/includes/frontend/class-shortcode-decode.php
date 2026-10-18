@@ -21,4 +21,5 @@ class WP_Posts_Carousel_Shortcode_Decode {
     }
 }
 add_shortcode( 'wp_posts_carousel', array( 'WP_Posts_Carousel_Shortcode_Decode', 'initialize' ) );
+add_shortcode( 'cci_posts_carousel', array( 'WP_Posts_Carousel_Shortcode_Decode', 'initialize' ) );
 ?>
