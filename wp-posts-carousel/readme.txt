@@ -4,7 +4,7 @@ Tags: carousel, slider, posts, gutenberg, custom post types
 Requires at least: 6.2
 Tested up to: 7.1.3
 Requires PHP: 7.4
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -198,6 +198,20 @@ Icons are local by default. Choosing **CDN** in compatibility settings loads Fon
 The plugin includes compiled JavaScript and CSS. The repositories above contain the readable sources and build tools; the product lockfile pins the shared UI packages.
 
 == Changelog ==
+
+= 2.1.1 =
+* Simplified image settings in Design: choose the image file size next to its width and height, then choose whether to show the whole image or crop it. The second image on hover is also configured in Design.
+* Category and tag filters above the carousel now use complete labels such as "All categories" and "All tags", translated into the visitor's language. These buttons clear the selection in their filter group.
+* Fixed REST authorization so administrative requests are checked after authentication and cookie nonce validation.
+* Restricted carousel operations to the correct post type and the user's permissions for that carousel.
+* Removed editorial selection data from public REST responses to protect titles of unpublished content.
+
+* Fixed automatic asset loading for the cci_posts_carousel shortcode alias, including Elementor content.
+* Fixed React slide images ignoring the image fitting setting.
+* Fixed carousel startup when responsive rules are empty or invalid. Empty carousel rules now inherit global settings, while the final global rule cannot be removed.
+* Fixed image size overrides being replaced by per-post-type image settings.
+* Added an image fitting setting for slide images: show the entire image or fill and crop. Existing carousels keep their template setting.
+* New post and product carousels use large images by default to reduce thumbnail enlargement.
 
 = 2.1.0 =
 * Renamed WP Posts Carousel All In One to CCI Posts Carousel All In One following WordPress's decision about the plugin name and slug. Existing shortcodes, saved carousels, settings and license rights remain supported.

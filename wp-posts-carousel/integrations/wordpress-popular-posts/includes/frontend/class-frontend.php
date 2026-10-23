@@ -7,7 +7,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
+	exit; // Exit if accessed directly
 }
 
 /**
@@ -15,14 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class WP_Posts_Carousel_Wordpress_Popular_Posts_Frontend extends WP_Query {
 
-    /**
-     * constructor
-     */
-    public function __construct() {
-        add_action( 'init', array( $this, 'includes' ) );
-    }
+	/**
+	 * constructor
+	 */
+	public function __construct() {
+		add_action( 'init', array( $this, 'includes' ) );
+	}
 
-    public function includes() {
-        include_once( 'includes/frontend/class-query.php' );
-    }
+	public function includes() {
+		include_once( 'includes/frontend/class-query.php' );
+	}
 }

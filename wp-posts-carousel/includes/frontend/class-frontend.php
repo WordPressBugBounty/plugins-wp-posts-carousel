@@ -6,330 +6,322 @@
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
-if (! defined('ABSPATH')) {
-    exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 /**
  * WP_Posts_Carousel_Admin class
  */
-class WP_Posts_Carousel_Frontend
-{
-    /**
-     * Track editor asset enqueue contexts in the current request.
-     *
-     * The block editor may load the editor UI and the canvas iframe as separate
-     * documents. A single boolean guard can enqueue assets in the sidebar/admin
-     * page while leaving the actual preview canvas without Owl, template styles
-     * or FontAwesome.
-     */
-    private static $editor_assets_enqueued = array();
+class WP_Posts_Carousel_Frontend {
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        add_action('init', array( $this, 'includes' ));
+	/**
+	 * Track editor asset enqueue contexts in the current request.
+	 *
+	 * The block editor may load the editor UI and the canvas iframe as separate
+	 * documents. A single boolean guard can enqueue assets in the sidebar/admin
+	 * page while leaving the actual preview canvas without Owl, template styles
+	 * or FontAwesome.
+	 */
+	private static $editor_assets_enqueued = array();
 
-        if (is_admin()) {
-            add_action('admin_enqueue_scripts', array($this, 'enqueue_editor_scripts'), 99);
-            add_action('enqueue_block_editor_assets', array($this, 'enqueue_editor_scripts'), 99);
-            add_action('enqueue_block_assets', array($this, 'enqueue_block_canvas_assets'), 99);
-            add_action('elementor/editor/after_enqueue_scripts', array($this, 'enqueue_editor_scripts'), 99);
-            add_action('elementor/editor/after_enqueue_styles', array($this, 'enqueue_editor_scripts'), 99);
-            add_action('elementor/preview/enqueue_scripts', array($this, 'enqueue_editor_scripts'), 99);
-            add_action('elementor/preview/enqueue_styles', array($this, 'enqueue_editor_scripts'), 99);
-        } else {
-            add_action('wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 99);
-        }
-    }
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		add_action( 'init', array( $this, 'includes' ) );
 
-    public function includes()
-    {
-        include_once('class-carousel-generator.php');
-        include_once('class-shortcode-decode.php');
-    }
+		if ( is_admin() ) {
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_editor_scripts' ), 99 );
+			add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_scripts' ), 99 );
+			add_action( 'enqueue_block_assets', array( $this, 'enqueue_block_canvas_assets' ), 99 );
+			add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'enqueue_editor_scripts' ), 99 );
+			add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'enqueue_editor_scripts' ), 99 );
+			add_action( 'elementor/preview/enqueue_scripts', array( $this, 'enqueue_editor_scripts' ), 99 );
+			add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_editor_scripts' ), 99 );
+		} else {
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 99 );
+		}
+	}
 
-    /**
-     * enqueue scripts and styles
-     */
-    public function enqueue_scripts()
-    {
-        if (!$this->should_enqueue_frontend_assets()) {
-            return;
-        }
+	public function includes() {
+		include_once( 'class-carousel-generator.php' );
+		include_once( 'class-shortcode-decode.php' );
+	}
 
-        $this->enqueue_assets('frontend');
-    }
+	/**
+	 * enqueue scripts and styles
+	 */
+	public function enqueue_scripts() {
+		if ( ! $this->should_enqueue_frontend_assets() ) {
+			return;
+		}
 
-    private function should_enqueue_frontend_assets()
-    {
-        global $wp_query;
+		$this->enqueue_assets( 'frontend' );
+	}
 
-        $posts = array();
-        $queried_object = get_queried_object();
+	private function should_enqueue_frontend_assets() {
+		global $wp_query;
 
-        if ($queried_object instanceof WP_Post) {
-            $posts[] = $queried_object;
-        }
+		$posts          = array();
+		$queried_object = get_queried_object();
 
-        if ($wp_query instanceof WP_Query && is_array($wp_query->posts)) {
-            foreach ($wp_query->posts as $post) {
-                if ($post instanceof WP_Post) {
-                    $posts[$post->ID] = $post;
-                }
-            }
-        }
+		if ( $queried_object instanceof WP_Post ) {
+			$posts[] = $queried_object;
+		}
 
-        $should_enqueue = is_active_widget(false, false, 'wp_posts_carousel', true);
+		if ( $wp_query instanceof WP_Query && is_array( $wp_query->posts ) ) {
+			foreach ( $wp_query->posts as $post ) {
+				if ( $post instanceof WP_Post ) {
+					$posts[ $post->ID ] = $post;
+				}
+			}
+		}
 
-        foreach ($posts as $post) {
-            $content = (string) $post->post_content;
+		$should_enqueue = is_active_widget( false, false, 'wp_posts_carousel', true );
 
-            if (
-                has_shortcode($content, 'wp_posts_carousel')
-                || has_block('wp-posts-carousel/carousel', $content)
-                || false !== strpos((string) get_post_meta($post->ID, '_elementor_data', true), 'wp_posts_carousel')
-            ) {
-                $should_enqueue = true;
-                break;
-            }
-        }
+		foreach ( $posts as $post ) {
+			$content        = (string) $post->post_content;
+			$elementor_data = (string) get_post_meta( $post->ID, '_elementor_data', true );
 
-        return (bool) apply_filters(
-            'wp_posts_carousel_should_enqueue_frontend_assets',
-            $should_enqueue,
-            array_values($posts)
-        );
-    }
+			if (
+				has_shortcode( $content, 'wp_posts_carousel' )
+				|| has_shortcode( $content, 'cci_posts_carousel' )
+				|| has_block( 'wp-posts-carousel/carousel', $content )
+				|| false !== strpos( $elementor_data, 'wp_posts_carousel' )
+				|| false !== strpos( $elementor_data, 'cci_posts_carousel' )
+			) {
+				$should_enqueue = true;
+				break;
+			}
+		}
 
-    public function enqueue_editor_scripts()
-    {
-        if (! $this->should_enqueue_editor_assets()) {
-            return;
-        }
+		return (bool) apply_filters(
+			'wp_posts_carousel_should_enqueue_frontend_assets',
+			$should_enqueue,
+			array_values( $posts )
+		);
+	}
 
-        $this->enqueue_assets('admin-preview');
-    }
+	public function enqueue_editor_scripts() {
+		if ( ! $this->should_enqueue_editor_assets() ) {
+			return;
+		}
 
-    public function enqueue_block_canvas_assets()
-    {
-        if (!is_admin()) {
-            return;
-        }
+		$this->enqueue_assets( 'admin-preview' );
+	}
 
-        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
-        if (
-            $screen
-            && method_exists($screen, 'is_block_editor')
-            && ! $screen->is_block_editor()
-            && ! in_array($screen->base, array('post', 'post-new', 'site-editor', 'widgets'), true)
-        ) {
-            return;
-        }
+	public function enqueue_block_canvas_assets() {
+		if ( ! is_admin() ) {
+			return;
+		}
 
-        $this->enqueue_assets('block-editor-canvas');
-    }
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if (
+			$screen
+			&& method_exists( $screen, 'is_block_editor' )
+			&& ! $screen->is_block_editor()
+			&& ! in_array( $screen->base, array( 'post', 'post-new', 'site-editor', 'widgets' ), true )
+		) {
+			return;
+		}
 
-    private function should_enqueue_editor_assets()
-    {
-        if (!is_admin()) {
-            return false;
-        }
+		$this->enqueue_assets( 'block-editor-canvas' );
+	}
 
-        if (!empty(self::$editor_assets_enqueued['admin-preview'])) {
-            return false;
-        }
+	private function should_enqueue_editor_assets() {
+		if ( ! is_admin() ) {
+			return false;
+		}
 
-        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+		if ( ! empty( self::$editor_assets_enqueued['admin-preview'] ) ) {
+			return false;
+		}
 
-        if ($screen === null) {
-            return true;
-        }
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 
-        if (method_exists($screen, 'is_block_editor') && $screen->is_block_editor()) {
-            return true;
-        }
+		if ( $screen === null ) {
+			return true;
+		}
 
-        return in_array(
-            $screen->base,
-            array(
-                'post',
-                'post-new',
-                'edit',
-                'elementor',
-                'edit-elementor_library',
-                'elementor_library',
-            ),
-            true
-        );
-    }
+		if ( method_exists( $screen, 'is_block_editor' ) && $screen->is_block_editor() ) {
+			return true;
+		}
 
-    private function enqueue_assets($context = 'frontend')
-    {
-        if ('frontend' !== $context && !empty(self::$editor_assets_enqueued[$context])) {
-            return;
-        }
+		return in_array(
+			$screen->base,
+			array(
+				'post',
+				'post-new',
+				'edit',
+				'elementor',
+				'edit-elementor_library',
+				'elementor_library',
+			),
+			true
+		);
+	}
 
-        $settings = WP_Posts_Carousel_Settings::get_settings();
-        $include_in_footer = !empty($settings['include_in_footer']);
-        $load_owl_assets = (bool) apply_filters('wp_posts_carousel_load_owl_assets', !empty($settings['load_owl_assets']), $settings);
-        $load_owl_css = (bool) apply_filters('wp_posts_carousel_load_owl_css', !empty($settings['load_owl_css']), $settings);
-        $load_mousewheel_asset = (bool) apply_filters('wp_posts_carousel_load_mousewheel_asset', !empty($settings['load_mousewheel_asset']), $settings);
-        $owl_script_handle = $this->asset_handle(apply_filters('wp_posts_carousel_owl_script_handle', 'owl.carousel', $settings));
-        $mousewheel_script_handle = $this->asset_handle(apply_filters('wp_posts_carousel_mousewheel_script_handle', 'jquery-mousewheel', $settings));
-        $owl_style_handle = $this->asset_handle(apply_filters('wp_posts_carousel_owl_style_handle', 'owl.carousel.style', $settings));
-        $swiper_source = sanitize_key(apply_filters('wp_posts_carousel_swiper_source', $settings['swiper_source'], $settings));
-        $swiper_source = in_array($swiper_source, array('bundled', 'global'), true) ? $swiper_source : 'bundled';
+	private function enqueue_assets( $context = 'frontend' ) {
+		if ( 'frontend' !== $context && ! empty( self::$editor_assets_enqueued[ $context ] ) ) {
+			return;
+		}
 
-        if (in_array($context, array('admin-preview', 'block-editor-canvas'), true)) {
-            $load_owl_assets = true;
-            $load_owl_css = true;
-        }
+		$settings                 = WP_Posts_Carousel_Settings::get_settings();
+		$include_in_footer        = ! empty( $settings['include_in_footer'] );
+		$load_owl_assets          = (bool) apply_filters( 'wp_posts_carousel_load_owl_assets', ! empty( $settings['load_owl_assets'] ), $settings );
+		$load_owl_css             = (bool) apply_filters( 'wp_posts_carousel_load_owl_css', ! empty( $settings['load_owl_css'] ), $settings );
+		$load_mousewheel_asset    = (bool) apply_filters( 'wp_posts_carousel_load_mousewheel_asset', ! empty( $settings['load_mousewheel_asset'] ), $settings );
+		$owl_script_handle        = $this->asset_handle( apply_filters( 'wp_posts_carousel_owl_script_handle', 'owl.carousel', $settings ) );
+		$mousewheel_script_handle = $this->asset_handle( apply_filters( 'wp_posts_carousel_mousewheel_script_handle', 'jquery-mousewheel', $settings ) );
+		$owl_style_handle         = $this->asset_handle( apply_filters( 'wp_posts_carousel_owl_style_handle', 'owl.carousel.style', $settings ) );
+		$swiper_source            = sanitize_key( apply_filters( 'wp_posts_carousel_swiper_source', $settings['swiper_source'], $settings ) );
+		$swiper_source            = in_array( $swiper_source, array( 'bundled', 'global' ), true ) ? $swiper_source : 'bundled';
 
-        if ($load_owl_assets && $owl_script_handle) {
-            wp_register_script($owl_script_handle, WP_POSTS_CAROUSEL_DIR_URL . 'libraries/owl.carousel/owl.carousel.min.js', array( 'jquery' ), '2.3.4', $include_in_footer);
-            wp_enqueue_script($owl_script_handle);
-        }
+		if ( in_array( $context, array( 'admin-preview', 'block-editor-canvas' ), true ) ) {
+			$load_owl_assets = true;
+			$load_owl_css    = true;
+		}
 
-        if ($load_mousewheel_asset && $mousewheel_script_handle) {
-            wp_register_script($mousewheel_script_handle, WP_POSTS_CAROUSEL_DIR_URL . 'libraries/owl.carousel/jquery.mousewheel.min.js', array( 'jquery' ), '3.1.12', $include_in_footer);
-            wp_enqueue_script($mousewheel_script_handle);
-        }
+		if ( $load_owl_assets && $owl_script_handle ) {
+			wp_register_script( $owl_script_handle, WP_POSTS_CAROUSEL_DIR_URL . 'libraries/owl.carousel/owl.carousel.min.js', array( 'jquery' ), '2.3.4', $include_in_footer );
+			wp_enqueue_script( $owl_script_handle );
+		}
 
-        wp_register_script('wp-posts-carousel-frontend-loader', WP_POSTS_CAROUSEL_DIR_URL . 'assets/js/frontend-loader.js', array(), $this->asset_version('assets/js/frontend-loader.js'), true);
-        wp_localize_script(
-            'wp-posts-carousel-frontend-loader',
-            'wpPostsCarouselRuntimeConfig',
-            apply_filters(
-                'wp_posts_carousel_frontend_runtime_config',
-                array(
-                    'assets' => array(
-                        'swiperSource' => $swiper_source,
-                        'loadSwiperCss' => (bool) apply_filters('wp_posts_carousel_load_swiper_css', !empty($settings['load_swiper_css']), $settings),
-                    ),
-                    'labels' => array(
-                        'previousSlide' => __('Previous slide', 'cci-posts-carousel'),
-                        'nextSlide' => __('Next slide', 'cci-posts-carousel'),
-                        /* translators: %d: slide number. */
-                        'goToSlide' => __('Go to slide %d', 'cci-posts-carousel'),
-                    ),
-                ),
-                $settings
-            )
-        );
+		if ( $load_mousewheel_asset && $mousewheel_script_handle ) {
+			wp_register_script( $mousewheel_script_handle, WP_POSTS_CAROUSEL_DIR_URL . 'libraries/owl.carousel/jquery.mousewheel.min.js', array( 'jquery' ), '3.1.12', $include_in_footer );
+			wp_enqueue_script( $mousewheel_script_handle );
+		}
 
-        if ($load_owl_css && $owl_style_handle) {
-            wp_register_style($owl_style_handle, WP_POSTS_CAROUSEL_DIR_URL . 'libraries/owl.carousel/assets/owl.carousel.min.css', array(), '2.3.4');
-            wp_enqueue_style($owl_style_handle);
-        }
+		wp_register_script( 'wp-posts-carousel-frontend-loader', WP_POSTS_CAROUSEL_DIR_URL . 'assets/js/frontend-loader.js', array(), $this->asset_version( 'assets/js/frontend-loader.js' ), true );
+		wp_localize_script(
+			'wp-posts-carousel-frontend-loader',
+			'wpPostsCarouselRuntimeConfig',
+			apply_filters(
+				'wp_posts_carousel_frontend_runtime_config',
+				array(
+					'assets' => array(
+						'swiperSource'  => $swiper_source,
+						'loadSwiperCss' => (bool) apply_filters( 'wp_posts_carousel_load_swiper_css', ! empty( $settings['load_swiper_css'] ), $settings ),
+					),
+					'labels' => array(
+						'previousSlide' => __( 'Previous slide', 'cci-posts-carousel' ),
+						'nextSlide'     => __( 'Next slide', 'cci-posts-carousel' ),
+						/* translators: %d: slide number. */
+						'goToSlide'     => __( 'Go to slide %d', 'cci-posts-carousel' ),
+					),
+				),
+				$settings
+			)
+		);
 
-        wp_enqueue_style(
-            'wp-posts-carousel-frontend',
-            WP_POSTS_CAROUSEL_DIR_URL . 'assets/css/frontend.css',
-            array(),
-            $this->asset_version('assets/css/frontend.css')
-        );
+		if ( $load_owl_css && $owl_style_handle ) {
+			wp_register_style( $owl_style_handle, WP_POSTS_CAROUSEL_DIR_URL . 'libraries/owl.carousel/assets/owl.carousel.min.css', array(), '2.3.4' );
+			wp_enqueue_style( $owl_style_handle );
+		}
 
-        $this->enqueue_template_styles($context);
+		wp_enqueue_style(
+			'wp-posts-carousel-frontend',
+			WP_POSTS_CAROUSEL_DIR_URL . 'assets/css/frontend.css',
+			array(),
+			$this->asset_version( 'assets/css/frontend.css' )
+		);
 
-        wp_enqueue_script('jquery-effects-core');
-        wp_enqueue_script('wp-posts-carousel-frontend-loader');
+		$this->enqueue_template_styles( $context );
 
-        if (class_exists('WP_Posts_Carousel_Icons')) {
-            WP_Posts_Carousel_Icons::enqueue_assets(
-                $settings,
-                array(
-                    'context' => $context,
-                )
-            );
-        }
+		wp_enqueue_script( 'jquery-effects-core' );
+		wp_enqueue_script( 'wp-posts-carousel-frontend-loader' );
 
-        wp_register_style('wp-posts-carousel-accessibility', false, array(), WP_POSTS_CAROUSEL_VERSION);
-        wp_enqueue_style('wp-posts-carousel-accessibility');
-        wp_add_inline_style(
-            'wp-posts-carousel-accessibility',
-            '.cci-wpc-carousel .screen-reader-text,.cci-wpc-render-preview .screen-reader-text,.cci-wpc-react-controls .screen-reader-text{clip:rect(1px,1px,1px,1px);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal;}'
-        );
+		if ( class_exists( 'WP_Posts_Carousel_Icons' ) ) {
+			WP_Posts_Carousel_Icons::enqueue_assets(
+				$settings,
+				array(
+					'context' => $context,
+				)
+			);
+		}
 
-        do_action(
-            'wp_posts_carousel_after_enqueue_scripts',
-            array(
-                'context' => $context,
-            )
-        );
+		wp_register_style( 'wp-posts-carousel-accessibility', false, array(), WP_POSTS_CAROUSEL_VERSION );
+		wp_enqueue_style( 'wp-posts-carousel-accessibility' );
+		wp_add_inline_style(
+			'wp-posts-carousel-accessibility',
+			'.cci-wpc-carousel .screen-reader-text,.cci-wpc-render-preview .screen-reader-text,.cci-wpc-react-controls .screen-reader-text{clip:rect(1px,1px,1px,1px);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal;}'
+		);
 
-        if (is_admin()) {
-            do_action(
-                'wp_posts_carousel_in_admin_after_enqueue_scripts',
-                array(
-                    'context' => $context,
-                )
-            );
-        }
+		do_action(
+			'wp_posts_carousel_after_enqueue_scripts',
+			array(
+				'context' => $context,
+			)
+		);
 
-        if ('frontend' !== $context) {
-            self::$editor_assets_enqueued[$context] = true;
-        }
-    }
+		if ( is_admin() ) {
+			do_action(
+				'wp_posts_carousel_in_admin_after_enqueue_scripts',
+				array(
+					'context' => $context,
+				)
+			);
+		}
 
-    private function enqueue_template_styles($context)
-    {
-        if ($context !== 'frontend' || is_preview() || is_customize_preview() || isset($_GET['elementor-preview'])) {
-            foreach (WP_Posts_Carousel_Templates::discover_templates() as $template) {
-                WP_Posts_Carousel_Template_Assets::enqueue($template);
-            }
-            return;
-        }
+		if ( 'frontend' !== $context ) {
+			self::$editor_assets_enqueued[ $context ] = true;
+		}
+	}
 
-        global $wp_query;
-        $posts = $wp_query instanceof WP_Query && is_array($wp_query->posts) ? $wp_query->posts : array();
-        $queried = get_queried_object();
-        if ($queried instanceof WP_Post) {
-            $posts[] = $queried;
-        }
-        $visited = array();
-        foreach ($posts as $post) {
-            if (!$post instanceof WP_Post || isset($visited[$post->ID])) {
-                continue;
-            }
-            $visited[$post->ID] = true;
-            WP_Posts_Carousel_Template_Assets::enqueue_content($post->post_content, $visited);
-            WP_Posts_Carousel_Template_Assets::enqueue_elementor(json_decode((string) get_post_meta($post->ID, '_elementor_data', true), true));
-        }
+	private function enqueue_template_styles( $context ) {
+		if ( $context !== 'frontend' || is_preview() || is_customize_preview() || isset( $_GET['elementor-preview'] ) ) {
+			foreach ( WP_Posts_Carousel_Templates::discover_templates() as $template ) {
+				WP_Posts_Carousel_Template_Assets::enqueue( $template );
+			}
+			return;
+		}
 
-        foreach (wp_get_sidebars_widgets() as $sidebar => $widgets) {
-            if ($sidebar === 'wp_inactive_widgets') {
-                continue;
-            }
-            foreach ((array) $widgets as $widget) {
-                if (!preg_match('/^(wp_posts_carousel|text|block)-(\d+)$/', $widget, $match)) {
-                    continue;
-                }
-                $settings = get_option('widget_' . $match[1], array());
-                $instance = isset($settings[$match[2]]) ? $settings[$match[2]] : array();
-                if ($match[1] === 'wp_posts_carousel') {
-                    WP_Posts_Carousel_Template_Assets::enqueue_carousel(isset($instance['carousel']) ? $instance['carousel'] : 0);
-                } else {
-                    $key = $match[1] === 'block' ? 'content' : 'text';
-                    WP_Posts_Carousel_Template_Assets::enqueue_content(isset($instance[$key]) ? $instance[$key] : '', $visited);
-                }
-            }
-        }
-    }
+		global $wp_query;
+		$posts   = $wp_query instanceof WP_Query && is_array( $wp_query->posts ) ? $wp_query->posts : array();
+		$queried = get_queried_object();
+		if ( $queried instanceof WP_Post ) {
+			$posts[] = $queried;
+		}
+		$visited = array();
+		foreach ( $posts as $post ) {
+			if ( ! $post instanceof WP_Post || isset( $visited[ $post->ID ] ) ) {
+				continue;
+			}
+			$visited[ $post->ID ] = true;
+			WP_Posts_Carousel_Template_Assets::enqueue_content( $post->post_content, $visited );
+			WP_Posts_Carousel_Template_Assets::enqueue_elementor( json_decode( (string) get_post_meta( $post->ID, '_elementor_data', true ), true ) );
+		}
 
-    private function asset_version($asset)
-    {
-        $path = WP_POSTS_CAROUSEL_DIR_PATH . ltrim($asset, '/');
+		foreach ( wp_get_sidebars_widgets() as $sidebar => $widgets ) {
+			if ( $sidebar === 'wp_inactive_widgets' ) {
+				continue;
+			}
+			foreach ( (array) $widgets as $widget ) {
+				if ( ! preg_match( '/^(wp_posts_carousel|text|block)-(\d+)$/', $widget, $match ) ) {
+					continue;
+				}
+				$settings = get_option( 'widget_' . $match[1], array() );
+				$instance = isset( $settings[ $match[2] ] ) ? $settings[ $match[2] ] : array();
+				if ( $match[1] === 'wp_posts_carousel' ) {
+					WP_Posts_Carousel_Template_Assets::enqueue_carousel( isset( $instance['carousel'] ) ? $instance['carousel'] : 0 );
+				} else {
+					$key = $match[1] === 'block' ? 'content' : 'text';
+					WP_Posts_Carousel_Template_Assets::enqueue_content( isset( $instance[ $key ] ) ? $instance[ $key ] : '', $visited );
+				}
+			}
+		}
+	}
 
-        return file_exists($path) ? (string) filemtime($path) : WP_POSTS_CAROUSEL_VERSION;
-    }
+	private function asset_version( $asset ) {
+		$path = WP_POSTS_CAROUSEL_DIR_PATH . ltrim( $asset, '/' );
 
-    private function asset_handle($handle)
-    {
-        return preg_replace('/[^A-Za-z0-9_.-]/', '', (string) $handle);
-    }
+		return file_exists( $path ) ? (string) filemtime( $path ) : WP_POSTS_CAROUSEL_VERSION;
+	}
+
+	private function asset_handle( $handle ) {
+		return preg_replace( '/[^A-Za-z0-9_.-]/', '', (string) $handle );
+	}
 }
 
 return new WP_Posts_Carousel_Frontend();

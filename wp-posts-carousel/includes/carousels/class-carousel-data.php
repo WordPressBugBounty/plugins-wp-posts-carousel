@@ -1,410 +1,413 @@
 <?php
 
-if (!defined('ABSPATH')) {
-    exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
-class WP_Posts_Carousel_Data
-{
-    public static function get($post_id, $args = array())
-    {
-        $post_id = absint($post_id);
-        $args = wp_parse_args(
-            $args,
-            array(
-                'context' => 'view',
-                'instance_id' => 'wp-posts-carousel_' . $post_id . '-api',
-            )
-        );
+class WP_Posts_Carousel_Data {
 
-        $carousel = WP_Posts_Carousel_Repository::get($post_id);
-        if (!$carousel || ($args['context'] === 'view' && $carousel['post_status'] !== 'publish')) {
-            return null;
-        }
+	public static function get( $post_id, $args = array() ) {
+		$post_id = absint( $post_id );
+		$args    = wp_parse_args(
+			$args,
+			array(
+				'context'     => 'view',
+				'instance_id' => 'wp-posts-carousel_' . $post_id . '-api',
+			)
+		);
 
-        $config = WP_Posts_Carousel_Repository::get_config($post_id);
-        if (!$config) {
-            return null;
-        }
+		$carousel = WP_Posts_Carousel_Repository::get( $post_id );
+		if ( ! $carousel || ( $args['context'] === 'view' && $carousel['post_status'] !== 'publish' ) ) {
+			return null;
+		}
 
-        if (!WP_Posts_Carousel_Config::requirements_met($config, array('context' => $args['context'] === 'view' ? 'frontend' : 'admin'))) {
-            return null;
-        }
+		$config = WP_Posts_Carousel_Repository::get_config( $post_id );
+		if ( ! $config ) {
+			return null;
+		}
 
-        $template = self::template($config);
-        if (!$template) {
-            return null;
-        }
-        $config = self::apply_template_runtime_overrides($config, $template);
+		if ( ! WP_Posts_Carousel_Config::requirements_met( $config, array( 'context' => $args['context'] === 'view' ? 'frontend' : 'admin' ) ) ) {
+			return null;
+		}
 
-        $runtime_params = self::runtime_params($config, $args['instance_id']);
-        $prepared_slides = self::slides($config, $runtime_params);
-        if (isset($args['_render_context']) && $args['_render_context'] instanceof WP_Posts_Carousel_Render_Context) {
-            $args['_render_context']->prepare($config, $runtime_params, $prepared_slides);
-        }
-        $slides = array_map(array('WP_Posts_Carousel_Slide_View_Model', 'public_data'), $prepared_slides);
+		$template = self::template( $config );
+		if ( ! $template ) {
+			return null;
+		}
+		$config = self::apply_template_runtime_overrides( $config, $template );
 
-        $runtime_params['post_count'] = count($slides);
+		$runtime_params  = self::runtime_params( $config, $args['instance_id'] );
+		$prepared_slides = self::slides( $config, $runtime_params );
+		if ( isset( $args['_render_context'] ) && $args['_render_context'] instanceof WP_Posts_Carousel_Render_Context ) {
+			$args['_render_context']->prepare( $config, $runtime_params, $prepared_slides );
+		}
+		$slides = array_map( array( 'WP_Posts_Carousel_Slide_View_Model', 'public_data' ), $prepared_slides );
 
-        $data = array(
-            'id' => $post_id,
-            'title' => $carousel['post_title'],
-            'status' => $carousel['post_status'],
-            'config' => $config,
-            'engine' => array(
-                'name' => $config['engine']['name'],
-                'options' => $runtime_params,
-            ),
-            'template' => self::public_template($template),
-            'slides' => $slides,
-            'features' => WP_Posts_Carousel_Features::public_data(),
-        );
+		$runtime_params['post_count'] = count( $slides );
 
-        return apply_filters('wp_posts_carousel_public_carousel_data', $data, $post_id, $config);
-    }
+		$data = array(
+			'id'       => $post_id,
+			'title'    => $carousel['post_title'],
+			'status'   => $carousel['post_status'],
+			'config'   => $config,
+			'engine'   => array(
+				'name'    => $config['engine']['name'],
+				'options' => $runtime_params,
+			),
+			'template' => self::public_template( $template ),
+			'slides'   => $slides,
+			'features' => WP_Posts_Carousel_Features::public_data(),
+		);
 
-    public static function from_config($config, $args = array())
-    {
-        $config = WP_Posts_Carousel_Config::normalize($config);
-        $args = wp_parse_args(
-            $args,
-            array(
-                'id' => 0,
-                'title' => __('Carousel preview', 'cci-posts-carousel'),
-                'status' => 'draft',
-                'context' => 'edit',
-                'instance_id' => 'wp-posts-carousel-admin-preview',
-            )
-        );
+		return apply_filters( 'wp_posts_carousel_public_carousel_data', $data, $post_id, $config );
+	}
 
-        if (!WP_Posts_Carousel_Config::requirements_met($config, array('context' => $args['context'] === 'view' ? 'frontend' : 'admin'))) {
-            return null;
-        }
+	public static function from_config( $config, $args = array() ) {
+		$config = WP_Posts_Carousel_Config::normalize( $config );
+		$args   = wp_parse_args(
+			$args,
+			array(
+				'id'          => 0,
+				'title'       => __( 'Carousel preview', 'cci-posts-carousel' ),
+				'status'      => 'draft',
+				'context'     => 'edit',
+				'instance_id' => 'wp-posts-carousel-admin-preview',
+			)
+		);
 
-        $template = self::template($config);
-        if (!$template) {
-            return null;
-        }
-        $config = self::apply_template_runtime_overrides($config, $template);
+		if ( ! WP_Posts_Carousel_Config::requirements_met( $config, array( 'context' => $args['context'] === 'view' ? 'frontend' : 'admin' ) ) ) {
+			return null;
+		}
 
-        $runtime_params = self::runtime_params($config, $args['instance_id']);
-        $prepared_slides = self::slides($config, $runtime_params);
-        if (isset($args['_render_context']) && $args['_render_context'] instanceof WP_Posts_Carousel_Render_Context) {
-            $args['_render_context']->prepare($config, $runtime_params, $prepared_slides);
-        }
-        $slides = array_map(array('WP_Posts_Carousel_Slide_View_Model', 'public_data'), $prepared_slides);
+		$template = self::template( $config );
+		if ( ! $template ) {
+			return null;
+		}
+		$config = self::apply_template_runtime_overrides( $config, $template );
 
-        $runtime_params['post_count'] = count($slides);
+		$runtime_params  = self::runtime_params( $config, $args['instance_id'] );
+		$prepared_slides = self::slides( $config, $runtime_params );
+		if ( isset( $args['_render_context'] ) && $args['_render_context'] instanceof WP_Posts_Carousel_Render_Context ) {
+			$args['_render_context']->prepare( $config, $runtime_params, $prepared_slides );
+		}
+		$slides = array_map( array( 'WP_Posts_Carousel_Slide_View_Model', 'public_data' ), $prepared_slides );
 
-        $data = array(
-            'id' => absint($args['id']),
-            'title' => sanitize_text_field($args['title']),
-            'status' => sanitize_key($args['status']),
-            'config' => $config,
-            'engine' => array(
-                'name' => $config['engine']['name'],
-                'options' => $runtime_params,
-            ),
-            'template' => self::public_template($template),
-            'slides' => $slides,
-            'features' => WP_Posts_Carousel_Features::public_data(),
-            'context' => sanitize_key($args['context']),
-        );
+		$runtime_params['post_count'] = count( $slides );
 
-        return apply_filters('wp_posts_carousel_preview_data', $data, $config, $args);
-    }
+		$data = array(
+			'id'       => absint( $args['id'] ),
+			'title'    => sanitize_text_field( $args['title'] ),
+			'status'   => sanitize_key( $args['status'] ),
+			'config'   => $config,
+			'engine'   => array(
+				'name'    => $config['engine']['name'],
+				'options' => $runtime_params,
+			),
+			'template' => self::public_template( $template ),
+			'slides'   => $slides,
+			'features' => WP_Posts_Carousel_Features::public_data(),
+			'context'  => sanitize_key( $args['context'] ),
+		);
 
-    public static function slides($config, $runtime_params)
-    {
-        if (($config['source']['mode'] ?? '') === 'hybrid') {
-            $selection = self::pinned_selection($config);
-            $slides = array();
-            foreach ($selection['items'] as $item) {
-                $slide = ($item['type'] ?? '') === 'custom'
-                    ? WP_Posts_Carousel_Slide_View_Model::from_custom_item($item, $runtime_params, $config)
-                    : WP_Posts_Carousel_Slide_View_Model::from_post($selection['posts'][(int) $item['id']], $runtime_params, $config);
-                if ($slide) {
-                    $slide['pinned'] = true;
-                    $slides[] = $slide;
-                }
-            }
-            foreach ($selection['automatic'] as $post) {
-                $slides[] = WP_Posts_Carousel_Slide_View_Model::from_post($post, $runtime_params, $config);
-            }
-            return array_values(array_filter($slides));
-        }
-        $post_slides = self::post_slides($config, $runtime_params);
-        $items = isset($config['curation']['items']) && is_array($config['curation']['items'])
-            ? $config['curation']['items']
-            : array();
+		return apply_filters( 'wp_posts_carousel_preview_data', $data, $config, $args );
+	}
 
-        if (empty($items)) {
-            return array_values($post_slides);
-        }
+	public static function slides( $config, $runtime_params ) {
+		if ( ( $config['source']['mode'] ?? '' ) === 'hybrid' ) {
+			$selection = self::pinned_selection( $config );
+			$slides    = array();
+			foreach ( $selection['items'] as $item ) {
+				$slide = ( $item['type'] ?? '' ) === 'custom'
+					? WP_Posts_Carousel_Slide_View_Model::from_custom_item( $item, $runtime_params, $config )
+					: WP_Posts_Carousel_Slide_View_Model::from_post( $selection['posts'][ (int) $item['id'] ], $runtime_params, $config );
+				if ( $slide ) {
+					$slide['pinned'] = true;
+					$slides[]        = $slide;
+				}
+			}
+			foreach ( $selection['automatic'] as $post ) {
+				$slides[] = WP_Posts_Carousel_Slide_View_Model::from_post( $post, $runtime_params, $config );
+			}
+			return array_values( array_filter( $slides ) );
+		}
+		$post_slides = self::post_slides( $config, $runtime_params );
+		$items       = isset( $config['curation']['items'] ) && is_array( $config['curation']['items'] )
+			? $config['curation']['items']
+			: array();
 
-        $slides = array();
-        $used_post_ids = array();
+		if ( empty( $items ) ) {
+			return array_values( $post_slides );
+		}
 
-        foreach ($items as $item) {
-            if (!is_array($item)) {
-                continue;
-            }
+		$slides        = array();
+		$used_post_ids = array();
 
-            if (isset($item['type']) && $item['type'] === 'custom') {
-                $slides[] = WP_Posts_Carousel_Slide_View_Model::from_custom_item($item, $runtime_params, $config);
-                continue;
-            }
+		foreach ( $items as $item ) {
+			if ( ! is_array( $item ) ) {
+				continue;
+			}
 
-            $post_id = isset($item['id']) ? absint($item['id']) : 0;
-            if ($post_id && isset($post_slides[$post_id])) {
-                $slides[] = $post_slides[$post_id];
-                $used_post_ids[] = $post_id;
-            }
-        }
+			if ( isset( $item['type'] ) && $item['type'] === 'custom' ) {
+				$slides[] = WP_Posts_Carousel_Slide_View_Model::from_custom_item( $item, $runtime_params, $config );
+				continue;
+			}
 
-        foreach ($post_slides as $post_id => $slide) {
-            if (!in_array((int) $post_id, $used_post_ids, true)) {
-                $slides[] = $slide;
-            }
-        }
+			$post_id = isset( $item['id'] ) ? absint( $item['id'] ) : 0;
+			if ( $post_id && isset( $post_slides[ $post_id ] ) ) {
+				$slides[]        = $post_slides[ $post_id ];
+				$used_post_ids[] = $post_id;
+			}
+		}
 
-        return array_values(array_filter($slides));
-    }
+		foreach ( $post_slides as $post_id => $slide ) {
+			if ( ! in_array( (int) $post_id, $used_post_ids, true ) ) {
+				$slides[] = $slide;
+			}
+		}
 
-    /** Shared by frontend rendering and the editor's automatic-result preview. */
-    public static function pinned_selection($config)
-    {
-        $limit = max(1, (int) $config['source']['limit']);
-        $items = $config['curation']['items'] ?? array();
-        $excluded = array_map('absint', $config['source']['exclude'] ?? array());
-        $ids = array();
-        foreach ($items as $item) {
-            if (($item['type'] ?? '') !== 'custom' && !empty($item['id'])) {
-                $ids[] = absint($item['id']);
-            }
-        }
-        $posts = array();
-        if ($ids) {
-            $query = new WP_Query(array(
-                'post_type' => array_values(get_post_types(array('public' => true))),
-                'post_status' => 'publish', 'has_password' => false,
-                'post__in' => array_values(array_unique($ids)), 'post__not_in' => $excluded,
-                'posts_per_page' => count(array_unique($ids)), 'orderby' => 'post__in',
-                'ignore_sticky_posts' => true, 'no_found_rows' => true,
-            ));
-            foreach ($query->posts as $post) {
-                if (self::public_selection_post($post)) $posts[(int) $post->ID] = $post;
-            }
-        }
-        $accepted = array();
-        $seen = array();
-        foreach ($items as $item) {
-            $custom = ($item['type'] ?? '') === 'custom';
-            $id = $item['id'] ?? '';
-            $key = ($custom ? 'custom:' : 'post:') . $id;
-            if (isset($seen[$key]) || (!$custom && (!isset($posts[(int) $id]) || in_array((int) $id, $excluded, true)))) continue;
-            $accepted[] = $item;
-            $seen[$key] = true;
-            if (count($accepted) >= $limit) break;
-        }
-        $remaining = $limit - count($accepted);
-        $automatic = array();
-        if ($remaining > 0) {
-            $query_config = $config;
-            $query_config['source']['mode'] = 'query';
-            $query_config['source']['limit'] = $remaining;
-            $query_config['source']['exclude'] = array_values(array_unique(array_merge($excluded, $ids)));
-            $query_config['curation']['items'] = array();
-            $args = WP_Posts_Carousel_Query_Builder::build($query_config);
-            $args['has_password'] = false;
-            $args['ignore_sticky_posts'] = true;
-            $query = new WP_Query($args);
-            foreach ($query->posts as $post) {
-                $key = 'post:' . (int) $post->ID;
-                if (!self::public_selection_post($post) || isset($seen[$key]) || in_array((int) $post->ID, $query_config['source']['exclude'], true)) continue;
-                $automatic[] = $post;
-                $seen[$key] = true;
-                if (count($automatic) >= $remaining) break;
-            }
-        }
-        return array('items' => $accepted, 'posts' => $posts, 'automatic' => $automatic);
-    }
+		return array_values( array_filter( $slides ) );
+	}
 
-    private static function public_selection_post($post)
-    {
-        $type = get_post_type_object($post->post_type);
-        return $post->post_status === 'publish' && $post->post_password === '' && $type && $type->public;
-    }
+	/** Shared by frontend rendering and the editor's automatic-result preview. */
+	public static function pinned_selection( $config ) {
+		$limit    = max( 1, (int) $config['source']['limit'] );
+		$items    = $config['curation']['items'] ?? array();
+		$excluded = array_map( 'absint', $config['source']['exclude'] ?? array() );
+		$ids      = array();
+		foreach ( $items as $item ) {
+			if ( ( $item['type'] ?? '' ) !== 'custom' && ! empty( $item['id'] ) ) {
+				$ids[] = absint( $item['id'] );
+			}
+		}
+		$posts = array();
+		if ( $ids ) {
+			$query = new WP_Query(
+				array(
+					'post_type'           => array_values( get_post_types( array( 'public' => true ) ) ),
+					'post_status'         => 'publish',
+					'has_password'        => false,
+					'post__in'            => array_values( array_unique( $ids ) ),
+					'post__not_in'        => $excluded,
+					'posts_per_page'      => count( array_unique( $ids ) ),
+					'orderby'             => 'post__in',
+					'ignore_sticky_posts' => true,
+					'no_found_rows'       => true,
+				)
+			);
+			foreach ( $query->posts as $post ) {
+				if (self::public_selection_post( $post )) $posts[ (int) $post->ID ] = $post;
+			}
+		}
+		$accepted = array();
+		$seen     = array();
+		foreach ( $items as $item ) {
+			$custom = ( $item['type'] ?? '' ) === 'custom';
+			$id     = $item['id'] ?? '';
+			$key    = ( $custom ? 'custom:' : 'post:' ) . $id;
+			if (isset( $seen[ $key ] ) || ( ! $custom && ( ! isset( $posts[ (int) $id ] ) || in_array( (int) $id, $excluded, true ) ) )) continue;
+			$accepted[]   = $item;
+			$seen[ $key ] = true;
+			if (count( $accepted ) >= $limit) break;
+		}
+		$remaining = $limit - count( $accepted );
+		$automatic = array();
+		if ( $remaining > 0 ) {
+			$query_config                      = $config;
+			$query_config['source']['mode']    = 'query';
+			$query_config['source']['limit']   = $remaining;
+			$query_config['source']['exclude'] = array_values( array_unique( array_merge( $excluded, $ids ) ) );
+			$query_config['curation']['items'] = array();
+			$args                              = WP_Posts_Carousel_Query_Builder::build( $query_config );
+			$args['has_password']              = false;
+			$args['ignore_sticky_posts']       = true;
+			$query                             = new WP_Query( $args );
+			foreach ( $query->posts as $post ) {
+				$key = 'post:' . (int) $post->ID;
+				if ( ! self::public_selection_post( $post ) || isset( $seen[ $key ] ) || in_array( (int) $post->ID, $query_config['source']['exclude'], true )) continue;
+				$automatic[]  = $post;
+				$seen[ $key ] = true;
+				if (count( $automatic ) >= $remaining) break;
+			}
+		}
+		return array(
+			'items'     => $accepted,
+			'posts'     => $posts,
+			'automatic' => $automatic,
+		);
+	}
 
-    private static function apply_template_runtime_overrides($config, $template)
-    {
-        return apply_filters('wp_posts_carousel_template_runtime_config', $config, $template);
-    }
+	private static function public_selection_post( $post ) {
+		$type = get_post_type_object( $post->post_type );
+		return $post->post_status === 'publish' && $post->post_password === '' && $type && $type->public;
+	}
 
-    private static function post_slides($config, $runtime_params)
-    {
-        $items = isset($config['curation']['items']) && is_array($config['curation']['items'])
-            ? $config['curation']['items']
-            : array();
-        $has_manual_items = !empty($items);
-        $manual_post_ids = array();
+	private static function apply_template_runtime_overrides( $config, $template ) {
+		return apply_filters( 'wp_posts_carousel_template_runtime_config', $config, $template );
+	}
 
-        foreach ($items as $item) {
-            if (is_array($item) && (!isset($item['type']) || $item['type'] !== 'custom') && !empty($item['id'])) {
-                $manual_post_ids[] = absint($item['id']);
-            }
-        }
+	private static function post_slides( $config, $runtime_params ) {
+		$items            = isset( $config['curation']['items'] ) && is_array( $config['curation']['items'] )
+			? $config['curation']['items']
+			: array();
+		$has_manual_items = ! empty( $items );
+		$manual_post_ids  = array();
 
-        if ($has_manual_items && empty(array_filter($manual_post_ids))) {
-            return array();
-        }
+		foreach ( $items as $item ) {
+			if ( is_array( $item ) && ( ! isset( $item['type'] ) || $item['type'] !== 'custom' ) && ! empty( $item['id'] ) ) {
+				$manual_post_ids[] = absint( $item['id'] );
+			}
+		}
 
-        $query = new WP_Query(WP_Posts_Carousel_Query_Builder::build($config));
-        $slides = array();
+		if ( $has_manual_items && empty( array_filter( $manual_post_ids ) ) ) {
+			return array();
+		}
 
-        while ($query->have_posts()) {
-            $query->the_post();
-            $slide = WP_Posts_Carousel_Slide_View_Model::from_post(get_post(), $runtime_params, $config);
-            $slides[(int) get_the_ID()] = $slide;
-        }
+		$query  = new WP_Query( WP_Posts_Carousel_Query_Builder::build( $config ) );
+		$slides = array();
 
-        wp_reset_postdata();
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			$slide                        = WP_Posts_Carousel_Slide_View_Model::from_post( get_post(), $runtime_params, $config );
+			$slides[ (int) get_the_ID() ] = $slide;
+		}
 
-        return $slides;
-    }
+		wp_reset_postdata();
 
-    public static function runtime_params($config, $instance_id = '')
-    {
-        $display = isset($config['template']['display']) ? $config['template']['display'] : array();
-        $post_display = isset($display['post']) ? $display['post'] : array();
-        $options = isset($config['engine']['options']) ? $config['engine']['options'] : array();
-        $source = isset($config['source']) ? $config['source'] : array();
-        $style = isset($config['style']) && is_array($config['style']) ? $config['style'] : array();
-        $performance = isset($config['performance']) && is_array($config['performance']) ? $config['performance'] : array();
+		return $slides;
+	}
 
-        $params = array_merge(
-            array(
-                'id' => $instance_id,
-                'all_items' => isset($source['limit']) ? $source['limit'] : 10,
-                'show_title' => true,
-                'title_length' => 0,
-                'show_created_date' => true,
-                'show_description' => 'excerpt',
-                'description_length' => 0,
-                'allow_shortcodes' => false,
-                'show_categories' => true,
-                'show_tags' => false,
-                'show_more_button' => true,
-                'show_featured_image' => true,
-                'featured_image_source' => 'thumbnail',
-                'featured_image_width' => 100,
-                'featured_image_width_unit' => '%',
-                'featured_image_height' => 100,
-                'featured_image_height_unit' => '%',
-                'rtl' => false,
-                'loop' => true,
-                'rewind' => false,
-                'center' => false,
-                'auto_play' => true,
-                'autoplay_indicator' => 'none',
-                'stop_on_hover' => true,
-                'auto_play_timeout' => 1200,
-                'auto_play_speed' => 800,
-                'nav' => true,
-                'nav_speed' => 800,
-                'dots' => true,
-                'dots_speed' => 800,
-                'stage_padding' => 0,
-                'margin' => 5,
-                'lazy_load' => false,
-                'lazy_load_eager' => 0,
-                'mouse_drag' => true,
-                'mouse_wheel' => false,
-                'touch_drag' => true,
-                'pull_drag' => true,
-                'free_drag' => false,
-                'slide_by' => 1,
-                'start_position' => 0,
-                'direction' => 'horizontal',
-                'pagination_type' => 'bullets',
-                'keyboard' => false,
-                'grab_cursor' => false,
-                'mousewheel_release_on_edges' => false,
-                'mousewheel_force_to_axis' => false,
-                'mousewheel_sensitivity' => 1,
-                'touch_ratio' => 1,
-                'watch_overflow' => true,
-                'transition_effect' => 'slide',
-                'fallback_easing' => 'linear',
-                'animate_in' => '',
-                'animate_out' => '',
-                'auto_width' => false,
-                'auto_height' => true,
-                'nav_icon_library' => '',
-                'nav_icon_previous' => '',
-                'nav_icon_next' => '',
-                'nav_icon_up' => '',
-                'nav_icon_down' => '',
-                'breakpoints' => array(),
-            ),
-            $post_display,
-            $options
-        );
+	public static function runtime_params( $config, $instance_id = '' ) {
+		$display      = isset( $config['template']['display'] ) ? $config['template']['display'] : array();
+		$post_display = isset( $display['post'] ) ? $display['post'] : array();
+		$options      = isset( $config['engine']['options'] ) ? $config['engine']['options'] : array();
+		$source       = isset( $config['source'] ) ? $config['source'] : array();
+		$style        = isset( $config['style'] ) && is_array( $config['style'] ) ? $config['style'] : array();
+		$performance  = isset( $config['performance'] ) && is_array( $config['performance'] ) ? $config['performance'] : array();
 
-        $params['id'] = $instance_id;
-        $params['lazy_images'] = array_key_exists('lazy_images', $performance) ? (bool) $performance['lazy_images'] : true;
-        $params['first_image_eager'] = !empty($performance['first_image_eager']);
+		$params = array_merge(
+			array(
+				'id'                          => $instance_id,
+				'all_items'                   => isset( $source['limit'] ) ? $source['limit'] : 10,
+				'show_title'                  => true,
+				'title_length'                => 0,
+				'show_created_date'           => true,
+				'show_description'            => 'excerpt',
+				'description_length'          => 0,
+				'allow_shortcodes'            => false,
+				'show_categories'             => true,
+				'show_tags'                   => false,
+				'show_more_button'            => true,
+				'show_featured_image'         => true,
+				'featured_image_source'       => 'thumbnail',
+				'featured_image_width'        => 100,
+				'featured_image_width_unit'   => '%',
+				'featured_image_height'       => 100,
+				'featured_image_height_unit'  => '%',
+				'rtl'                         => false,
+				'loop'                        => true,
+				'rewind'                      => false,
+				'center'                      => false,
+				'auto_play'                   => true,
+				'autoplay_indicator'          => 'none',
+				'stop_on_hover'               => true,
+				'auto_play_timeout'           => 1200,
+				'auto_play_speed'             => 800,
+				'nav'                         => true,
+				'nav_speed'                   => 800,
+				'dots'                        => true,
+				'dots_speed'                  => 800,
+				'stage_padding'               => 0,
+				'margin'                      => 5,
+				'lazy_load'                   => false,
+				'lazy_load_eager'             => 0,
+				'mouse_drag'                  => true,
+				'mouse_wheel'                 => false,
+				'touch_drag'                  => true,
+				'pull_drag'                   => true,
+				'free_drag'                   => false,
+				'slide_by'                    => 1,
+				'start_position'              => 0,
+				'direction'                   => 'horizontal',
+				'pagination_type'             => 'bullets',
+				'keyboard'                    => false,
+				'grab_cursor'                 => false,
+				'mousewheel_release_on_edges' => false,
+				'mousewheel_force_to_axis'    => false,
+				'mousewheel_sensitivity'      => 1,
+				'touch_ratio'                 => 1,
+				'watch_overflow'              => true,
+				'transition_effect'           => 'slide',
+				'fallback_easing'             => 'linear',
+				'animate_in'                  => '',
+				'animate_out'                 => '',
+				'auto_width'                  => false,
+				'auto_height'                 => true,
+				'nav_icon_library'            => '',
+				'nav_icon_previous'           => '',
+				'nav_icon_next'               => '',
+				'nav_icon_up'                 => '',
+				'nav_icon_down'               => '',
+				'breakpoints'                 => array(),
+			),
+			$post_display,
+			$options
+		);
 
-        if (!empty($performance['image_size']) && $performance['image_size'] !== 'inherit') {
-            $params['featured_image_source'] = sanitize_key($performance['image_size']);
-        }
+		$params['id']                = $instance_id;
+		$params['items_to_show']     = WP_Posts_Carousel_Config::responsive_items( $options );
+		$params['breakpoints']       = $params['items_to_show'];
+		$params['lazy_images']       = array_key_exists( 'lazy_images', $performance ) ? (bool) $performance['lazy_images'] : true;
+		$params['first_image_eager'] = ! empty( $performance['first_image_eager'] );
+		$params['image_fit']         = isset( $performance['image_fit'] ) && in_array( $performance['image_fit'], array( 'contain', 'cover' ), true ) ? $performance['image_fit'] : 'inherit';
 
-        $params['show_category'] = isset($params['show_categories']) ? $params['show_categories'] : true;
-        $params['navigation_icons'] = class_exists('WP_Posts_Carousel_Icons')
-            ? WP_Posts_Carousel_Icons::navigation_icons($params, $config)
-            : array();
+		if ( ! empty( $performance['image_size'] ) && $performance['image_size'] !== 'inherit' ) {
+			$params['featured_image_source'] = sanitize_key( $performance['image_size'] );
+		}
 
-        return apply_filters('wp_posts_carousel_runtime_params', $params, $config);
-    }
+		$params['show_category']    = isset( $params['show_categories'] ) ? $params['show_categories'] : true;
+		$params['navigation_icons'] = class_exists( 'WP_Posts_Carousel_Icons' )
+			? WP_Posts_Carousel_Icons::navigation_icons( $params, $config )
+			: array();
 
-    public static function template($config)
-    {
-        $template_name = isset($config['template']['name']) ? $config['template']['name'] : 'default';
-        $template = WP_Posts_Carousel_Templates::find_template($template_name);
+		return apply_filters( 'wp_posts_carousel_runtime_params', $params, $config );
+	}
 
-        if (!empty($template['status']) && empty($template['locked'])) {
-            return $template;
-        }
+	public static function template( $config ) {
+		$template_name = isset( $config['template']['name'] ) ? $config['template']['name'] : 'default';
+		$template      = WP_Posts_Carousel_Templates::find_template( $template_name );
 
-        if ($template_name !== 'default') {
-            $fallback = WP_Posts_Carousel_Templates::find_template('default');
+		if ( ! empty( $template['status'] ) && empty( $template['locked'] ) ) {
+			return $template;
+		}
 
-            if (!empty($fallback['status']) && empty($fallback['locked'])) {
-                $fallback['fallback_for'] = sanitize_key($template_name);
-                $fallback['fallback_message'] = !empty($template['error'])
-                    ? sanitize_text_field($template['error'])
-                    : __('Requested carousel template is unavailable. Rendering with the default template.', 'cci-posts-carousel');
+		if ( $template_name !== 'default' ) {
+			$fallback = WP_Posts_Carousel_Templates::find_template( 'default' );
 
-                return apply_filters('wp_posts_carousel_template_fallback', $fallback, $template, $config);
-            }
-        }
+			if ( ! empty( $fallback['status'] ) && empty( $fallback['locked'] ) ) {
+				$fallback['fallback_for']     = sanitize_key( $template_name );
+				$fallback['fallback_message'] = ! empty( $template['error'] )
+					? sanitize_text_field( $template['error'] )
+					: __( 'Requested carousel template is unavailable. Rendering with the default template.', 'cci-posts-carousel' );
 
-        return null;
-    }
+				return apply_filters( 'wp_posts_carousel_template_fallback', $fallback, $template, $config );
+			}
+		}
 
-    private static function public_template($template)
-    {
-        return array(
-            'name' => $template['name'],
-            'title' => $template['template_name'],
-            'description' => $template['description'],
-            'version' => $template['version'],
-            'supports' => $template['supports'],
-            'fields' => $template['fields'],
-            'pro' => $template['pro'],
-            'locked' => $template['locked'],
-            'availability' => $template['availability'],
-            'stylesheet' => WP_Posts_Carousel_Template_Assets::stylesheet($template),
-        );
-    }
+		return null;
+	}
+
+	private static function public_template( $template ) {
+		return array(
+			'name'         => $template['name'],
+			'title'        => $template['template_name'],
+			'description'  => $template['description'],
+			'version'      => $template['version'],
+			'supports'     => $template['supports'],
+			'fields'       => $template['fields'],
+			'pro'          => $template['pro'],
+			'locked'       => $template['locked'],
+			'availability' => $template['availability'],
+			'stylesheet'   => WP_Posts_Carousel_Template_Assets::stylesheet( $template ),
+		);
+	}
 }

@@ -7,93 +7,90 @@
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
-if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
 }
 
 /**
  * WP_Posts_Carousel_Template class
  */
-class WP_Posts_Carousel_Template
-{
+class WP_Posts_Carousel_Template {
 
-    public $template_details = array();
 
-    /**
-     * constructor
-     */
-    public function __construct()
-    {
-    }
+	public $template_details = array();
 
-    /**
-     * set template details from file
-     */
-    public function set_template_details($path)
-    {
-        if (!$path || !file_exists($path)) {
-            return;
-        }
+	/**
+	 * constructor
+	 */
+	public function __construct() {
+	}
 
-        $template = array();
-        $screenshot_file = 'screenshot.png';
-        $template_headers = array(
-            'template_name'                       => 'Plugin Name',
-            'template_url'                        => 'Plugin URI',
-            'description'                         => 'Description',
-            'tags'                                => 'Tags',
-            'author'                              => 'Author',
-            'author_url'                          => 'Author URI',
-            'author_email'                        => 'Author Email',
-            'version'                             => 'Version',
-            'requires_wp_posts_carousel_at_least' => 'Requires CCI Posts Carousel All In One at least',
-            'license'                             => 'License',
-            'license_url'                         => 'License URI',
-        );
+	/**
+	 * set template details from file
+	 */
+	public function set_template_details( $path ) {
+		if ( ! $path || ! file_exists( $path ) ) {
+			return;
+		}
 
-        $template = get_file_data($path, $template_headers);
+		$template         = array();
+		$screenshot_file  = 'screenshot.png';
+		$template_headers = array(
+			'template_name'                       => 'Plugin Name',
+			'template_url'                        => 'Plugin URI',
+			'description'                         => 'Description',
+			'tags'                                => 'Tags',
+			'author'                              => 'Author',
+			'author_url'                          => 'Author URI',
+			'author_email'                        => 'Author Email',
+			'version'                             => 'Version',
+			'requires_wp_posts_carousel_at_least' => 'Requires CCI Posts Carousel All In One at least',
+			'license'                             => 'License',
+			'license_url'                         => 'License URI',
+		);
 
-        if (count($template) > 0) {
-            $template['dir']        = dirname($path);
-            $tmp_template_name_array = explode('/', $template['dir']);
+		$template = get_file_data( $path, $template_headers );
 
-            $template['name']       = end($tmp_template_name_array);
-            $template['dir_url']    = plugin_dir_url($path);
-            $template['compatible'] = $this->check_template($template);
+		if ( count( $template ) > 0 ) {
+			$template['dir']         = dirname( $path );
+			$tmp_template_name_array = explode( '/', $template['dir'] );
 
-            if (file_exists($template['dir'] . '/' . $screenshot_file)) {
-                $template['screenshot'] = $template['dir_url'] . $screenshot_file;
-            } else {
-                $template['screenshot'] = WP_POSTS_CAROUSEL_DIR_URL . 'assets/images/template-placeholder.png';
-            }
-        }
+			$template['name']       = end( $tmp_template_name_array );
+			$template['dir_url']    = plugin_dir_url( $path );
+			$template['compatible'] = $this->check_template( $template );
 
-        // $template_details[$template['name']] = $template;
-        return $template;
-    }
+			if ( file_exists( $template['dir'] . '/' . $screenshot_file ) ) {
+				$template['screenshot'] = $template['dir_url'] . $screenshot_file;
+			} else {
+				$template['screenshot'] = WP_POSTS_CAROUSEL_DIR_URL . 'assets/images/template-placeholder.png';
+			}
+		}
 
-    /**
-     * check compatibility with plugin version
-     */
-    public function check_template($template_details)
-    {
-        // $output = array(
-        //     'status' => null,
-        //     'error'  => null,
-        // );
-        $required_version = trim((string) $template_details['requires_wp_posts_carousel_at_least']);
+		// $template_details[$template['name']] = $template;
+		return $template;
+	}
 
-        if ($required_version && version_compare(WP_POSTS_CAROUSEL_VERSION, $required_version, '<')) {
-            return array(
-                'status' => false,
-                /* translators: %s: carousel template name. */
-                'error'  => sprintf(__("This template '%s' is not compatible with the current version of this plugin", 'cci-posts-carousel'), $template_details['template_name']),
-            );
-        }
+	/**
+	 * check compatibility with plugin version
+	 */
+	public function check_template( $template_details ) {
+		// $output = array(
+		//     'status' => null,
+		//     'error'  => null,
+		// );
+		$required_version = trim( (string) $template_details['requires_wp_posts_carousel_at_least'] );
 
-        return array(
-            'status' => true,
-            'error'  => null
-        );
-    }
+		if ( $required_version && version_compare( WP_POSTS_CAROUSEL_VERSION, $required_version, '<' ) ) {
+			return array(
+				'status' => false,
+				/* translators: %s: carousel template name. */
+				'error'  => sprintf( __( "This template '%s' is not compatible with the current version of this plugin", 'cci-posts-carousel' ), $template_details['template_name'] ),
+			);
+		}
+
+		return array(
+			'status' => true,
+			'error'  => null,
+		);
+	}
 }

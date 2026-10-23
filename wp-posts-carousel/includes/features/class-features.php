@@ -1,279 +1,279 @@
 <?php
 
-if (!defined('ABSPATH')) {
-    exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
-class WP_Posts_Carousel_Features
-{
-    public static function all()
-    {
-        $features = array(
-            'shortcode' => self::feature(
-                __('Shortcode rendering', 'cci-posts-carousel'),
-                __('Render carousels with the wp_posts_carousel shortcode.', 'cci-posts-carousel'),
-                true,
-                'core'
-            ),
-            'php_renderer' => self::feature(
-                __('PHP renderer', 'cci-posts-carousel'),
-                __('Server-rendered carousel markup and fallback output.', 'cci-posts-carousel'),
-                true,
-                'core'
-            ),
-            'template_registry' => self::feature(
-                __('Template registry', 'cci-posts-carousel'),
-                __('Manifest-based templates loaded from the plugin, theme, uploads, or add-ons.', 'cci-posts-carousel'),
-                true,
-                'core'
-            ),
-            'query_builder' => self::feature(
-                __('Query builder', 'cci-posts-carousel'),
-                __('Build carousel items from post types, taxonomies, and manual selections.', 'cci-posts-carousel'),
-                true,
-                'core'
-            ),
-            'manual_curation' => self::feature(
-                __('Manual curation', 'cci-posts-carousel'),
-                __('Manually order selected posts in a carousel.', 'cci-posts-carousel'),
-                true,
-                'core'
-            ),
-            'analytics' => self::feature(
-                __('Basic analytics', 'cci-posts-carousel'),
-                __('Show local carousel configuration insights without visitor tracking.', 'cci-posts-carousel'),
-                true,
-                'core'
-            ),
-            'react_frontend' => self::feature(
-                __('React frontend renderer', 'cci-posts-carousel'),
-                __('Lazy-mounted React rendering and enhancements for public carousel output.', 'cci-posts-carousel'),
-                true,
-                'core'
-            ),
-        );
+class WP_Posts_Carousel_Features {
 
-        $base_features = $features;
-        $features = apply_filters('wp_posts_carousel_features', $features);
+	public static function all() {
+		$features = array(
+			'shortcode'         => self::feature(
+				__( 'Shortcode rendering', 'cci-posts-carousel' ),
+				__( 'Render carousels with the wp_posts_carousel shortcode.', 'cci-posts-carousel' ),
+				true,
+				'core'
+			),
+			'php_renderer'      => self::feature(
+				__( 'PHP renderer', 'cci-posts-carousel' ),
+				__( 'Server-rendered carousel markup and fallback output.', 'cci-posts-carousel' ),
+				true,
+				'core'
+			),
+			'template_registry' => self::feature(
+				__( 'Template registry', 'cci-posts-carousel' ),
+				__( 'Manifest-based templates loaded from the plugin, theme, uploads, or add-ons.', 'cci-posts-carousel' ),
+				true,
+				'core'
+			),
+			'query_builder'     => self::feature(
+				__( 'Query builder', 'cci-posts-carousel' ),
+				__( 'Build carousel items from post types, taxonomies, and manual selections.', 'cci-posts-carousel' ),
+				true,
+				'core'
+			),
+			'manual_curation'   => self::feature(
+				__( 'Manual curation', 'cci-posts-carousel' ),
+				__( 'Manually order selected posts in a carousel.', 'cci-posts-carousel' ),
+				true,
+				'core'
+			),
+			'analytics'         => self::feature(
+				__( 'Basic analytics', 'cci-posts-carousel' ),
+				__( 'Show local carousel configuration insights without visitor tracking.', 'cci-posts-carousel' ),
+				true,
+				'core'
+			),
+			'react_frontend'    => self::feature(
+				__( 'React frontend renderer', 'cci-posts-carousel' ),
+				__( 'Lazy-mounted React rendering and enhancements for public carousel output.', 'cci-posts-carousel' ),
+				true,
+				'core'
+			),
+		);
 
-        if (!is_array($features)) {
-            $features = array();
-        }
+		$base_features = $features;
+		$features      = apply_filters( 'wp_posts_carousel_features', $features );
 
-        foreach ($base_features as $key => $feature) {
-            if (!isset($features[$key])) {
-                $features[$key] = $feature;
-            }
-        }
+		if ( ! is_array( $features ) ) {
+			$features = array();
+		}
 
-        foreach ($features as $key => $feature) {
-            $features[$key] = self::normalize($key, $feature);
-        }
+		foreach ( $base_features as $key => $feature ) {
+			if ( ! isset( $features[ $key ] ) ) {
+				$features[ $key ] = $feature;
+			}
+		}
 
-        return self::enforce_feature_gates($features);
-    }
+		foreach ( $features as $key => $feature ) {
+			$features[ $key ] = self::normalize( $key, $feature );
+		}
 
-    public static function enabled($key)
-    {
-        $key = sanitize_key($key);
-        $features = self::all();
+		return self::enforce_feature_gates( $features );
+	}
 
-        return isset($features[$key]) && !empty($features[$key]['enabled']);
-    }
+	public static function enabled( $key ) {
+		$key      = sanitize_key( $key );
+		$features = self::all();
 
-    public static function public_data()
-    {
-        $features = self::all();
+		return isset( $features[ $key ] ) && ! empty( $features[ $key ]['enabled'] );
+	}
 
-        foreach ($features as $key => $feature) {
-            unset($features[$key]['internal']);
-        }
+	public static function public_data() {
+		$features = self::all();
 
-        return $features;
-    }
+		foreach ( $features as $key => $feature ) {
+			unset( $features[ $key ]['internal'] );
+		}
 
-    public static function template_status($template)
-    {
-        $feature = '';
+		return $features;
+	}
 
-        if (!empty($template['feature'])) {
-            $feature = $template['feature'];
-        } elseif (!empty($template['pro'])) {
-            $feature = 'pro_templates';
-        }
+	public static function template_status( $template ) {
+		$feature = '';
 
-        if (!$feature) {
-            return array(
-                'locked' => false,
-                'feature' => '',
-                'message' => '',
-            );
-        }
+		if ( ! empty( $template['feature'] ) ) {
+			$feature = $template['feature'];
+		} elseif ( ! empty( $template['pro'] ) ) {
+			$feature = 'pro_templates';
+		}
 
-        $features = self::all();
-        $enabled = isset($features[$feature]) && !empty($features[$feature]['enabled']);
+		if ( ! $feature ) {
+			return array(
+				'locked'  => false,
+				'feature' => '',
+				'message' => '',
+			);
+		}
 
-        $message = '';
-        if (!$enabled) {
-            /* translators: %s: required product feature name. */
-            $message = sprintf(__('Requires feature: %s', 'cci-posts-carousel'), isset($features[$feature]['label']) ? $features[$feature]['label'] : $feature);
-        }
+		$features = self::all();
+		$enabled  = isset( $features[ $feature ] ) && ! empty( $features[ $feature ]['enabled'] );
 
-        if (!$enabled && isset($features[$feature]['plan']) && $features[$feature]['plan'] === 'paid') {
-            $message = __('Requires an active CCI Posts Carousel All In One Pro license for this domain.', 'cci-posts-carousel');
-        }
+		$message = '';
+		if ( ! $enabled ) {
+			/* translators: %s: required product feature name. */
+			$message = sprintf( __( 'Requires feature: %s', 'cci-posts-carousel' ), isset( $features[ $feature ]['label'] ) ? $features[ $feature ]['label'] : $feature );
+		}
 
-        return array(
-            'locked' => !$enabled,
-            'feature' => $feature,
-            'message' => $message,
-        );
-    }
+		if ( ! $enabled && isset( $features[ $feature ]['plan'] ) && $features[ $feature ]['plan'] === 'paid' ) {
+			$message = __( 'Requires an active CCI Posts Carousel All In One Pro license for this domain.', 'cci-posts-carousel' );
+		}
 
-    public static function license_allows($feature_key, $context = array())
-    {
-        $feature_key = sanitize_key($feature_key);
+		return array(
+			'locked'  => ! $enabled,
+			'feature' => $feature,
+			'message' => $message,
+		);
+	}
 
-        return (bool) apply_filters(
-            'wp_posts_carousel_license_allows_feature',
-            false,
-            $feature_key,
-            is_array($context) ? $context : array()
-        );
-    }
+	public static function license_allows( $feature_key, $context = array() ) {
+		$feature_key = sanitize_key( $feature_key );
 
-    public static function paid_feature_keys()
-    {
-        $reserved = array(
-            'pro_templates',
-            'analytics_pro',
-            'elementor_integration',
-            'woocommerce_advanced',
-            'commerce_luxe_template',
-            'story_templates',
-            'video_showcase_template',
-            'video_slides',
-            'autoplay_progress_indicator',
-            'multisite',
-        );
-        $additional = (array) apply_filters('wp_posts_carousel_paid_feature_keys', array());
+		return (bool) apply_filters(
+			'wp_posts_carousel_license_allows_feature',
+			false,
+			$feature_key,
+			is_array( $context ) ? $context : array()
+		);
+	}
 
-        return array_values(array_unique(array_filter(array_map(
-            'sanitize_key',
-            array_merge($reserved, $additional)
-        ))));
-    }
+	public static function paid_feature_keys() {
+		$reserved   = array(
+			'pro_templates',
+			'analytics_pro',
+			'elementor_integration',
+			'woocommerce_advanced',
+			'commerce_luxe_template',
+			'story_templates',
+			'video_showcase_template',
+			'video_slides',
+			'autoplay_progress_indicator',
+			'multisite',
+		);
+		$additional = (array) apply_filters( 'wp_posts_carousel_paid_feature_keys', array() );
 
-    private static function feature($label, $description, $enabled, $source)
-    {
-        return array(
-            'label' => $label,
-            'description' => $description,
-            'enabled' => (bool) $enabled,
-            'source' => $source,
-        );
-    }
+		return array_values(
+			array_unique(
+				array_filter(
+					array_map(
+						'sanitize_key',
+						array_merge( $reserved, $additional )
+					)
+				)
+			)
+		);
+	}
 
-    private static function normalize($key, $feature)
-    {
-        if (!is_array($feature)) {
-            $feature = array('enabled' => (bool) $feature);
-        }
+	private static function feature( $label, $description, $enabled, $source ) {
+		return array(
+			'label'       => $label,
+			'description' => $description,
+			'enabled'     => (bool) $enabled,
+			'source'      => $source,
+		);
+	}
 
-        $key = sanitize_key($key);
-        $source = isset($feature['source']) ? sanitize_key($feature['source']) : 'custom';
-        $plan = isset($feature['plan']) ? sanitize_key($feature['plan']) : (self::is_paid_feature_key($key) ? 'paid' : '');
-        $required_features = self::normalize_requirements(isset($feature['requiredFeatures']) ? $feature['requiredFeatures'] : (isset($feature['required_features']) ? $feature['required_features'] : (isset($feature['requires']) ? $feature['requires'] : array())));
+	private static function normalize( $key, $feature ) {
+		if ( ! is_array( $feature ) ) {
+			$feature = array( 'enabled' => (bool) $feature );
+		}
 
-        return array(
-            'key' => $key,
-            'label' => isset($feature['label']) ? sanitize_text_field($feature['label']) : $key,
-            'description' => isset($feature['description']) ? sanitize_text_field($feature['description']) : '',
-            'author' => isset($feature['author']) ? sanitize_text_field($feature['author']) : '',
-            'version' => isset($feature['version']) ? sanitize_text_field($feature['version']) : '',
-            'enabled' => !empty($feature['enabled']),
-            'source' => $source,
-            'expires' => isset($feature['expires']) ? sanitize_text_field($feature['expires']) : '',
-            'plan' => $plan,
-            'requiresPro' => !empty($feature['requiresPro']) || $plan === 'paid' || $plan === 'pro',
-            'requiredFeatures' => $required_features,
-            'required_features' => $required_features,
-            'internal' => isset($feature['internal']) ? $feature['internal'] : array(),
-        );
-    }
+		$key               = sanitize_key( $key );
+		$source            = isset( $feature['source'] ) ? sanitize_key( $feature['source'] ) : 'custom';
+		$plan              = isset( $feature['plan'] ) ? sanitize_key( $feature['plan'] ) : ( self::is_paid_feature_key( $key ) ? 'paid' : '' );
+		$required_features = self::normalize_requirements( isset( $feature['requiredFeatures'] ) ? $feature['requiredFeatures'] : ( isset( $feature['required_features'] ) ? $feature['required_features'] : ( isset( $feature['requires'] ) ? $feature['requires'] : array() ) ) );
 
-    private static function enforce_feature_gates($features)
-    {
-        foreach ($features as $key => $feature) {
-            if (!self::feature_requires_pro($key, $feature)) {
-                continue;
-            }
+		return array(
+			'key'               => $key,
+			'label'             => isset( $feature['label'] ) ? sanitize_text_field( $feature['label'] ) : $key,
+			'description'       => isset( $feature['description'] ) ? sanitize_text_field( $feature['description'] ) : '',
+			'author'            => isset( $feature['author'] ) ? sanitize_text_field( $feature['author'] ) : '',
+			'version'           => isset( $feature['version'] ) ? sanitize_text_field( $feature['version'] ) : '',
+			'enabled'           => ! empty( $feature['enabled'] ),
+			'source'            => $source,
+			'expires'           => isset( $feature['expires'] ) ? sanitize_text_field( $feature['expires'] ) : '',
+			'plan'              => $plan,
+			'requiresPro'       => ! empty( $feature['requiresPro'] ) || $plan === 'paid' || $plan === 'pro',
+			'requiredFeatures'  => $required_features,
+			'required_features' => $required_features,
+			'internal'          => isset( $feature['internal'] ) ? $feature['internal'] : array(),
+		);
+	}
 
-            $features[$key]['plan'] = 'paid';
-            $features[$key]['requiresPro'] = true;
+	private static function enforce_feature_gates( $features ) {
+		foreach ( $features as $key => $feature ) {
+			if ( ! self::feature_requires_pro( $key, $feature ) ) {
+				continue;
+			}
 
-            if (!self::license_allows($key, array('context' => 'features'))) {
-                $features[$key]['enabled'] = false;
-            }
-        }
+			$features[ $key ]['plan']        = 'paid';
+			$features[ $key ]['requiresPro'] = true;
 
-        foreach ($features as $key => $feature) {
-            $requirements = isset($feature['requiredFeatures']) ? (array) $feature['requiredFeatures'] : array();
-            foreach ($requirements as $requirement) {
-                $requirement = sanitize_key($requirement);
-                if (!$requirement) {
-                    continue;
-                }
+			if ( ! self::license_allows( $key, array( 'context' => 'features' ) ) ) {
+				$features[ $key ]['enabled'] = false;
+			}
+		}
 
-                $requirement_enabled = !empty($features[$requirement]['enabled'])
-                    || self::license_allows($requirement, array('context' => 'features', 'feature' => $key));
+		foreach ( $features as $key => $feature ) {
+			$requirements = isset( $feature['requiredFeatures'] ) ? (array) $feature['requiredFeatures'] : array();
+			foreach ( $requirements as $requirement ) {
+				$requirement = sanitize_key( $requirement );
+				if ( ! $requirement ) {
+					continue;
+				}
 
-                if (!$requirement_enabled) {
-                    $features[$key]['enabled'] = false;
-                    break;
-                }
-            }
-        }
+				$requirement_enabled = ! empty( $features[ $requirement ]['enabled'] )
+					|| self::license_allows(
+						$requirement,
+						array(
+							'context' => 'features',
+							'feature' => $key,
+						)
+					);
 
-        return $features;
-    }
+				if ( ! $requirement_enabled ) {
+					$features[ $key ]['enabled'] = false;
+					break;
+				}
+			}
+		}
 
-    private static function feature_requires_pro($key, $feature)
-    {
-        $key = sanitize_key($key);
-        if (self::is_paid_feature_key($key)) {
-            return true;
-        }
+		return $features;
+	}
 
-        $plan = isset($feature['plan']) ? sanitize_key($feature['plan']) : '';
-        if (!empty($feature['requiresPro']) || $plan === 'paid' || $plan === 'pro') {
-            return true;
-        }
+	private static function feature_requires_pro( $key, $feature ) {
+		$key = sanitize_key( $key );
+		if ( self::is_paid_feature_key( $key ) ) {
+			return true;
+		}
 
-        foreach ((array) (isset($feature['requiredFeatures']) ? $feature['requiredFeatures'] : array()) as $requirement) {
-            if (self::is_paid_feature_key($requirement)) {
-                return true;
-            }
-        }
+		$plan = isset( $feature['plan'] ) ? sanitize_key( $feature['plan'] ) : '';
+		if ( ! empty( $feature['requiresPro'] ) || $plan === 'paid' || $plan === 'pro' ) {
+			return true;
+		}
 
-        return false;
-    }
+		foreach ( (array) ( isset( $feature['requiredFeatures'] ) ? $feature['requiredFeatures'] : array() ) as $requirement ) {
+			if ( self::is_paid_feature_key( $requirement ) ) {
+				return true;
+			}
+		}
 
-    private static function is_paid_feature_key($key)
-    {
-        return in_array(sanitize_key($key), self::paid_feature_keys(), true);
-    }
+		return false;
+	}
 
-    private static function normalize_requirements($requirements)
-    {
-        if (is_string($requirements)) {
-            $requirements = preg_split('/[,|]/', $requirements);
-        }
+	private static function is_paid_feature_key( $key ) {
+		return in_array( sanitize_key( $key ), self::paid_feature_keys(), true );
+	}
 
-        if (!is_array($requirements)) {
-            $requirements = array();
-        }
+	private static function normalize_requirements( $requirements ) {
+		if ( is_string( $requirements ) ) {
+			$requirements = preg_split( '/[,|]/', $requirements );
+		}
 
-        return array_values(array_unique(array_filter(array_map('sanitize_key', $requirements))));
-    }
+		if ( ! is_array( $requirements ) ) {
+			$requirements = array();
+		}
+
+		return array_values( array_unique( array_filter( array_map( 'sanitize_key', $requirements ) ) ) );
+	}
 }

@@ -1,241 +1,236 @@
 <?php
 
-if (!defined('ABSPATH')) {
-    exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
-class WP_Posts_Carousel_Repository
-{
-    public static function table_name()
-    {
-        global $wpdb;
+class WP_Posts_Carousel_Repository {
 
-        return $wpdb->prefix . 'wp_posts_carousel';
-    }
+	public static function table_name() {
+		global $wpdb;
 
-    public static function all()
-    {
-        global $wpdb;
+		return $wpdb->prefix . 'wp_posts_carousel';
+	}
 
-        $posts_table = $wpdb->posts;
-        $users_table = $wpdb->users;
-        $table = self::table_name();
+	public static function all() {
+		global $wpdb;
 
-        return $wpdb->get_results(
-            $wpdb->prepare(
-                "SELECT p.*, wpc.params, wpc.post_modified AS carousel_modified, u.user_nicename
+		$posts_table = $wpdb->posts;
+		$users_table = $wpdb->users;
+		$table       = self::table_name();
+
+		return $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT p.*, wpc.params, wpc.post_modified AS carousel_modified, u.user_nicename
                 FROM %i p
                 INNER JOIN %i wpc ON p.ID = wpc.post_id
                 LEFT JOIN %i u ON p.post_author = u.ID
                 WHERE p.post_type = 'wp-posts-carousel' AND p.post_status NOT IN ('trash', 'auto-draft', 'inherit')
                 ORDER BY p.ID DESC",
-                $posts_table,
-                $table,
-                $users_table
-            ),
-            ARRAY_A
-        );
-    }
+				$posts_table,
+				$table,
+				$users_table
+			),
+			ARRAY_A
+		);
+	}
 
-    public static function get($post_id)
-    {
-        global $wpdb;
+	public static function get( $post_id ) {
+		global $wpdb;
 
-        $post_id = absint($post_id);
-        if (!$post_id) {
-            return null;
-        }
+		$post_id = absint( $post_id );
+		if ( ! $post_id ) {
+			return null;
+		}
 
-        $posts_table = $wpdb->posts;
-        $users_table = $wpdb->users;
-        $table = self::table_name();
+		$posts_table = $wpdb->posts;
+		$users_table = $wpdb->users;
+		$table       = self::table_name();
 
-        return $wpdb->get_row(
-            $wpdb->prepare(
-                "SELECT p.*, wpc.params, wpc.post_modified AS carousel_modified, u.user_nicename
+		return $wpdb->get_row(
+			$wpdb->prepare(
+				"SELECT p.*, wpc.params, wpc.post_modified AS carousel_modified, u.user_nicename
                 FROM %i p
                 INNER JOIN %i wpc ON p.ID = wpc.post_id
                 LEFT JOIN %i u ON p.post_author = u.ID
                 WHERE p.ID = %d AND p.post_type = 'wp-posts-carousel'
                 LIMIT 1",
-                $posts_table,
-                $table,
-                $users_table,
-                $post_id
-            ),
-            ARRAY_A
-        );
-    }
+				$posts_table,
+				$table,
+				$users_table,
+				$post_id
+			),
+			ARRAY_A
+		);
+	}
 
-    public static function get_config($post_id)
-    {
-        $carousel = self::get($post_id);
+	public static function get_config( $post_id ) {
+		$carousel = self::get( $post_id );
 
-        if (!$carousel || empty($carousel['params'])) {
-            return null;
-        }
+		if ( ! $carousel || empty( $carousel['params'] ) ) {
+			return null;
+		}
 
-        $params = json_decode($carousel['params'], true);
-        if (!is_array($params)) {
-            return null;
-        }
+		$params = json_decode( $carousel['params'], true );
+		if ( ! is_array( $params ) ) {
+			return null;
+		}
 
-        return WP_Posts_Carousel_Config::normalize($params);
-    }
+		return WP_Posts_Carousel_Config::normalize( $params );
+	}
 
-    public static function create($title, $params)
-    {
-        $status = self::status_from_params($params, 'publish');
-        $post_id = wp_insert_post(
-            array(
-                'post_author' => get_current_user_id(),
-                'post_title' => sanitize_text_field($title),
-                'post_name' => sanitize_title($title),
-                'post_status' => $status,
-                'post_type' => 'wp-posts-carousel',
-            ),
-            true
-        );
+	public static function create( $title, $params ) {
+		$status  = self::status_from_params( $params, 'publish' );
+		$post_id = wp_insert_post(
+			array(
+				'post_author' => get_current_user_id(),
+				'post_title'  => sanitize_text_field( $title ),
+				'post_name'   => sanitize_title( $title ),
+				'post_status' => $status,
+				'post_type'   => 'wp-posts-carousel',
+			),
+			true
+		);
 
-        if (is_wp_error($post_id)) {
-            return $post_id;
-        }
+		if ( is_wp_error( $post_id ) ) {
+			return $post_id;
+		}
 
-        $saved = self::save_params($post_id, $params, true);
+		$saved = self::save_params( $post_id, $params, true );
 
-        if (is_wp_error($saved)) {
-            wp_delete_post($post_id, true);
-            return $saved;
-        }
+		if ( is_wp_error( $saved ) ) {
+			wp_delete_post( $post_id, true );
+			return $saved;
+		}
 
-        return get_post($post_id);
-    }
+		return get_post( $post_id );
+	}
 
-    public static function update($post_id, $title, $params)
-    {
-        $post_id = absint($post_id);
-        $existing = get_post($post_id);
+	public static function update( $post_id, $title, $params ) {
+		$post_id  = absint( $post_id );
+		$existing = get_post( $post_id );
 
-        if (!$existing || $existing->post_type !== 'wp-posts-carousel') {
-            return new WP_Error('wp_posts_carousel_not_found', __('Carousel not found', 'cci-posts-carousel'), array('status' => 404));
-        }
+		if ( ! $existing || $existing->post_type !== 'wp-posts-carousel' ) {
+			return new WP_Error( 'wp_posts_carousel_not_found', __( 'Carousel not found', 'cci-posts-carousel' ), array( 'status' => 404 ) );
+		}
 
-        $updated = wp_update_post(
-            array(
-                'ID' => $post_id,
-                'post_title' => sanitize_text_field($title),
-                'post_name' => sanitize_title($title),
-                'post_status' => self::status_from_params($params, $existing->post_status),
-            ),
-            true
-        );
+		$updated = wp_update_post(
+			array(
+				'ID'          => $post_id,
+				'post_title'  => sanitize_text_field( $title ),
+				'post_name'   => sanitize_title( $title ),
+				'post_status' => self::status_from_params( $params, $existing->post_status ),
+			),
+			true
+		);
 
-        if (is_wp_error($updated)) {
-            return $updated;
-        }
+		if ( is_wp_error( $updated ) ) {
+			return $updated;
+		}
 
-        $saved = self::save_params($post_id, $params, false);
+		$saved = self::save_params( $post_id, $params, false );
 
-        if (is_wp_error($saved)) {
-            return $saved;
-        }
+		if ( is_wp_error( $saved ) ) {
+			return $saved;
+		}
 
-        return get_post($post_id);
-    }
+		return get_post( $post_id );
+	}
 
-    public static function delete($post_id)
-    {
-        global $wpdb;
+	public static function delete( $post_id ) {
+		global $wpdb;
 
-        $post_id = absint($post_id);
+		$post_id = absint( $post_id );
 
-        if (!wp_delete_post($post_id, true)) {
-            return new WP_Error('wp_posts_carousel_delete_failed', __('Failed delete carousel', 'cci-posts-carousel'), array('status' => 500));
-        }
+		$post = get_post( $post_id );
+		if ( ! $post || 'wp-posts-carousel' !== $post->post_type ) {
+			return new WP_Error( 'wp_posts_carousel_not_found', __( 'Carousel not found', 'cci-posts-carousel' ), array( 'status' => 404 ) );
+		}
 
-        $wpdb->delete(self::table_name(), array('post_id' => $post_id), array('%d'));
+		if ( ! wp_delete_post( $post_id, true ) ) {
+			return new WP_Error( 'wp_posts_carousel_delete_failed', __( 'Failed delete carousel', 'cci-posts-carousel' ), array( 'status' => 500 ) );
+		}
 
-        return true;
-    }
+		$wpdb->delete( self::table_name(), array( 'post_id' => $post_id ), array( '%d' ) );
 
-    public static function duplicate($post_id)
-    {
-        $carousel = self::get($post_id);
+		return true;
+	}
 
-        if (!$carousel || empty($carousel['params'])) {
-            return new WP_Error('wp_posts_carousel_not_found', __('Carousel not found', 'cci-posts-carousel'), array('status' => 404));
-        }
+	public static function duplicate( $post_id ) {
+		$carousel = self::get( $post_id );
 
-        $config = json_decode($carousel['params'], true);
+		if ( ! $carousel || empty( $carousel['params'] ) ) {
+			return new WP_Error( 'wp_posts_carousel_not_found', __( 'Carousel not found', 'cci-posts-carousel' ), array( 'status' => 404 ) );
+		}
 
-        if (!is_array($config)) {
-            return new WP_Error('wp_posts_carousel_invalid_params', __('Carousel params are invalid', 'cci-posts-carousel'), array('status' => 500));
-        }
+		$config = json_decode( $carousel['params'], true );
 
-        $config = WP_Posts_Carousel_Config::normalize($config);
-        $config['status'] = 'draft';
+		if ( ! is_array( $config ) ) {
+			return new WP_Error( 'wp_posts_carousel_invalid_params', __( 'Carousel params are invalid', 'cci-posts-carousel' ), array( 'status' => 500 ) );
+		}
 
-        return self::create(
-            /* translators: %s: original carousel title. */
-            sprintf(__('%s copy', 'cci-posts-carousel'), $carousel['post_title']),
-            $config
-        );
-    }
+		$config           = WP_Posts_Carousel_Config::normalize( $config );
+		$config['status'] = 'draft';
 
-    private static function save_params($post_id, $params, $insert = false)
-    {
-        global $wpdb;
+		return self::create(
+			/* translators: %s: original carousel title. */
+			sprintf( __( '%s copy', 'cci-posts-carousel' ), $carousel['post_title'] ),
+			$config
+		);
+	}
 
-        $config = WP_Posts_Carousel_Config::normalize($params);
-        $data = array(
-            'params' => wp_json_encode($config),
-            'post_modified' => current_time('mysql'),
-        );
-        $formats = array('%s', '%s');
+	private static function save_params( $post_id, $params, $insert = false ) {
+		global $wpdb;
 
-        if ($insert) {
-            $data['post_id'] = absint($post_id);
-            $formats[] = '%d';
+		$config  = WP_Posts_Carousel_Config::normalize( $params );
+		$data    = array(
+			'params'        => wp_json_encode( $config ),
+			'post_modified' => current_time( 'mysql' ),
+		);
+		$formats = array( '%s', '%s' );
 
-            $result = $wpdb->insert(self::table_name(), $data, $formats);
-        } else {
-            $exists = (int) $wpdb->get_var(
-                $wpdb->prepare(
-                    'SELECT COUNT(*) FROM %i WHERE post_id = %d',
-                    self::table_name(),
-                    absint($post_id)
-                )
-            );
+		if ( $insert ) {
+			$data['post_id'] = absint( $post_id );
+			$formats[]       = '%d';
 
-            if ($exists > 0) {
-                $result = $wpdb->update(self::table_name(), $data, array('post_id' => absint($post_id)), $formats, array('%d'));
-            } else {
-                $data['post_id'] = absint($post_id);
-                $formats[] = '%d';
-                $result = $wpdb->insert(self::table_name(), $data, $formats);
-            }
-        }
+			$result = $wpdb->insert( self::table_name(), $data, $formats );
+		} else {
+			$exists = (int) $wpdb->get_var(
+				$wpdb->prepare(
+					'SELECT COUNT(*) FROM %i WHERE post_id = %d',
+					self::table_name(),
+					absint( $post_id )
+				)
+			);
 
-        if ($result === false) {
-            return new WP_Error('wp_posts_carousel_params_save_failed', __('Failed save carousel params', 'cci-posts-carousel'), array('status' => 500));
-        }
+			if ( $exists > 0 ) {
+				$result = $wpdb->update( self::table_name(), $data, array( 'post_id' => absint( $post_id ) ), $formats, array( '%d' ) );
+			} else {
+				$data['post_id'] = absint( $post_id );
+				$formats[]       = '%d';
+				$result          = $wpdb->insert( self::table_name(), $data, $formats );
+			}
+		}
 
-        return true;
-    }
+		if ( $result === false ) {
+			return new WP_Error( 'wp_posts_carousel_params_save_failed', __( 'Failed save carousel params', 'cci-posts-carousel' ), array( 'status' => 500 ) );
+		}
 
-    private static function status_from_params($params, $default = 'publish')
-    {
-        if ($params instanceof WP_REST_Request) {
-            $params = $params->get_params();
-        }
+		return true;
+	}
 
-        if (!is_array($params)) {
-            return $default;
-        }
+	private static function status_from_params( $params, $default = 'publish' ) {
+		if ( $params instanceof WP_REST_Request ) {
+			$params = $params->get_params();
+		}
 
-        $status = isset($params['status']) ? $params['status'] : (isset($params['post_status']) ? $params['post_status'] : $default);
-        $status = sanitize_key($status);
+		if ( ! is_array( $params ) ) {
+			return $default;
+		}
 
-        return in_array($status, array('draft', 'publish'), true) ? $status : $default;
-    }
+		$status = isset( $params['status'] ) ? $params['status'] : ( isset( $params['post_status'] ) ? $params['post_status'] : $default );
+		$status = sanitize_key( $status );
+
+		return in_array( $status, array( 'draft', 'publish' ), true ) ? $status : $default;
+	}
 }

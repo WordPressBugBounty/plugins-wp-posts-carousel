@@ -2,17 +2,32 @@
   "name": "light",
   "title": "Light Template",
   "description": "Editorial light template with airy spacing and compact article previews.",
-    "version": "2.0.0",
+  "version": "2.1.1",
   "author": "Cool Cat Ideas",
   "author_url": "https://coolcatideas.com/",
-  "tags": ["carousel", "posts", "light", "editorial", "owl-carousel"],
+  "tags": [
+    "carousel",
+    "posts",
+    "light",
+    "editorial",
+    "owl-carousel"
+  ],
   "render": "views/template.php",
   "style": "assets/css/style.css",
-    "screenshot": "screenshot.png",
+  "screenshot": "screenshot.png",
   "supports": {
-    "renderers": ["php"],
-    "engines": ["owl-carousel"],
-    "itemTypes": ["post", "product", "media", "ad"],
+    "renderers": [
+      "php"
+    ],
+    "engines": [
+      "owl-carousel"
+    ],
+    "itemTypes": [
+      "post",
+      "product",
+      "media",
+      "ad"
+    ],
     "manualComposition": false,
     "connectedImages": false
   },

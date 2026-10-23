@@ -14,40 +14,40 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
+	exit; // Exit if accessed directly
 }
 
 if ( ! class_exists( 'WP_Posts_Carousel_Simple_Template' ) ) :
 
-/**
- * WP_Posts_Carousel_Simple_Template class
- */
-class WP_Posts_Carousel_Simple_Template extends WP_Posts_Carousel_Template {
+	/**
+	 * WP_Posts_Carousel_Simple_Template class
+	 */
+	class WP_Posts_Carousel_Simple_Template extends WP_Posts_Carousel_Template {
 
-    /**
-     * instance of this class
-     */
-    protected static $instance = null;
+		/**
+		 * instance of this class
+		 */
+		protected static $instance = null;
 
-    /**
-     * constructor
-     */
-    public function __construct() {
-        $this->template_details = parent::set_template_details( __FILE__ );
-    }
+		/**
+		 * constructor
+		 */
+		public function __construct() {
+			$this->template_details = parent::set_template_details( __FILE__ );
+		}
 
-    /**
-     * return an instance of this class
-     */
-    public static function get_instance() {
-        // if the single instance hasn't been set, set it now
-        if ( null == self::$instance ) {
-            self::$instance = new self;
-        }
+		/**
+		 * return an instance of this class
+		 */
+		public static function get_instance() {
+			// if the single instance hasn't been set, set it now
+			if ( null == self::$instance ) {
+				self::$instance = new self();
+			}
 
-        return self::$instance;
-    }
-}
+			return self::$instance;
+		}
+	}
 
-return WP_Posts_Carousel_Simple_Template::get_instance();
+	return WP_Posts_Carousel_Simple_Template::get_instance();
 endif;
