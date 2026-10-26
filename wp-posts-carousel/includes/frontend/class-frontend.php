@@ -209,6 +209,7 @@ class WP_Posts_Carousel_Frontend {
 						'nextSlide'     => __( 'Next slide', 'cci-posts-carousel' ),
 						/* translators: %d: slide number. */
 						'goToSlide'     => __( 'Go to slide %d', 'cci-posts-carousel' ),
+						'noContent'     => __( 'No content found.', 'cci-posts-carousel' ),
 					),
 				),
 				$settings

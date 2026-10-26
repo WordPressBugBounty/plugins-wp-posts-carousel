@@ -2,7 +2,7 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: CCI Posts Carousel All In One 2.1.1\n"
+"Project-Id-Version: CCI Posts Carousel All In One 2.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cci-posts-carousel\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3639,4 +3639,40 @@ msgstr ""
 
 #: src/admin-v2/i18n/i18n.js:31
 msgid "Already have a key? Paste it here and activate Pro in seconds."
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Rows"
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "One row"
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Two rows"
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Rows on phones"
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Phone layout up to"
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Gap between rows"
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "This template uses one row. Select a compatible card template to use two rows."
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Both rows move together. The breakpoint item counts become column counts: 3 columns show 6 slides. Slides fill each column from top to bottom. This layout uses horizontal sliding and equal widths, without merged slides."
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Choose a valid row count, mobile width or row gap."
 msgstr ""

@@ -80,6 +80,7 @@ class WP_Posts_Carousel_Generator {
 				'instance_id'           => '',
 				'force_editor_renderer' => false,
 				'lazy'                  => false,
+				'cards_only'            => false,
 			)
 		);
 
@@ -90,6 +91,7 @@ class WP_Posts_Carousel_Generator {
 			'force_editor_renderer' => ! empty( $args['force_editor_renderer'] ),
 			'lazy'                  => ! empty( $args['lazy'] ),
 			'_render_context'       => isset( $args['_render_context'] ) ? $args['_render_context'] : null,
+			'_cards_only'           => ! empty( $args['cards_only'] ),
 		);
 
 		return $this->render_config( $config, absint( $args['id'] ), $atts, absint( $args['index'] ) );
@@ -107,7 +109,13 @@ class WP_Posts_Carousel_Generator {
 			$this->carousel_params = WP_Posts_Carousel_Data::runtime_params( $config, $this->carousel_id );
 			$this->params          = $this->legacy_params( $this->carousel_params );
 		}
-		$renderer    = $this->resolve_renderer( $atts, $config );
+		$renderer = $this->resolve_renderer( $atts, $config );
+		$two_rows = WP_Posts_Carousel_Config::uses_two_rows( $config );
+		$cards_only = ! empty( $atts['_cards_only'] );
+		if ( $two_rows || $cards_only ) {
+			// The layout adapter groups original server-rendered cards before mounting the engine.
+			$renderer = 'php';
+		}
 		$react_mode  = $this->resolve_react_mode( $renderer, $atts, $config );
 		$lazy_render = $this->truthy( isset( $atts['lazy'] ) ? $atts['lazy'] : false );
 
@@ -170,24 +178,31 @@ class WP_Posts_Carousel_Generator {
 			$root_style_rules[] = '--wpc-image-fit:' . $this->carousel_params['image_fit'] . ';';
 			$root_style_rules[] = '--wpc-image-hover-scale:' . ( $this->carousel_params['image_fit'] === 'contain' ? '1' : '1.02' ) . ';';
 		}
+		if ( $two_rows && ! $cards_only ) {
+			// Owl's stylesheet may already be present for another carousel. Keep
+			// this root observable until the row adapter mounts the native engine.
+			$root_style_rules[] = 'display:block;';
+		}
 
 		if ( $renderer === 'react' && in_array( $react_mode, array( 'full', 'render' ), true ) ) {
-			$root_style_rules[] = 'min-height:360px;';
+			$root_style_rules[] = 'display:block;';
+			$root_style_rules[] = 'min-height:var(--wpc-loading-height,var(--wpc-loading-default-height,360px));';
 			$root_style_rules[] = 'overflow:hidden;';
-			$root_style_rules[] = 'visibility:hidden;';
 		} elseif ( $lazy_render ) {
 			$root_style_rules[] = 'display:block;';
-			$root_style_rules[] = 'min-height:360px;';
+			$root_style_rules[] = 'min-height:var(--wpc-loading-height,var(--wpc-loading-default-height,360px));';
 			$root_style_rules[] = 'overflow:hidden;';
 		}
 
 		$root_style            = ' style="' . esc_attr( implode( '', $root_style_rules ) ) . '"';
 		$filterbar             = $this->frontend_filters_html( $config, $post_id );
-		$lazy_render_attribute = $lazy_render ? ' data-wpc-lazy-render="true" aria-busy="true"' : '';
+		$filterbar            .= WP_Posts_Carousel_Loading_Skeleton::initial_layout( $config, $this->carousel_id );
+		$pending = $lazy_render || ( $renderer === 'react' && in_array( $react_mode, array( 'full', 'render' ), true ) );
+		$lazy_render_attribute = ( $lazy_render ? ' data-wpc-lazy-render="true"' : '' ) . ( $pending ? ' aria-busy="true"' : '' );
 		$out                   = $filterbar . '<div id="' . esc_attr( $this->carousel_id ) . '" class="' . esc_attr( $template_classes ) . ' ' . esc_attr( $engine_class ) . '" data-wpc-id="' . esc_attr( $post_id ) . '"' . $demo_key_attribute . $root_style . $lazy_render_attribute . ' data-wpc-renderer="' . esc_attr( $renderer ) . '" data-wpc-react-mode="' . esc_attr( $react_mode ) . '" data-wpc-api="' . esc_url( $api_url ) . '" data-wpc-engine="' . esc_attr( $engine_name ) . '" data-wpc-template="' . esc_attr( $this->template['name'] ) . '" data-wpc-filter-prefix="' . esc_attr( $filter_prefix ) . '" data-wpc-config-version="' . esc_attr( $config_version ) . '" data-wpc-prev-label="' . esc_attr__( 'previous', 'cci-posts-carousel' ) . '" data-wpc-next-label="' . esc_attr__( 'next', 'cci-posts-carousel' ) . '">';
 
 		if ( $lazy_render || ( $renderer === 'react' && in_array( $react_mode, array( 'full', 'render' ), true ) ) ) {
-			return $out . '</div>';
+			return $out . WP_Posts_Carousel_Loading_Skeleton::render( $config, $post_id, $this->carousel_id, $this->template ) . '</div>';
 		}
 
 		foreach ( $slides as $slide_index => $slide ) {
@@ -198,7 +213,7 @@ class WP_Posts_Carousel_Generator {
 
 		$out .= '</div>';
 
-		if ( $engine_name === 'owl-carousel' ) {
+		if ( $engine_name === 'owl-carousel' && ! $two_rows && ! $cards_only ) {
 			$out .= $this->carousel( $this->carousel_params );
 		}
 
@@ -427,7 +442,7 @@ class WP_Posts_Carousel_Generator {
 		$all_label  = isset( $filters['all_label'] ) ? trim( sanitize_text_field( $filters['all_label'] ) ) : '';
 		// Earlier versions persisted All. Resolve the default separately for each taxonomy.
 		$use_taxonomy_label = '' === $all_label || 'All' === $all_label;
-		$groups     = array();
+		$groups             = array();
 
 		foreach ( $taxonomies as $taxonomy_name ) {
 			if ( ! taxonomy_exists( $taxonomy_name ) ) {
@@ -456,7 +471,7 @@ class WP_Posts_Carousel_Generator {
 				$reset_label = $use_taxonomy_label && ! empty( $taxonomy->labels->all_items )
 					? $taxonomy->labels->all_items
 					: ( $use_taxonomy_label ? __( 'Show all items', 'cci-posts-carousel' ) : $all_label );
-				$items .= '<a class="cci-wpc-filterbar-option' . ( empty( $active_terms ) ? ' cci-wpc-active' : '' ) . '" href="' . esc_url( $this->filter_url( $param, 0 ) ) . '" data-wpc-filter-param="' . esc_attr( $param ) . '" data-wpc-filter-value=""' . ( empty( $active_terms ) ? ' aria-current="true"' : '' ) . '>' . esc_html( $reset_label ) . '</a>';
+				$items      .= '<a class="cci-wpc-filterbar-option' . ( empty( $active_terms ) ? ' cci-wpc-active' : '' ) . '" href="' . esc_url( $this->filter_url( $param, 0 ) ) . '" data-wpc-filter-param="' . esc_attr( $param ) . '" data-wpc-filter-value=""' . ( empty( $active_terms ) ? ' aria-current="true"' : '' ) . '>' . esc_html( $reset_label ) . '</a>';
 			}
 
 			foreach ( $terms as $term ) {

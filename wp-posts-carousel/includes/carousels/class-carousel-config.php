@@ -227,13 +227,15 @@ class WP_Posts_Carousel_Config {
 		$config['curation']['pattern'] = self::sanitize_pattern( self::array_get( $config['curation'], 'pattern', array() ) );
 
 		$config['engine']['name']                     = sanitize_key( self::array_get( $config['engine'], 'name', 'owl-carousel' ) );
-		$config['engine']['options']                  = self::sanitize_engine_options( self::array_get( $config['engine'], 'options', array() ) );
+		$config['engine']['options']                  = self::sanitize_row_options( self::sanitize_engine_options( self::array_get( $config['engine'], 'options', array() ) ) );
 		$config['engine']['options']['items_to_show'] = self::sanitize_items_to_show(
 			array_key_exists( 'items_to_show', $config['engine']['options'] )
 				? $config['engine']['options']['items_to_show']
 				: self::array_get( $config['engine']['options'], 'breakpoints', array() )
 		);
 		$config['engine']['options']['breakpoints']   = $config['engine']['options']['items_to_show'];
+		$config['engine']['options']['direction'] = $config['engine']['name'] === 'swiper' && ( $config['engine']['options']['direction'] ?? '' ) === 'vertical' && $config['engine']['options']['rows'] === 1 ? 'vertical' : 'horizontal';
+		$config['engine']['options']['vertical_height'] = max( 240, min( 1600, is_numeric( $config['engine']['options']['vertical_height'] ?? null ) ? (int) $config['engine']['options']['vertical_height'] : 480 ) );
 		$config['template']['name']                   = self::normalize_template_name( self::array_get( $config['template'], 'name', 'default' ) );
 		$config['template']['display']                = is_array( self::array_get( $config['template'], 'display', array() ) )
 			? self::array_get( $config['template'], 'display', array() )
@@ -468,6 +470,24 @@ class WP_Posts_Carousel_Config {
 		}
 
 		return $output;
+	}
+
+	public static function two_row_templates() {
+		return apply_filters( 'wp_posts_carousel_two_row_templates', array( 'default', 'light', 'simple' ) );
+	}
+
+	public static function uses_two_rows( $config ) {
+		return ( $config['engine']['options']['rows'] ?? 1 ) === 2 &&
+			in_array( $config['engine']['name'] ?? '', array( 'owl-carousel', 'swiper' ), true ) &&
+			in_array( $config['template']['name'] ?? '', self::two_row_templates(), true );
+	}
+
+	private static function sanitize_row_options( $options ) {
+		$options['rows']            = isset( $options['rows'] ) && is_scalar( $options['rows'] ) && (string) $options['rows'] === '2' ? 2 : 1;
+		$options['mobile_rows']     = isset( $options['mobile_rows'] ) && is_scalar( $options['mobile_rows'] ) && (string) $options['mobile_rows'] === '2' ? 2 : 1;
+		$options['rows_mobile_max'] = max( 320, min( 1024, is_numeric( $options['rows_mobile_max'] ?? null ) ? (int) $options['rows_mobile_max'] : 767 ) );
+		$options['row_gap']         = max( 0, min( 100, is_numeric( $options['row_gap'] ?? null ) ? (int) $options['row_gap'] : 24 ) );
+		return $options;
 	}
 
 	private static function sanitize_engine_options( $options ) {

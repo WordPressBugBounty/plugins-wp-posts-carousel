@@ -57,6 +57,7 @@ class WP_Posts_Carousel_Data {
 			'template' => self::public_template( $template ),
 			'slides'   => $slides,
 			'features' => WP_Posts_Carousel_Features::public_data(),
+			'controls_html' => WP_Posts_Carousel_Controls::render( $config, $post_id, $args['instance_id'], $template ),
 		);
 
 		return apply_filters( 'wp_posts_carousel_public_carousel_data', $data, $post_id, $config );
@@ -107,6 +108,7 @@ class WP_Posts_Carousel_Data {
 			'slides'   => $slides,
 			'features' => WP_Posts_Carousel_Features::public_data(),
 			'context'  => sanitize_key( $args['context'] ),
+			'controls_html' => WP_Posts_Carousel_Controls::render( $config, $args['id'], $args['instance_id'], $template ),
 		);
 
 		return apply_filters( 'wp_posts_carousel_preview_data', $data, $config, $args );
@@ -369,6 +371,7 @@ class WP_Posts_Carousel_Data {
 			? WP_Posts_Carousel_Icons::navigation_icons( $params, $config )
 			: array();
 
+		$params['rows'] = WP_Posts_Carousel_Config::uses_two_rows( $config ) ? 2 : 1;
 		return apply_filters( 'wp_posts_carousel_runtime_params', $params, $config );
 	}
 

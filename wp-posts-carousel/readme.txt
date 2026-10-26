@@ -4,7 +4,7 @@ Tags: carousel, slider, posts, gutenberg, custom post types
 Requires at least: 6.2
 Tested up to: 7.1.3
 Requires PHP: 7.4
-Stable tag: 2.1.1
+Stable tag: 2.2.0
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,8 @@ Your latest articles, your favourite guides, the pages you wish more people woul
 We're **Cool Cat Ideas**, and we're proud of this plugin. We built it for the enjoyable part of putting a page together: choosing what deserves attention and finding the right way to present it. We'd love to see what you create.
 
 = Plenty to create with, right from the start =
+
+* **Two rows, one carousel.** Show two rows of cards that move together. Keep one row on phones or choose two, with the existing shortcode and responsive column counts.
 
 * **Show a second image on hover.** Keep the featured image as primary and optionally preview another image from the content, WooCommerce gallery or your own selection. Off by default; touch screens keep the primary image.
 * **Keep selected slides first.** Pin articles, pages or custom slides, then automatically fill the remaining places from your query. Published posts appear once, and newly matching content can join without editing the carousel again.
@@ -199,7 +201,19 @@ The plugin includes compiled JavaScript and CSS. The repositories above contain 
 
 == Changelog ==
 
+= 2.2.0 =
+
+* Reduced layout shifts during startup: server-rendered cards keep their responsive layout while Owl or Swiper loads, and React placeholders remain visible until the engine is ready.
+* Added theme overrides for Swiper control HTML: arrange arrows and pagination in your own markup without writing a slider implementation.
+* Added vertical scrolling with a configurable viewport height for Swiper. Owl and two-row layouts keep horizontal scrolling.
+* Added responsive loading skeletons for lazy-loaded and React-rendered carousels, with theme HTML overrides and loading-error retry controls.
+* Fixed two-row startup on pages where another carousel has already loaded Owl styles.
+* Fixed PHP templates displaying the author and publication date when those fields were disabled.
+* Allow Pro compositions to reuse original template cards and the configured Owl or Swiper library without starting a second carousel instance.
+* Added two-row carousels to Free: both rows move together, with separate phone row counts and spacing. Existing carousels keep one row.
+
 = 2.1.1 =
+
 * Simplified image settings in Design: choose the image file size next to its width and height, then choose whether to show the whole image or crop it. The second image on hover is also configured in Design.
 * Category and tag filters above the carousel now use complete labels such as "All categories" and "All tags", translated into the visitor's language. These buttons clear the selection in their filter group.
 * Fixed REST authorization so administrative requests are checked after authentication and cookie nonce validation.

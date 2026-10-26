@@ -3674,3 +3674,38 @@ msgstr "Przeciągaj slajdy, aby ustalić kolejność. Kliknij ołówek, aby edyt
 
 msgid "Drag slides here to reorder the manual sequence. Use the pencil button to edit a slide."
 msgstr "Przeciągaj slajdy, aby zmienić ich kolejność. Kliknij ołówek, aby edytować slajd."
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Rows"
+msgstr "Liczba wierszy"
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "One row"
+msgstr "Jeden wiersz"
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Two rows"
+msgstr "Dwa wiersze"
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Rows on phones"
+msgstr "Wiersze na telefonie"
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Phone layout up to"
+msgstr "Układ mobilny do szerokości"
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Gap between rows"
+msgstr "Odstęp między wierszami"
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "This template uses one row. Select a compatible card template to use two rows."
+msgstr "Ten szablon korzysta z jednego wiersza. Aby użyć dwóch, wybierz obsługiwany szablon kart."
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Both rows move together. The breakpoint item counts become column counts: 3 columns show 6 slides. Slides fill each column from top to bottom. This layout uses horizontal sliding and equal widths, without merged slides."
+msgstr "Oba wiersze przewijają się razem. Liczba elementów w breakpointach oznacza liczbę kolumn: 3 kolumny pokazują 6 slajdów. Slajdy wypełniają kolumny od góry do dołu. Ten układ przewija się poziomo i używa równych szerokości, bez łączenia slajdów."
+
+#: src/admin-v2/components/builder/CarouselSettings.jsx
+msgid "Choose a valid row count, mobile width or row gap."
+msgstr "Wybierz poprawną liczbę wierszy, szerokość układu mobilnego i odstęp między wierszami."

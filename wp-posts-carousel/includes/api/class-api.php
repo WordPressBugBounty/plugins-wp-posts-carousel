@@ -589,6 +589,11 @@ class WP_Posts_Carousel_API {
 		}
 
 		$generator = new WP_Posts_Carousel_Generator();
+		// Swiper reuses the selected PHP card template in vertical layouts.
+		// This also preserves child-theme overrides and item-content hooks.
+		if ( ( $config['engine']['name'] ?? '' ) === 'swiper' && ( $config['engine']['options']['direction'] ?? '' ) === 'vertical' ) {
+			$args['cards_only'] = true;
+		}
 
 		return $generator->generate_from_config( $config, $args );
 	}
@@ -610,6 +615,7 @@ class WP_Posts_Carousel_API {
 			'operators'               => WP_Posts_Carousel_Utils::get_operators(),
 			'breakpoints'             => WP_Posts_Carousel_Utils::get_breakpoints(),
 			'carousel_types'          => WP_Posts_Carousel_Utils::get_carousel_types(),
+			'two_row_templates'       => WP_Posts_Carousel_Config::two_row_templates(),
 			'frontend_renderers'      => WP_Posts_Carousel_Utils::get_frontend_renderers(),
 			'templates'               => $WP_Posts_Carousel_Templates->get_templates(),
 			'display_options'         => WP_Posts_Carousel_Utils::get_display_options(),
@@ -1318,12 +1324,14 @@ class WP_Posts_Carousel_API {
 	}
 
 	public function get_carousels( WP_REST_Request $request ) {
-		$result = array_values( array_filter(
-			WP_Posts_Carousel_Repository::all() ?: array(),
-			function ( $carousel ) {
-				return $this->can_access_carousel( $carousel['ID'], 'read' );
-			}
-		) );
+		$result = array_values(
+			array_filter(
+				WP_Posts_Carousel_Repository::all() ?: array(),
+				function ( $carousel ) {
+					return $this->can_access_carousel( $carousel['ID'], 'read' );
+				}
+			)
+		);
 
 		return new WP_REST_Response( is_array( $result ) ? $result : array(), 200 );
 	}
@@ -1336,8 +1344,8 @@ class WP_Posts_Carousel_API {
 			$params = $request->get_params();
 		}
 
-		$params         = $this->normalize_request_data( $params );
-		$params         = is_array( $params ) ? $params : array();
+		$params            = $this->normalize_request_data( $params );
+		$params            = is_array( $params ) ? $params : array();
 		$publication_error = $this->check_publication_permission( $params, 'publish' );
 		if ( is_wp_error( $publication_error ) ) {
 			return $publication_error;
