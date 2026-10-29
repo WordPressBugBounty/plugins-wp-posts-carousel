@@ -14,6 +14,7 @@ class WP_Posts_Carousel_Query_Builder {
 		$args = array(
 			'post_type'      => isset( $source['post_types'] ) ? (array) $source['post_types'] : array( 'post' ),
 			'post_status'    => 'publish',
+			'has_password'   => false,
 			'posts_per_page' => isset( $source['limit'] ) ? absint( $source['limit'] ) : 10,
 			'orderby'        => isset( $source['order_by'] ) ? $source['order_by'] : 'ID',
 			'order'          => isset( $source['order'] ) ? $source['order'] : 'DESC',
@@ -22,7 +23,9 @@ class WP_Posts_Carousel_Query_Builder {
 		);
 
 		if ( ! empty( $manual_ids ) && ( $source['mode'] ?? '' ) !== 'hybrid' ) {
-			$args['post__in']       = $manual_ids;
+			// WordPress ignores post__not_in when post__in is present.
+			$manual_ids             = array_values( array_diff( $manual_ids, $args['post__not_in'] ) );
+			$args['post__in']       = $manual_ids ? $manual_ids : array( 0 );
 			$args['orderby']        = 'post__in';
 			$args['posts_per_page'] = count( $manual_ids );
 			$manual_post_types      = self::manual_post_types( $curation );
@@ -30,6 +33,9 @@ class WP_Posts_Carousel_Query_Builder {
 			if ( ! empty( $manual_post_types ) ) {
 				$args['post_type'] = $manual_post_types;
 			}
+		} elseif ( ( $source['mode'] ?? '' ) === 'manual' ) {
+			// An empty post__in would mean all posts to WP_Query.
+			$args['post__in'] = array( 0 );
 		}
 
 		$tax_query          = self::tax_query( $source );

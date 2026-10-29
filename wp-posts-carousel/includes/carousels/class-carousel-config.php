@@ -148,7 +148,7 @@ class WP_Posts_Carousel_Config {
 				'mode'       => $config['source']['mode'],
 				'post_types' => self::values_to_options( $config['source']['post_types'] ),
 				'taxonomies' => $config['source']['taxonomies'],
-				'order_by'   => $config['source']['order_by'],
+				'order_by'   => self::order_by_form_value( $config['source']['order_by'] ),
 				'ordering'   => strtolower( $config['source']['order'] ),
 				'posts'      => self::items_to_options( $config['curation']['items'] ),
 				'exclude'    => self::values_to_options( $config['source']['exclude'] ),
@@ -226,18 +226,18 @@ class WP_Posts_Carousel_Config {
 		$config['curation']['items']   = self::sanitize_items( self::array_get( $config['curation'], 'items', array() ) );
 		$config['curation']['pattern'] = self::sanitize_pattern( self::array_get( $config['curation'], 'pattern', array() ) );
 
-		$config['engine']['name']                     = sanitize_key( self::array_get( $config['engine'], 'name', 'owl-carousel' ) );
-		$config['engine']['options']                  = self::sanitize_row_options( self::sanitize_engine_options( self::array_get( $config['engine'], 'options', array() ) ) );
-		$config['engine']['options']['items_to_show'] = self::sanitize_items_to_show(
+		$config['engine']['name']                       = sanitize_key( self::array_get( $config['engine'], 'name', 'owl-carousel' ) );
+		$config['engine']['options']                    = self::sanitize_row_options( self::sanitize_engine_options( self::array_get( $config['engine'], 'options', array() ) ) );
+		$config['engine']['options']['items_to_show']   = self::sanitize_items_to_show(
 			array_key_exists( 'items_to_show', $config['engine']['options'] )
 				? $config['engine']['options']['items_to_show']
 				: self::array_get( $config['engine']['options'], 'breakpoints', array() )
 		);
-		$config['engine']['options']['breakpoints']   = $config['engine']['options']['items_to_show'];
-		$config['engine']['options']['direction'] = $config['engine']['name'] === 'swiper' && ( $config['engine']['options']['direction'] ?? '' ) === 'vertical' && $config['engine']['options']['rows'] === 1 ? 'vertical' : 'horizontal';
+		$config['engine']['options']['breakpoints']     = $config['engine']['options']['items_to_show'];
+		$config['engine']['options']['direction']       = $config['engine']['name'] === 'swiper' && ( $config['engine']['options']['direction'] ?? '' ) === 'vertical' && $config['engine']['options']['rows'] === 1 ? 'vertical' : 'horizontal';
 		$config['engine']['options']['vertical_height'] = max( 240, min( 1600, is_numeric( $config['engine']['options']['vertical_height'] ?? null ) ? (int) $config['engine']['options']['vertical_height'] : 480 ) );
-		$config['template']['name']                   = self::normalize_template_name( self::array_get( $config['template'], 'name', 'default' ) );
-		$config['template']['display']                = is_array( self::array_get( $config['template'], 'display', array() ) )
+		$config['template']['name']                     = self::normalize_template_name( self::array_get( $config['template'], 'name', 'default' ) );
+		$config['template']['display']                  = is_array( self::array_get( $config['template'], 'display', array() ) )
 			? self::array_get( $config['template'], 'display', array() )
 			: array();
 		unset( $config['style'] );
@@ -739,7 +739,7 @@ class WP_Posts_Carousel_Config {
 		return $thumbnail_id ? get_post_meta( $thumbnail_id, '_wp_attachment_image_alt', true ) : '';
 	}
 
-	private static function normalize_order_by( $order_by ) {
+	private static function order_by_map() {
 		$map = array(
 			'id'            => 'ID',
 			'posts_order'   => 'post__in',
@@ -748,7 +748,19 @@ class WP_Posts_Carousel_Config {
 			'post_modified' => 'post_modified',
 		);
 
-		$map      = apply_filters( 'wp_posts_carousel_order_by_map', $map );
+		return apply_filters( 'wp_posts_carousel_order_by_map', $map );
+	}
+
+	private static function order_by_form_value( $order_by ) {
+		$key = array_search( $order_by, self::order_by_map(), true );
+		return false === $key ? $order_by : $key;
+	}
+
+	private static function normalize_order_by( $order_by ) {
+		$map = self::order_by_map();
+		if ( in_array( $order_by, $map, true ) ) {
+			return $order_by;
+		}
 		$order_by = sanitize_key( $order_by );
 
 		return isset( $map[ $order_by ] ) ? $map[ $order_by ] : 'ID';

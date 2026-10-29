@@ -46,17 +46,17 @@ class WP_Posts_Carousel_Data {
 		$runtime_params['post_count'] = count( $slides );
 
 		$data = array(
-			'id'       => $post_id,
-			'title'    => $carousel['post_title'],
-			'status'   => $carousel['post_status'],
-			'config'   => $config,
-			'engine'   => array(
+			'id'            => $post_id,
+			'title'         => $carousel['post_title'],
+			'status'        => $carousel['post_status'],
+			'config'        => $config,
+			'engine'        => array(
 				'name'    => $config['engine']['name'],
 				'options' => $runtime_params,
 			),
-			'template' => self::public_template( $template ),
-			'slides'   => $slides,
-			'features' => WP_Posts_Carousel_Features::public_data(),
+			'template'      => self::public_template( $template ),
+			'slides'        => $slides,
+			'features'      => WP_Posts_Carousel_Features::public_data(),
 			'controls_html' => WP_Posts_Carousel_Controls::render( $config, $post_id, $args['instance_id'], $template ),
 		);
 
@@ -96,18 +96,18 @@ class WP_Posts_Carousel_Data {
 		$runtime_params['post_count'] = count( $slides );
 
 		$data = array(
-			'id'       => absint( $args['id'] ),
-			'title'    => sanitize_text_field( $args['title'] ),
-			'status'   => sanitize_key( $args['status'] ),
-			'config'   => $config,
-			'engine'   => array(
+			'id'            => absint( $args['id'] ),
+			'title'         => sanitize_text_field( $args['title'] ),
+			'status'        => sanitize_key( $args['status'] ),
+			'config'        => $config,
+			'engine'        => array(
 				'name'    => $config['engine']['name'],
 				'options' => $runtime_params,
 			),
-			'template' => self::public_template( $template ),
-			'slides'   => $slides,
-			'features' => WP_Posts_Carousel_Features::public_data(),
-			'context'  => sanitize_key( $args['context'] ),
+			'template'      => self::public_template( $template ),
+			'slides'        => $slides,
+			'features'      => WP_Posts_Carousel_Features::public_data(),
+			'context'       => sanitize_key( $args['context'] ),
 			'controls_html' => WP_Posts_Carousel_Controls::render( $config, $args['id'], $args['instance_id'], $template ),
 		);
 
@@ -269,6 +269,9 @@ class WP_Posts_Carousel_Data {
 
 		while ( $query->have_posts() ) {
 			$query->the_post();
+			if ( ! self::public_selection_post( get_post() ) ) {
+				continue;
+			}
 			$slide                        = WP_Posts_Carousel_Slide_View_Model::from_post( get_post(), $runtime_params, $config );
 			$slides[ (int) get_the_ID() ] = $slide;
 		}

@@ -385,7 +385,7 @@ class WP_Posts_Carousel_API {
 		$query = new WP_Query( $args );
 		$posts = $query->posts;
 
-		$result = array_map( array( $this, 'prepare_post_option' ), $posts );
+		$result = array_values( array_map( array( $this, 'prepare_post_option' ), $posts ) );
 		wp_reset_postdata();
 
 		return new WP_REST_Response( $result, 200 );
@@ -401,25 +401,39 @@ class WP_Posts_Carousel_API {
 	}
 
 	public function get_custom_terms( WP_REST_Request $request ) {
-		if ( ! isset( $request['post_type'] ) && ! isset( $request['taxonomy'] ) ) {
-			return false;
+		$taxonomy = $request->get_param( 'taxonomy' );
+		if ( ! is_string( $taxonomy ) || ! taxonomy_exists( $taxonomy ) ) {
+			return new WP_Error( 'wp_posts_carousel_invalid_taxonomy', __( 'Select an available taxonomy.', 'cci-posts-carousel' ), array( 'status' => 400 ) );
 		}
-
-		//$post_type =  sanitize_text_field($request['post_type']);
-		$taxonomy = sanitize_text_field( $request['taxonomy'] );
+		$post_type = $request->get_param( 'post_type' );
+		if ( null !== $post_type && ( ! is_string( $post_type ) || ! is_object_in_taxonomy( $post_type, $taxonomy ) ) ) {
+			return new WP_Error( 'wp_posts_carousel_invalid_taxonomy', __( 'This taxonomy is not available for the selected post type.', 'cci-posts-carousel' ), array( 'status' => 400 ) );
+		}
+		$search = $request->get_param( 's' );
+		if ( null !== $search && ! is_string( $search ) ) {
+			return new WP_Error( 'wp_posts_carousel_invalid_search', __( 'Enter a text search phrase.', 'cci-posts-carousel' ), array( 'status' => 400 ) );
+		}
 
 		$args = array(
 			'taxonomy'   => $taxonomy,
 			'hide_empty' => false,
+			'number'     => 50,
+			'orderby'    => 'name',
+			'order'      => 'ASC',
 		);
 
-		if ( isset( $request['s'] ) && ! empty( $request['s'] ) ) {
-			$args['search'] = sanitize_text_field( $request['s'] );
+		if ( null !== $search && '' !== $search ) {
+			$args['search'] = sanitize_text_field( $search );
 		}
 		$terms = get_terms( $args );
+		if ( is_wp_error( $terms ) ) {
+			return $terms;
+		}
+		if ( ! is_array( $terms ) ) {
+			return new WP_Error( 'wp_posts_carousel_invalid_terms', __( 'Terms could not be loaded. Check the server logs and try again.', 'cci-posts-carousel' ), array( 'status' => 500 ) );
+		}
 
-		$result = array_map( array( $this, 'prepare_term_option' ), $terms );
-		wp_reset_postdata();
+		$result = array_values( array_map( array( $this, 'prepare_term_option' ), $terms ) );
 
 		return new WP_REST_Response( $result, 200 );
 	}

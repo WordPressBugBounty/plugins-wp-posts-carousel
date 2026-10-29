@@ -2,9 +2,9 @@
 Contributors: coolcatideas
 Tags: carousel, slider, posts, gutenberg, custom post types
 Requires at least: 6.2
-Tested up to: 7.1.3
+Tested up to: 7.1.4
 Requires PHP: 7.4
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,16 +12,11 @@ Give your content a place to shine. Create responsive carousels with a visual ed
 
 == Description ==
 
-CCI Posts Carousel All In One was previously called WP Posts Carousel All In One. The name and plugin slug are changing following WordPress’s decision on the use of “WP”. Existing carousels and legacy shortcodes remain supported.
-
-
 Your latest articles, your favourite guides, the pages you wish more people would discover. Bring them together in a carousel that invites visitors to keep exploring.
 
-[See it in action](https://wordpress-demo.coolcatideas.com/) | [Explore the product](https://coolcatideas.com/products/cci-posts-carousel-all-in-one/) | [Read the guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.1.0/) | [Get help](https://github.com/cool-cat-ideas/cci-posts-carousel-all-in-one/issues)
+[See it in action](https://wordpress-demo.coolcatideas.com/) | [Explore the product](https://coolcatideas.com/products/cci-posts-carousel-all-in-one/) | [Read the guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.0/) | [Get help](https://github.com/cool-cat-ideas/cci-posts-carousel-all-in-one/issues)
 
 **CCI Posts Carousel All In One** gives you a visual editor to choose your content, arrange your slides and preview the result. Add your saved carousel with a Gutenberg block or shortcode, then reuse it across your site. Change it once and every place using it stays in sync.
-
-We're **Cool Cat Ideas**, and we're proud of this plugin. We built it for the enjoyable part of putting a page together: choosing what deserves attention and finding the right way to present it. We'd love to see what you create.
 
 = Plenty to create with, right from the start =
 
@@ -67,7 +62,7 @@ These features come together in one Pro plugin, installed alongside this one. Wo
 
 Optional extensions can add more layouts and content sources. [Aurora Cards](https://coolcatideas.com/products/cci-posts-carousel-aurora-cards/) adds another card design, while [Related Content](https://coolcatideas.com/products/cci-posts-carousel-related-content/) finds posts or products related to the page being viewed. Both are separate, no-cost additions.
 
-For developers, the [documentation](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.1.0/) covers hooks and filters for your own queries, templates and integrations.
+For developers, the [documentation](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.0/) covers hooks and filters for your own queries, templates and integrations.
 
 = We'd love to hear from you =
 
@@ -86,7 +81,7 @@ Requires WordPress 6.2 or later and PHP 7.4 or later.
 5. Save, then add the **CCI Posts Carousel All In One** block to a page and select your carousel. You can also paste its shortcode into a Shortcode block.
 6. Publish your page and enjoy your new carousel.
 
-For a walkthrough, see the [getting started guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.1.0/).
+For a walkthrough, see the [getting started guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.0/).
 
 == Frequently Asked Questions ==
 
@@ -99,25 +94,9 @@ Yes, in the base plugin. Open Advanced > Image on hover, enable Change image on 
 
 Yes. Open Query > Content selection and choose Pinned slides + automatic fill. Set the post types, categories, ordering and Posts limit. Click the pin button on a preview card, then drag pinned cards into your preferred order. Save the carousel. With two pins and a limit of six, up to four matching posts follow the pins without repeating them. This option is included in the base plugin. Remove a pin to let that post return to automatic results when it matches the query.
 
-= How do I update from 2.0.x to 2.1.0 after the rename? =
+= How do I update the plugin? =
 
-This includes 2.0.0 through 2.0.4. CCI Posts Carousel All In One was previously
-named WP Posts Carousel All In One. Your saved carousel IDs, settings, Gutenberg
-blocks and existing [wp_posts_carousel] shortcodes stay supported. You do not
-need to recreate carousels or replace shortcodes.
-
-1. Back up your WordPress files and database. Try the update on staging first.
-2. Keep WP Posts Carousel All In One installed and active. Download cci-posts-carousel-2.1.0.zip from the product page and install it through Plugins > Add New Plugin > Upload Plugin. Two plugin entries are expected because the folder name has changed.
-3. Activate CCI Posts Carousel All In One. Activation switches to the renamed package and makes the old entry inactive while preserving saved carousel data.
-4. An already active Pro 2.0.0 can stay active. Update Pro and external add-ons separately when their renamed ZIPs are available. Their version numbers do not need to match the base plugin, and an active license does not need to be entered again.
-5. Clear cache, open the saved carousel list and check existing pages on desktop and mobile, including Pro layouts or WooCommerce actions you use.
-
-Do not click Delete on the old plugin entry in WordPress: its uninstall routine
-may remove shared saved data. Keep the inactive folder until you have checked
-the site. Remove old files only through SFTP or your hosting file manager after
-confirming that the renamed replacements are active.
-
-See the [full update guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.1.0/installation/#updating-from-the-previous-package-name) for checks and rollback steps. The separate 1.x upgrade procedure does not apply to 2.0.x installations.
+Install the current package over the installed plugin and check existing carousels after clearing the site cache. For upgrades from a previous package name or from 1.x, follow the [installation and upgrade guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.0/installation/).
 
 = Why did my carousels stop working after upgrading from 1.x to 2.x? =
 
@@ -149,7 +128,7 @@ No. The integration is built into the base plugin. Activate WordPress Popular Po
 
 = Can developers change queries and output? =
 
-Yes. The [developer documentation](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.1.0/) describes supported actions and filters for queries, templates and integrations.
+Yes. The [developer documentation](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.0/) describes supported actions and filters for queries, templates and integrations.
 
 = Why is my carousel empty? =
 
@@ -200,6 +179,16 @@ Icons are local by default. Choosing **CDN** in compatibility settings loads Fon
 The plugin includes compiled JavaScript and CSS. The repositories above contain the readable sources and build tools; the product lockfile pins the shared UI packages.
 
 == Changelog ==
+
+= 2.2.1 =
+
+* Tested with WordPress 7.1.4.
+* Fixed category and tag searches failing when integrations return term lists with numeric gaps. Failed searches now show a clear session, permission or server message and a retry button.
+* Limited taxonomy suggestions to 50 results and preserved searches for the phrase "0".
+* Fixed outdated manual-post search responses replacing newer results or reappearing after clearing the search.
+* Fixed selected ordering labels disappearing after saving and reopening a carousel, including manual ordering and registered extension options.
+* Fixed empty manual selections falling back to automatic posts and manual selections ignoring excluded posts.
+* Excluded password-protected posts from automatic and manual carousel output, including full-content descriptions. Non-public post types cannot appear in public slides.
 
 = 2.2.0 =
 
@@ -275,17 +264,5 @@ The plugin includes compiled JavaScript and CSS. The repositories above contain 
 
 == Upgrade Notice ==
 
-= 2.1.0 =
-Renamed from WP Posts Carousel All In One. Updating from 2.0.x? Follow the update steps in the FAQ and keep the old plugin until you activate CCI. Saved carousels and shortcodes stay supported. Pinning and hover images are included; hover is off by default.
-
-= 2.0.4 =
-Autoplay, arrow and dot transitions now use their own speed settings in Swiper and the editor preview. Owl fade animations follow the selected duration. Existing carousel settings are preserved.
-
-= 2.0.3 =
-Category and tag autocomplete, automatic query previews and clearer manual selection controls. Existing manual carousels keep their selected slides.
-
-= 2.0.2 =
-More reliable carousel loading and fewer duplicate queries and unused template styles. Existing 2.x carousel settings are preserved.
-
-= 2.0.0 =
-Initial public release of the rebuilt carousel editor and rendering system.
+= 2.2.1 =
+Tested with WordPress 7.1.4. See the changelog for content selection, search and ordering fixes.

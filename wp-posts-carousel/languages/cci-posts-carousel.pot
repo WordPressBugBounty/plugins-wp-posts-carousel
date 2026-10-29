@@ -3676,3 +3676,63 @@ msgstr ""
 #: src/admin-v2/components/builder/CarouselSettings.jsx
 msgid "Choose a valid row count, mobile width or row gap."
 msgstr ""
+
+
+#: assets/js/admin-v2.js src/admin-v2/components/builder/TermAutocomplete.jsx
+msgid "Your session has expired. Reload the page and sign in again."
+msgstr ""
+
+
+#: assets/js/admin-v2.js src/admin-v2/components/builder/TermAutocomplete.jsx
+msgid "Term search was denied (HTTP 403). Check your permissions and security settings."
+msgstr ""
+
+
+#: assets/js/admin-v2.js src/admin-v2/components/builder/TermAutocomplete.jsx
+msgid "Term search is unavailable (HTTP 404). Check access to the WordPress REST API."
+msgstr ""
+
+
+#: assets/js/admin-v2.js src/admin-v2/components/builder/TermAutocomplete.jsx
+msgid "The server could not load terms. Check the server logs and try again."
+msgstr ""
+
+
+#: assets/js/admin-v2.js src/admin-v2/components/builder/TermAutocomplete.jsx
+msgid "This taxonomy is no longer available. Select another taxonomy or reload the page."
+msgstr ""
+
+
+#: assets/js/admin-v2.js src/admin-v2/components/builder/TermAutocomplete.jsx
+msgid "Could not load terms. Try again."
+msgstr ""
+
+
+#: assets/js/admin-v2.js src/admin-v2/components/builder/TermAutocomplete.jsx
+msgid "Try again"
+msgstr ""
+
+
+#: assets/js/admin-v2.js src/admin-v2/components/builder/TermAutocomplete.jsx
+msgid "Showing up to 50 results. Refine your search to find more terms."
+msgstr ""
+
+
+#: includes/api/class-api.php
+msgid "Select an available taxonomy."
+msgstr ""
+
+
+#: includes/api/class-api.php
+msgid "This taxonomy is not available for the selected post type."
+msgstr ""
+
+
+#: includes/api/class-api.php
+msgid "Enter a text search phrase."
+msgstr ""
+
+
+#: includes/api/class-api.php
+msgid "Terms could not be loaded. Check the server logs and try again."
+msgstr ""
