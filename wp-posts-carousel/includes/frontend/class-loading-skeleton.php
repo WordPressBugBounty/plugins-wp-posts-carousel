@@ -32,11 +32,12 @@ class WP_Posts_Carousel_Loading_Skeleton {
 			$rules .= '@media(max-width:' . absint( $options['rows_mobile_max'] ?? 767 ) . 'px){' . $selector . '{--wpc-initial-rows:' . absint( $options['mobile_rows'] ?? 1 ) . ';}}';
 		}
 		// Scope to direct cards: the rule stops applying as soon as a library
-		// supplies its viewport. The same markup remains usable without JavaScript.
-		$rules .= $selector . ':has(>.cci-wpc-slide){display:grid!important;grid-auto-flow:column;grid-template-rows:repeat(var(--wpc-initial-rows),minmax(0,1fr));grid-auto-columns:calc((100% - (var(--wpc-initial-columns) - 1)*var(--wpc-carousel-gap,0px))/var(--wpc-initial-columns));column-gap:var(--wpc-carousel-gap,0px);row-gap:var(--wpc-initial-row-gap);overflow:clip;}';
-		$rules .= $selector . ':has(>.cci-wpc-slide)> .cci-wpc-slide{min-width:0;width:100%;height:100%;margin:0;}';
+		// supplies its viewport or hides the source after a full React mount.
+		// The same markup remains usable without JavaScript.
+		$rules .= $selector . ':not([aria-hidden="true"]):has(>.cci-wpc-slide){display:grid!important;grid-auto-flow:column;grid-template-rows:repeat(var(--wpc-initial-rows),minmax(0,1fr));grid-auto-columns:calc((100% - (var(--wpc-initial-columns) - 1)*var(--wpc-carousel-gap,0px))/var(--wpc-initial-columns));column-gap:var(--wpc-carousel-gap,0px);row-gap:var(--wpc-initial-row-gap);overflow:clip;}';
+		$rules .= $selector . ':not([aria-hidden="true"]):has(>.cci-wpc-slide)> .cci-wpc-slide{min-width:0;width:100%;height:100%;margin:0;}';
 		$rules .= $selector . ':is([data-rows-ready="fallback"],[data-wpc-lazy-state="error"],[data-flow-error]):has(>.cci-wpc-slide){overflow:auto;}';
-		return '<style data-wpc-initial-layout>' . $rules . '</style><noscript><style>' . $selector . ':has(>.cci-wpc-slide){overflow:auto;}</style></noscript>';
+		return '<style data-wpc-initial-layout>' . $rules . '</style><noscript><style>' . $selector . ':not([aria-hidden="true"]):has(>.cci-wpc-slide){overflow:auto;}</style></noscript>';
 	}
 
 	public static function render( $config, $post_id, $instance_id, $template ) {

@@ -93,6 +93,11 @@ class WP_Posts_Carousel_Templates {
 	}
 
 	public static function discover_templates() {
+		return array_values( apply_filters( 'wp_posts_carousel_templates', self::template_candidates() ) );
+	}
+
+	/** Resolve one template without evaluating every other template's feature status. */
+	private static function template_candidates( $requested_name = null ) {
 		$templates = array();
 
 		foreach ( self::template_paths() as $base_path => $base_url ) {
@@ -106,22 +111,29 @@ class WP_Posts_Carousel_Templates {
 			}
 
 			foreach ( $folders as $folder ) {
-				$template = self::load_template_manifest( $folder, trailingslashit( $base_url ) . basename( $folder ) . '/' );
+				$template = self::load_template_manifest( $folder, trailingslashit( $base_url ) . basename( $folder ) . '/', $requested_name );
 				if ( ! $template || isset( $templates[ $template['name'] ] ) ) {
 					continue;
 				}
 
 				$templates[ $template['name'] ] = $template;
+				if ( $requested_name !== null ) {
+					return $templates;
+				}
 			}
 		}
 
-		return array_values( apply_filters( 'wp_posts_carousel_templates', $templates ) );
+		return $templates;
 	}
 
 	public static function get_template( $template_name ) {
 		$template_name = self::normalize_template_name( $template_name );
 
-		foreach ( self::discover_templates() as $template ) {
+		// Collection filters may add virtual templates or change the selected entry.
+		$templates = has_filter( 'wp_posts_carousel_templates' )
+			? self::discover_templates()
+			: self::template_candidates( $template_name );
+		foreach ( $templates as $template ) {
 			if ( $template['name'] === $template_name ) {
 				return $template;
 			}
@@ -156,7 +168,7 @@ class WP_Posts_Carousel_Templates {
 		return apply_filters( 'wp_posts_carousel_templates_paths', $paths );
 	}
 
-	private static function load_template_manifest( $template_dir, $template_url ) {
+	private static function load_template_manifest( $template_dir, $template_url, $requested_name = null ) {
 		$manifest_path = trailingslashit( $template_dir ) . 'template.json';
 
 		if ( ! file_exists( $manifest_path ) ) {
@@ -168,7 +180,10 @@ class WP_Posts_Carousel_Templates {
 			return null;
 		}
 
-		$name   = sanitize_key( isset( $manifest['name'] ) ? $manifest['name'] : basename( $template_dir ) );
+		$name = sanitize_key( isset( $manifest['name'] ) ? $manifest['name'] : basename( $template_dir ) );
+		if ( $requested_name !== null && $name !== $requested_name ) {
+			return null;
+		}
 		$render = self::resolve_template_file( $template_dir, isset( $manifest['render'] ) ? $manifest['render'] : 'views/template.php' );
 		// An incomplete override must not hide a working template further down the path list.
 		if ( $name === '' || $render === '' || ! is_file( $render ) || ! is_readable( $render ) ) {

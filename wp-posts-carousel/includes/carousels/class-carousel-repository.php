@@ -19,7 +19,7 @@ class WP_Posts_Carousel_Repository {
 		$users_table = $wpdb->users;
 		$table       = self::table_name();
 
-		return $wpdb->get_results(
+		$carousels = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT p.*, wpc.params, wpc.post_modified AS carousel_modified, u.user_nicename
                 FROM %i p
@@ -33,6 +33,23 @@ class WP_Posts_Carousel_Repository {
 			),
 			ARRAY_A
 		);
+		if ( ! $carousels ) {
+			return array();
+		}
+		// Prime metadata and users in bulk, avoiding one query per table row.
+		update_meta_cache( 'post', array_column( $carousels, 'ID' ) );
+		$editors = array();
+		foreach ( $carousels as $carousel ) {
+			$editors[ $carousel['ID'] ] = absint( get_post_meta( $carousel['ID'], '_edit_last', true ) );
+		}
+		cache_users( array_values( array_unique( array_filter( $editors ) ) ) );
+		foreach ( $carousels as &$carousel ) {
+			$editor                       = $editors[ $carousel['ID'] ] ? get_userdata( $editors[ $carousel['ID'] ] ) : false;
+			$carousel['modified_by_name'] = $editor ? $editor->display_name : '';
+		}
+		unset( $carousel );
+
+		return $carousels;
 	}
 
 	public static function get( $post_id ) {
@@ -103,7 +120,9 @@ class WP_Posts_Carousel_Repository {
 			return $saved;
 		}
 
-		return get_post( $post_id );
+		$post = get_post( $post_id );
+		add_post_meta( $post_id, '_wp_posts_carousel_created_at', $post->post_date, true );
+		return $post;
 	}
 
 	public static function update( $post_id, $title, $params ) {
@@ -113,6 +132,9 @@ class WP_Posts_Carousel_Repository {
 		if ( ! $existing || $existing->post_type !== 'wp-posts-carousel' ) {
 			return new WP_Error( 'wp_posts_carousel_not_found', __( 'Carousel not found', 'cci-posts-carousel' ), array( 'status' => 404 ) );
 		}
+
+		// WordPress may advance a draft's post_date on save. Preserve its first known creation date.
+		add_post_meta( $post_id, '_wp_posts_carousel_created_at', $existing->post_date, true );
 
 		$updated = wp_update_post(
 			array(
@@ -214,6 +236,12 @@ class WP_Posts_Carousel_Repository {
 
 		if ( $result === false ) {
 			return new WP_Error( 'wp_posts_carousel_params_save_failed', __( 'Failed save carousel params', 'cci-posts-carousel' ), array( 'status' => 500 ) );
+		}
+		$editor_id = get_current_user_id();
+		if ( $editor_id > 0 ) {
+			update_post_meta( $post_id, '_edit_last', $editor_id );
+		} else {
+			delete_post_meta( $post_id, '_edit_last' );
 		}
 
 		return true;

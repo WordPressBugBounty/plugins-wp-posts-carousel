@@ -2,9 +2,9 @@
 Contributors: coolcatideas
 Tags: carousel, slider, posts, gutenberg, custom post types
 Requires at least: 6.2
-Tested up to: 7.1.4
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Give your content a place to shine. Create responsive carousels with a visual ed
 
 Your latest articles, your favourite guides, the pages you wish more people would discover. Bring them together in a carousel that invites visitors to keep exploring.
 
-[See it in action](https://wordpress-demo.coolcatideas.com/) | [Explore the product](https://coolcatideas.com/products/cci-posts-carousel-all-in-one/) | [Read the guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.0/) | [Get help](https://github.com/cool-cat-ideas/cci-posts-carousel-all-in-one/issues)
+[See it in action](https://wordpress-demo.coolcatideas.com/) | [Explore the product](https://coolcatideas.com/products/cci-posts-carousel-all-in-one/) | [Read the guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.2/) | [Get help](https://github.com/cool-cat-ideas/cci-posts-carousel-all-in-one/issues)
 
 **CCI Posts Carousel All In One** gives you a visual editor to choose your content, arrange your slides and preview the result. Add your saved carousel with a Gutenberg block or shortcode, then reuse it across your site. Change it once and every place using it stays in sync.
 
@@ -62,7 +62,7 @@ These features come together in one Pro plugin, installed alongside this one. Wo
 
 Optional extensions can add more layouts and content sources. [Aurora Cards](https://coolcatideas.com/products/cci-posts-carousel-aurora-cards/) adds another card design, while [Related Content](https://coolcatideas.com/products/cci-posts-carousel-related-content/) finds posts or products related to the page being viewed. Both are separate, no-cost additions.
 
-For developers, the [documentation](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.0/) covers hooks and filters for your own queries, templates and integrations.
+For developers, the [documentation](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.2/) covers hooks and filters for your own queries, templates and integrations.
 
 = We'd love to hear from you =
 
@@ -81,7 +81,7 @@ Requires WordPress 6.2 or later and PHP 7.4 or later.
 5. Save, then add the **CCI Posts Carousel All In One** block to a page and select your carousel. You can also paste its shortcode into a Shortcode block.
 6. Publish your page and enjoy your new carousel.
 
-For a walkthrough, see the [getting started guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.0/).
+For a walkthrough, see the [getting started guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.2/).
 
 == Frequently Asked Questions ==
 
@@ -96,7 +96,7 @@ Yes. Open Query > Content selection and choose Pinned slides + automatic fill. S
 
 = How do I update the plugin? =
 
-Install the current package over the installed plugin and check existing carousels after clearing the site cache. For upgrades from a previous package name or from 1.x, follow the [installation and upgrade guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.0/installation/).
+Install the current package over the installed plugin and check existing carousels after clearing the site cache. For upgrades from a previous package name or from 1.x, follow the [installation and upgrade guide](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.2/installation/).
 
 = Why did my carousels stop working after upgrading from 1.x to 2.x? =
 
@@ -128,7 +128,7 @@ No. The integration is built into the base plugin. Activate WordPress Popular Po
 
 = Can developers change queries and output? =
 
-Yes. The [developer documentation](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.0/) describes supported actions and filters for queries, templates and integrations.
+Yes. The [developer documentation](https://coolcatideas.com/docs/cci-posts-carousel-all-in-one/2.2.2/) describes supported actions and filters for queries, templates and integrations.
 
 = Why is my carousel empty? =
 
@@ -136,27 +136,28 @@ Check that the selected content is published, the chosen categories or tags cont
 
 == Screenshots ==
 
-1. Manage saved carousels, copy their shortcodes and check publication status and product news.
+1. Return to five recently edited carousels from Dashboard, with content details, publication status, update dates and saved previews.
 2. Browse integrations that extend the available content sources and ordering options.
 3. Compare installed templates and browse additional layouts. The demo includes Pro templates and optional extensions.
 4. Control carousel libraries and icon assets, and set the default responsive breakpoints.
 5. Choose the rendering engine and slide behavior, then drag cards to arrange the carousel sequence.
 6. Pin selected posts first and fill the remaining places automatically.
-7. Choose which card elements appear and set title and excerpt limits. The price and sale controls shown require Pro.
+7. Choose which card elements appear and set title and excerpt limits.
 8. Search for existing content or add a custom image slide, then arrange its position in the sequence.
-9. Enable an optional second image on mouse hover. The featured image remains the default.
-10. Each saved carousel has its own shortcode, publication status and last update date.
-11. Preview article cards and test the carousel at different widths.
-12. Two pinned posts lead this six-slide example. Four more are selected automatically; three cards are visible on desktop.
-13. Present WordPress articles as image cards with excerpts and links to the full posts.
-14. Aurora Cards is an optional template extension. The displayed prices, sale badges and Add to cart actions are supplied by Pro.
-15. The optional Aurora Cards extension presents article images, excerpts and navigation.
-16. The base plugin can show a second image on mouse hover. Touch screens retain the featured image.
-17. Story Commerce combines a wide opening slide and supporting cards into a numbered shopping story. Included in Pro.
-18. Video Showcase pairs the active video with a playlist of entries and timestamps. Included in Pro.
-19. Commerce Luxe presents product images, sale prices, quantity controls and Add to cart buttons on a dark carousel background. Included in Pro.
-20. Reorder pinned posts and let the query fill the remaining places without duplicate posts.
-21. Set a second image for a manual slide by pasting its URL or choosing it from the media library.
+9. Configure frontend filters, performance options, field mapping and publishing behavior.
+10. Preview article cards and test the carousel at different widths.
+11. Two pinned posts lead this six-slide example. Four more are selected automatically; three cards are visible on desktop.
+12. Present WordPress articles as image cards with excerpts and links to the full posts.
+13. Aurora Cards is an optional template extension. The displayed prices, sale badges and Add to cart actions are supplied by Pro.
+14. The optional Aurora Cards extension presents article images, excerpts and navigation.
+15. The base plugin can show a second image on mouse hover. Touch screens retain the featured image.
+16. Story Commerce combines a wide opening slide and supporting cards into a numbered shopping story. Included in Pro.
+17. Video Showcase pairs the active video with a playlist of entries and timestamps. Included in Pro.
+18. Commerce Luxe presents product images, sale prices, quantity controls and Add to cart buttons on a dark carousel background. Included in Pro.
+19. Reorder pinned posts and let the query fill the remaining places without duplicate posts.
+20. Set a second image for a manual slide by pasting its URL or choosing it from the media library.
+21. Sort the full carousel collection, copy shortcodes and check updates and editors in separate columns.
+22. Check creation dates, update dates, creators and recorded editors on the Information tab.
 
 == External services ==
 
@@ -179,6 +180,12 @@ Icons are local by default. Choosing **CDN** in compatibility settings loads Fon
 The plugin includes compiled JavaScript and CSS. The repositories above contain the readable sources and build tools; the product lockfile pins the shared UI packages.
 
 == Changelog ==
+
+= 2.2.2 =
+* Reduce repeated template checks on pages with several carousels while preserving template filters, theme overrides and license checks.
+* Reduce feature checks during rendering while preserving license checks for paid features and their dependencies.
+* Return to recently edited carousels from a compact Dashboard table with saved content details and preview saved carousels without opening the editor. Manage, sort and copy shortcodes on the Carousels page, with separate update and editor columns.
+* Check creation dates, update dates, creators and recorded editors on the Information tab in the carousel editor.
 
 = 2.2.1 =
 

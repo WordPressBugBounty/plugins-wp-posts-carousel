@@ -1377,7 +1377,7 @@ class WP_Posts_Carousel_API {
 			return $post;
 		}
 
-		return new WP_REST_Response( $post, 200 );
+		return new WP_REST_Response( array_merge( (array) $post, array( 'metadata' => $this->carousel_metadata( (array) $post ) ) ), 200 );
 	}
 
 	public function get_carousel( WP_REST_Request $request ) {
@@ -1385,15 +1385,30 @@ class WP_Posts_Carousel_API {
 		$post    = WP_Posts_Carousel_Repository::get( $post_id );
 
 		if ( ! empty( $post ) ) {
-			$config         = WP_Posts_Carousel_Config::normalize( json_decode( $post['params'], true ) );
-			$post['config'] = $config;
-			$post['params'] = wp_json_encode( WP_Posts_Carousel_Config::to_form_values( $config ) );
-			$settings       = $this->get_default_settings( $request, $post );
+			$config           = WP_Posts_Carousel_Config::normalize( json_decode( $post['params'], true ) );
+			$post['config']   = $config;
+			$post['metadata'] = $this->carousel_metadata( $post );
+			$post['params']   = wp_json_encode( WP_Posts_Carousel_Config::to_form_values( $config ) );
+			$settings         = $this->get_default_settings( $request, $post );
 
 			return new WP_REST_Response( array_merge( array( 'post' => $post ), $settings ), 200 );
 		}
 
 		return new WP_Error( __( 'Failed get carousel', 'cci-posts-carousel' ), $request, array( 'status' => 500 ) );
+	}
+
+	private function carousel_metadata( array $post ) {
+		$author_id = absint( $post['post_author'] );
+		$editor_id = absint( get_post_meta( $post['ID'], '_edit_last', true ) );
+		$author    = $author_id ? get_userdata( $author_id ) : false;
+		$editor    = $editor_id ? get_userdata( $editor_id ) : false;
+
+		return array(
+			'created_at'       => get_post_meta( $post['ID'], '_wp_posts_carousel_created_at', true ) ?: $post['post_date'],
+			'created_by_name'  => $author ? $author->display_name : '',
+			'modified_at'      => isset( $post['carousel_modified'] ) ? $post['carousel_modified'] : $post['post_modified'],
+			'modified_by_name' => $editor ? $editor->display_name : '',
+		);
 	}
 
 	public function prepare_posts_options( $settings, $post ) {
@@ -1458,7 +1473,7 @@ class WP_Posts_Carousel_API {
 			return $post;
 		}
 
-		return new WP_REST_Response( $post, 200 );
+		return new WP_REST_Response( array_merge( (array) $post, array( 'metadata' => $this->carousel_metadata( (array) $post ) ) ), 200 );
 	}
 
 	public function delete_carousel( WP_REST_Request $request ) {
@@ -1478,7 +1493,7 @@ class WP_Posts_Carousel_API {
 			return $post;
 		}
 
-		return new WP_REST_Response( $post, 200 );
+		return new WP_REST_Response( array_merge( (array) $post, array( 'metadata' => $this->carousel_metadata( (array) $post ) ) ), 200 );
 	}
 }
 

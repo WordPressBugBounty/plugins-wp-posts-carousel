@@ -3769,3 +3769,95 @@ msgstr "Wpisz tekst do wyszukania."
 #: includes/api/class-api.php
 msgid "Terms could not be loaded. Check the server logs and try again."
 msgstr "Nie udało się pobrać terminów. Sprawdź logi serwera i spróbuj ponownie."
+
+msgid "Recently edited carousels"
+msgstr "Ostatnio edytowane karuzele"
+
+msgid "View all carousels"
+msgstr "Wszystkie karuzele"
+
+msgid "Saved configurations"
+msgstr "Zapisane konfiguracje"
+
+msgid "Unavailable configurations"
+msgstr "Niedostępne konfiguracje"
+
+#: src/admin-v2/components/carousels/CarouselDashboardWork.jsx
+msgid "Updated"
+msgstr "Zaktualizowano"
+
+#: src/admin-v2/components/carousels/CarouselDashboardWork.jsx
+msgid "Modified by"
+msgstr "Edytował"
+
+#: src/admin-v2/components/carousels/CarouselDashboardWork.jsx
+msgid "Not recorded"
+msgstr "Brak danych"
+
+#: src/admin-v2/components/builder/CarouselDetails.jsx
+msgid "Carousel details"
+msgstr "Informacje o karuzeli"
+
+#: src/admin-v2/components/builder/CarouselDetails.jsx
+msgid "Created"
+msgstr "Utworzono"
+
+#: src/admin-v2/components/builder/CarouselDetails.jsx
+msgid "Created by"
+msgstr "Utworzył"
+
+#: src/admin-v2/components/builder/CarouselDetails.jsx
+msgid "Save the carousel to record its creation and editor details."
+msgstr "Zapisz karuzelę, aby zachować datę utworzenia i informacje o edytorze."
+
+#: src/admin-v2/components/builder/CarouselDetails.jsx
+msgid "Preview"
+msgstr "Podgląd"
+
+#: src/admin-v2/components/builder/VisualBuilder.jsx
+msgid "Information"
+msgstr "Informacje"
+
+#: src/admin-v2/components/builder/SavedPreview.jsx
+msgid "Could not initialize the preview. Close it and try again."
+msgstr "Nie udało się uruchomić podglądu. Zamknij go i spróbuj ponownie."
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "Manual selection"
+msgstr "Wybór ręczny"
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "Pages"
+msgstr "Strony"
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "Products"
+msgstr "Produkty"
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "Pinned + automatic"
+msgstr "Przypięte i automatyczne"
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "Automatic"
+msgstr "Automatycznie"
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "%d selected slide"
+msgid_plural "%d selected slides"
+msgstr[0] "%d wybrany slajd"
+msgstr[1] "%d wybrane slajdy"
+msgstr[2] "%d wybranych slajdów"
+
+#: src/admin-v2/components/builder/SavedPreview.jsx
+msgid "Match the preview to your content column. This does not change carousel settings."
+msgstr "Dopasuj podgląd do szerokości kolumny na stronie. Nie zmienia to ustawień karuzeli."
+
+
+#: src/admin-v2/components/builder/SavedPreview.jsx
+msgid "Custom width"
+msgstr "Własna szerokość"
+
+#: src/admin-v2/components/builder/SavedPreview.jsx
+msgid "Width in pixels"
+msgstr "Szerokość w pikselach"

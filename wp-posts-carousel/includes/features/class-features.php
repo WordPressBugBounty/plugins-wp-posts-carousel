@@ -7,6 +7,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WP_Posts_Carousel_Features {
 
 	public static function all() {
+		return self::resolve_features( self::definitions() );
+	}
+
+	private static function definitions() {
 		$features = array(
 			'shortcode'         => self::feature(
 				__( 'Shortcode rendering', 'cci-posts-carousel' ),
@@ -65,6 +69,10 @@ class WP_Posts_Carousel_Features {
 			}
 		}
 
+		return $features;
+	}
+
+	private static function resolve_features( $features ) {
 		foreach ( $features as $key => $feature ) {
 			$features[ $key ] = self::normalize( $key, $feature );
 		}
@@ -74,7 +82,18 @@ class WP_Posts_Carousel_Features {
 
 	public static function enabled( $key ) {
 		$key      = sanitize_key( $key );
-		$features = self::all();
+		$features = self::definitions();
+		if ( ! isset( $features[ $key ] ) ) {
+			return false;
+		}
+
+		$feature = self::normalize( $key, $features[ $key ] );
+		// An independent public feature does not depend on unrelated paid features.
+		// Resolve paid features and dependency graphs through the full license gates.
+		if ( empty( $feature['requiredFeatures'] ) && ! self::feature_requires_pro( $key, $feature ) ) {
+			return ! empty( $feature['enabled'] );
+		}
+		$features = self::resolve_features( $features );
 
 		return isset( $features[ $key ] ) && ! empty( $features[ $key ]['enabled'] );
 	}

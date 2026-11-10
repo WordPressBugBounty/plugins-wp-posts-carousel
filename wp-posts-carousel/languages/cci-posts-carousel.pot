@@ -3736,3 +3736,82 @@ msgstr ""
 #: includes/api/class-api.php
 msgid "Terms could not be loaded. Check the server logs and try again."
 msgstr ""
+
+#: src/admin-v2/components/carousels/CarouselDashboardWork.jsx
+msgid "Updated"
+msgstr ""
+
+#: src/admin-v2/components/carousels/CarouselDashboardWork.jsx
+msgid "Modified by"
+msgstr ""
+
+#: src/admin-v2/components/carousels/CarouselDashboardWork.jsx
+msgid "Not recorded"
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselDetails.jsx
+msgid "Carousel details"
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselDetails.jsx
+msgid "Created"
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselDetails.jsx
+msgid "Created by"
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselDetails.jsx
+msgid "Save the carousel to record its creation and editor details."
+msgstr ""
+
+#: src/admin-v2/components/builder/CarouselDetails.jsx
+msgid "Preview"
+msgstr ""
+
+#: src/admin-v2/components/builder/VisualBuilder.jsx
+msgid "Information"
+msgstr ""
+
+#: src/admin-v2/components/builder/SavedPreview.jsx
+msgid "Could not initialize the preview. Close it and try again."
+msgstr ""
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "Manual selection"
+msgstr ""
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "Pages"
+msgstr ""
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "Products"
+msgstr ""
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "Pinned + automatic"
+msgstr ""
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "Automatic"
+msgstr ""
+
+#: src/admin-v2/components/carousels/CarouselTable.jsx
+msgid "%d selected slide"
+msgid_plural "%d selected slides"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/admin-v2/components/builder/SavedPreview.jsx
+msgid "Match the preview to your content column. This does not change carousel settings."
+msgstr ""
+
+
+#: src/admin-v2/components/builder/SavedPreview.jsx
+msgid "Custom width"
+msgstr ""
+
+#: src/admin-v2/components/builder/SavedPreview.jsx
+msgid "Width in pixels"
+msgstr ""
